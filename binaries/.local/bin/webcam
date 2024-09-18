@@ -1,0 +1,51 @@
+#!/bin/sh
+
+OS=$(uname -s)
+
+webcam_open() {
+	case "$OS" in
+		Linux)
+			// TODO: Confirm if this works
+			ffmpeg -f v4l2 -video_size 640x480 -framerate 30 -i /dev/video0 \
+				-vcodec libx264 -preset ultrafast -tune zerolatency \
+				-f mpegts - | mpv --no-cache -profile=low-latency -untimed -
+			;;
+		Darwin)
+			ffmpeg -f avfoundation -video_size 640x480 -framerate 30 -pix_fmt yuyv422 -i "0" \
+				-vcodec libx264 -preset ultrafast -tune zerolatency \
+				-f mpegts - | mpv --no-cache -profile=low-latency -untimed -
+			;;
+		*) echo "Unsupported OS. Are you running on a potato?" ;;
+		esac
+}
+
+webcam_record() {
+	case "$OS" in
+		Linux)
+			ffmpeg -f v4l2 -video_size 640x480 -framerate 30 -i /dev/video0 \
+			-vcodec libx264 -preset ultrafast output.mkv
+			;;
+		Darwin)
+			ffmpeg -f avfoundation -video_size 640x480 -framerate 30 -pix_fmt yuyv422 -i "0" \
+			-vcodec libx264 -preset ultrafast output.mkv
+			;;
+		*)
+			echo "Unsupported OS. Are you running on a potato?"
+			;;
+		esac
+}
+
+webcam_choose() {
+	choice=$(printf "open\\nrecord" | fzf)
+	case "$choice" in
+		open) webcam_open ;;
+		record) webcam_record ;;
+		*) echo "Usage: $0 {open|record}" ;;
+	esac
+}
+
+case $1 in 
+	open) webcam_open ;;
+	record) webcam_record ;;
+	*) webcam_choose ;; 
+esac

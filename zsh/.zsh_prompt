@@ -1,0 +1,29 @@
+# vim: filetype=sh
+
+setopt PROMPT_SUBST
+
+function git_branch() {
+	local branch_name=$(git symbolic-ref --short HEAD 2>/dev/null)
+	if [ -n "$branch_name" ]; then
+		echo " (%F{blue}${branch_name}%f)"
+	fi
+}
+
+funciton relative_path() {
+echo "%~"
+}
+
+function lambda_symbol() {
+	echo "λ"
+}
+
+function vi_mode_indicator() {
+	if [[ -n "${KEYMAP}" && "${KEYMAP}" == 'vicmd' ]]; then
+		echo '<V>'
+	fi
+}
+
+NEWLINE=$'\n'
+RPROMPT='%T'
+PROMPT='$(relative_path) $(git_branch) $(vi_mode_indicator)${NEWLINE}$(lambda_symbol) '
+PROMPT="$NEWLINE$PROMPT"

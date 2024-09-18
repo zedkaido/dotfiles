@@ -1,0 +1,35 @@
+#!/bin/sh
+
+OS=$(uname -s)
+BOOKMARKS_FILE="$HOME/.qutebrowser/bookmarks/urls"
+
+bookmark_open() {
+	case "$OS" in 
+		Linux) cat $BOOKMARKS_FILE | fzf --reverse | awk '{ print $1 }' | xargs xdg-open ;;
+		Darwin) cat $BOOKMARKS_FILE | fzf --reverse | awk '{ print $1 }' | xargs open ;;
+		*) echo "Unsupported OS. Are you running on a potato?" ;;
+	esac
+}
+
+bookmark_copy() {
+	case "$OS" in 
+		Linux) cat $BOOKMARKS_FILE | fzf --reverse | awk '{ print $1 }' | xclip -selection clipboard ;;
+		Darwin) cat $BOOKMARKS_FILE | fzf --reverse | awk '{ print $1 }' | pbcopy ;;
+		*) echo "Unsupported OS. Are you running on a potato?" ;;
+	esac
+}
+
+bookmark_choose() {
+	choice=$(printf "open\\ncopy" | fzf)
+	case $choice in
+		open) bookmark_open ;;
+		copy) bookmark_copy ;;
+		*) echo "BRO?"
+	esac
+}
+
+case "$1" in
+	open) bookmark_open ;;
+	copy) bookmark_copy ;;
+	*) bookmark_choose ;;
+esac

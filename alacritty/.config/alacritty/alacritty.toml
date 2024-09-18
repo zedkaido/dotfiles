@@ -1,0 +1,160 @@
+# Import additional configuration files
+import = []
+
+live_config_reload = true  # Default: true
+
+[env]
+# Environment variables
+
+[window]
+dimensions = { columns = 0, lines = 0 }  # Default: columns = 0, lines = 0
+position = "None"  # Default: "None"
+padding = { x = 0, y = 0 }  # Default: x = 0, y = 0
+dynamic_padding = false  # Default: false
+decorations = "None"  # Default: "Full"
+opacity = 1.0  # Default: 1.0
+blur = false  # Default: false
+startup_mode = "Windowed"  # Default: "Windowed"
+title = "Alacritty"  # Default: "Alacritty"
+dynamic_title = true  # Default: true
+class = { instance = "Alacritty", general = "Alacritty" }  # Default: instance = "Alacritty", general = "Alacritty"
+decorations_theme_variant = "None"  # Default: "None"
+resize_increments = false  # Default: false
+option_as_alt = "Both"  # Default: "None"
+
+[scrolling]
+history = 10000  # Default: 10000
+multiplier = 3  # Default: 3
+
+[font]
+normal = { family = "Berkeley Mono", style = "Regular" }  # Default for Linux/BSD: "monospace", Regular
+bold = { style = "Regular" }  # Inherits family from normal, Default style: Bold
+italic = { style = "Italic" }  # Inherits family from normal, Default style: Italic
+bold_italic = { style = "Italic" }  # Inherits family from normal, Default style: Bold Italic
+size = 16
+offset = { x = 0, y = 0 }  # Default: x = 0, y = 0
+glyph_offset = { x = 0, y = 0 }  # Default: x = 0, y = 0
+builtin_box_drawing = true  # Default: true
+
+[colors]
+transparent_background_colors = false  # Default
+draw_bold_text_with_bright_colors = false  # Default
+
+[colors.primary]
+background = "#FFFFFF"  # Default
+foreground = "#000000"  # Default
+dim_foreground = "#000000"  # Default
+bright_foreground = "#000000"  # Default
+
+[colors.cursor]
+text = "CellBackground"  # Default
+cursor = "CellForeground"  # Default
+
+[colors.vi_mode_cursor]
+text = "CellBackground"  # Default
+cursor = "CellForeground"  # Default
+
+[colors.search.matches]
+foreground = "#E4E4E4"  # Default
+background = "#000000"  # Default
+
+[colors.search.focused_match]
+foreground = "#000000"  # Default
+background = "#f4bf75"  # Default
+
+[colors.hints.start]
+foreground = "#000000"  # Default
+background = "#f4bf75"  # Default
+
+[colors.hints.end]
+foreground = "#000000"  # Default
+background = "#ac4242"  # Default
+
+[colors.line_indicator]
+foreground = "None"  # Default
+background = "None"  # Default
+
+[colors.footer_bar]
+foreground = "#000000"  # Default
+background = "#d8d8d8"  # Default
+
+[colors.selection]
+text = "CellBackground"  # Default
+background = "CellForeground"  # Default
+
+[colors.normal]
+black = "#E4E4E4"  # Default
+red = "#960F2F"  # Default
+green = "#50956c"  # Default
+yellow = "#000000"  # Default
+blue = "#000000"  # Default
+magenta = "#000000"  # Default
+cyan = "#000000"  # Default
+white = "#000000"  # Default
+
+[colors.bright]
+black = "#E4E4E4"  # Default
+red = "#960F2F"  # Default
+green = "#50956c"  # Default
+yellow = "#000000"  # Default
+blue = "#000000"  # Default
+magenta = "#000000"  # Default
+cyan = "#000000"  # Default
+white = "#000000"  # Default
+
+[colors.dim]
+black = "#E4E4E4"  # Default
+red = "#960F2F"  # Default
+green = "#50956c"  # Default
+yellow = "#000000"  # Default
+blue = "#000000"  # Default
+magenta = "#000000"  # Default
+cyan = "#000000"  # Default
+white = "#000000"  # Default
+
+[bell]
+animation = "Linear"  # Default: "Linear"
+duration = 0  # Default: 0
+color = "#ffffff"  # Default: "#ffffff"
+command = "None"  # Default: "None"
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\\t"  # Default: ",│`|:\"' ()[]{}<>\\t"
+save_to_clipboard = false  # Default: false
+
+[cursor]
+style = { shape = "Block", blinking = "Off" }  # Default: shape = "Block", blinking = "Off"
+vi_mode_style = "None"  # Default: "None"
+blink_interval = 750  # Default: 750
+blink_timeout = 0  # Default: 5
+unfocused_hollow = true  # Default: true
+thickness = 0.15  # Default: 0.15
+
+[terminal]
+osc52 = "CopyPaste"  # Default: "OnlyCopy"
+
+[mouse]
+hide_when_typing = true  # Default: false
+bindings = []
+
+[hints]
+alphabet = "jfkdls;ahgurieowpq"  # Default: "jfkdls;ahgurieowpq"
+
+# Enable specific hints
+#[[hints.enabled]]
+# Example configuration (actual settings to be defined based on user preference)
+# regex = "..."
+# hyperlinks = true
+# post_processing = true
+# persist = false
+# action = "..."
+# command = "..."
+# binding = { key = "...", mods = "...", mode = "..." }
+# mouse = { mods = "...", enabled = true }
+
+[keyboard]
+bindings = [
+	# { key = "Key", mods = "Modifiers", action = "Action" },
+	# { key = "Key", mods = "Modifiers", chars = "Characters to send" },
+	# ...
+]

@@ -1,0 +1,78 @@
+#!/bin/sh
+
+if ! command -v fzf >/dev/null 2>&1; then
+	echo "fzf required"
+	exit 1
+fi
+if ! command -v pass >/dev/null 2>&1; then
+	echo "pass required"
+	exit 1
+fi
+
+select_pass_type() {
+	printf "pass\nusername\notp\nurl" | fzf
+}
+
+select_pass_file() {
+	find . -type f -name '*.gpg' | sed 's/\.gpg//' | sed 's/^\.\///' | sort | fzf
+}
+
+select_username_file() {
+	find . -type f -name '*username.gpg' | sed 's/\.gpg//' | sed 's/^\.\///' | sort | fzf 
+}
+
+select_otp_file() {
+	find . -type f -name '*otp.gpg' | sed 's/\.gpg//' | sed 's/^\.\///' | sort | fzf 
+}
+
+select_url_file() {
+	find . -type f -name '*url.gpg' | sed 's/\.gpg//' | sed 's/^\.\///' | sort | fzf 
+}
+
+# MAIN
+cd $HOME/.password-store || { echo "Failed to change directoy to ~/.password-store."; exit 1; }
+
+echo "[PASS] Select pass type:"
+PASS_TYPE=$(select_pass_type)
+echo $PASS_TYPE
+if [ -z "$PASS_TYPE" ]; then
+	echo "No pass type selected."
+	exit 0
+fi
+
+case "$PASS_TYPE" in
+	pass)
+		PASS_FILE=$(select_pass_file)
+		if [ -z "$PASS_FILE" ]; then
+			echo "No pass selected."
+			exit 0
+		fi
+		pass show -c $PASS_FILE
+		;;
+	username)
+		PASS_USERNAME_FILE=$(select_username_file)
+		if [ -z "$PASS_USERNAME_FILE" ]; then
+			echo "No username selected."
+			exit 0
+		fi
+		pass show -c $PASS_USERNAME_FILE
+		;;
+	otp)
+		PASS_OTP_FILE=$(select_otp_file)
+		if [ -z "$PASS_OTP_FILE" ]; then
+			echo "No OTP selected."
+			exit 0
+		fi
+		pass otp show -c "$PASS_OTP_FILE"
+		;;
+	url)
+		PASS_URL_FILE=$(select_url_file)
+		if [ -z "$PASS_URL_FILE" ]; then
+			echo "No URL selected."
+			exit 0
+		fi
+		pass show -c "$PASS_URL_FILE"
+		;;
+	*)
+		exit 1
+esac

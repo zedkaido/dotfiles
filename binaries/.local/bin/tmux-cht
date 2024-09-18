@@ -1,0 +1,9 @@
+#!/bin/sh
+
+selected=$(cat ~/.config/tmux/tmux-cht-languages ~/.config/tmux/tmux-cht-commands | fzy)
+if [[ -z $selected ]]; then
+	exit 0
+fi
+
+read -p "Enter Query: " query
+curl "cht.sh/$selected/$query?T"
