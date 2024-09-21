@@ -14,7 +14,7 @@ function Today()
 end
 
 function Now()
-	local format = "%H:%M:"
+	local format = "%H:%M"
 	local time = os.date(format)
 	vim.api.nvim_put({ tostring(time) }, "", true, true)
 end
