@@ -1,0 +1,3 @@
+[submodule "ch/.local/bin"]
+	path = ch/.local/bin
+	url = git@github.com:zedkaido/ch.git
