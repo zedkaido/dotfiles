@@ -16,7 +16,8 @@ open_launcher_window() {
 open_cmd_window() {
 	open -n /Applications/Alacritty.app \
 		--args --title "alacritty-cmd" \
-		--config-file "$ALACRITTY_FLOATED_TOML"
+		--config-file "$ALACRITTY_FLOATED_TOML" \
+		-e zsh -c 'tmux a -t "cmd" || tmux new -s "cmd"'
 }
 
 open_ch_window(){
