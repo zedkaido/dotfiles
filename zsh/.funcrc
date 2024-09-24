@@ -1,65 +1,10 @@
-# vim: filetype=sh
+# vim: filetype=zsh
 
-szsh() {
-	source ~/.zshrc
+hex() {
+	echo -n $1 | od -A n -t x1 | tr -d '[:space:]'
 }
 
-f() {
-	echo "find . -iname \"*$1*\""
-	find . -iname "*$1*"
-}
-
-status() {
-	if [ -n "$1" ]; then
-		printf "$1" > ~/SESSION
-	else
-		echo "what's the status?"
-	fi
-}
-
-log() {
-	if [ -n "$1" ]; then
-		output_directory="$HOME/zk/garden/"
-		mkdir -p "$output_directory"
-		current_date=$(date +'%Y-%m-%d')
-		output_file="$output_directory$current_date.md"
-		now=$(date +'%H:%M:')
-		printf "\n* %s\n\t* LOG: %s;\n" "$now" "$1" >> "$output_file"
-		printf "$1" > ~/SESSION
-	else
-		echo "log what?"
-	fi
-}
-
-worklog() {
-	if [ -n "$1" ]; then
-		output_directory="$HOME/zk/garden/"
-		mkdir -p "$output_directory"
-		current_date=$(date +'%Y-%m-%d')
-		output_file="${output_directory}WL-${current_date}.md"
-		now=$(date +'%H:%M:')
-		printf "\n* %s\n\t* LOG: %s;\n" "$now" "$1" >> "$output_file"
-		printf "$1" > ~/SESSION
-	else
-		echo "log what?"
-	fi
-}
-
-datediff () {
-	echo $(( ($(date -u -d $1 +%s) - $(date -u -d $2 +%s)) / 86400))
-}
-
-function nextDay() {
-	local now=$(date +"%Y-%m-%dT%H:%M:%SZ")
-	local tomorrow=$(date -v "+1d" +"%Y-%m-%dT%H:%M:%SZ")
-	echo $tomorrow
-}
-
-toHex() {
-	echo -n $1 | od -A n -t x1
-}
-
-hexToString() {
+hextostring() {
 	local hex_string="$1"
 	local ascii_string=""
 	hex_string=$(echo "$hex_string" | tr -d '[:space:]')
@@ -75,26 +20,6 @@ hexToString() {
 	echo -e "$ascii_string"
 }
 
-ex () {
-	if [ -f $1 ] ; then
-		case $1 in
-			*.tar.bz2) tar xjf $1 ;; 
-			*.tar.gz) tar xzf $1 ;;
-			*.bz2) bunzip2 $1 ;;
-			*.rar) unrar x $1 ;;
-			*.gz) gunzip $1 ;;
-			*.tar) tar xf $1 ;;
-			*.tbz2) tar xjf $1 ;;
-			*.tgz) tar xzf $1 ;; 
-			*.zip) unzip $1 ;;
-			*.Z) uncompress $1 ;;
-			*) echo "'$1' cannot be extracted via ex()" ;;
-		esac
-	else
-		echo "'$1' is not a valid file"
-	fi
-}
-
 testcolors () {
 	awk 'BEGIN{
 	s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;
@@ -107,14 +32,4 @@ testcolors () {
 		}
 		printf "\n";
 	}'
-}
-
-lfcd () {
-	tmp="$(mktemp -uq)"
-	trap 'rm -f $tmp >/dev/null 2>f1' HUP INT QUIT TERM EXIT
-	lf -last-dir-path="$tmp" "$@"
-	if [ -f "$tmp" ]; then
-		dir="$(cat "$tmp")"
-		[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-	fi
 }
