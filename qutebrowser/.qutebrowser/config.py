@@ -136,6 +136,11 @@ c.fonts.debug_console = 'default_size "Berkeley Mono"'
 c.fonts.prompts = 'default_size sans-serif'
 c.fonts.statusbar = '16pt "Berkeley Mono"'
 
+c.fonts.web.family.standard = "Berkeley Mono"
+c.fonts.web.family.fixed = "Berkeley Mono"
+c.fonts.web.size.default = 16
+c.fonts.web.size.default_fixed = 16
+
 # ---
 
 def bind(key, command, mode):  # noqa: E302
