@@ -1,6 +1,6 @@
-[submodule "ch"]
+[submodule "ch/.local/bin"]
 	path = ch/.local/bin
 	url = git@github.com:zedkaido/ch.git
-[submodule "vim/vim"]
-	path = vim/vim
+[submodule "vim/.vim"]
+	path = vim/.vim
 	url = git@github.com:zedkaido/.vim.git
