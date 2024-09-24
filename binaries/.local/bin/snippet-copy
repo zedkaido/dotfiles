@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 SNIPPET_FILE=~/.local/share/snippets.txt
 cat $SNIPPET_FILE | fzf --tac | awk '{ print $1 }' | pbcopy

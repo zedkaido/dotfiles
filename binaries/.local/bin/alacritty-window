@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 # if ! pgrep -f "Alacritty.*--title alacritty_cmd" > /dev/null; then
 #    // OPEN HERE, OTHERWISE IGNORE (for duplicate windows)

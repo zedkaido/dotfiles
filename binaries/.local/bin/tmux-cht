@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 selected=$(cat ~/.config/tmux/tmux-cht-languages ~/.config/tmux/tmux-cht-commands | fzy)
 if [[ -z $selected ]]; then

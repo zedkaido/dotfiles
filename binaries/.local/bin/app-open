@@ -1,3 +1,3 @@
-#!/bin/sh
+#!/bin/zsh
 
 find /System/Applications /Applications ~/Applications -name "*.app" -maxdepth 2 | fzy | xargs -I{} open "{}" && exit
