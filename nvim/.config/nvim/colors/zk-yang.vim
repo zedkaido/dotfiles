@@ -6,7 +6,7 @@ hi clear
 let g:colors_name = "zk-yang"
 
 " Define your colors here
-hi Normal guifg=#0000000 guibg=#FFFFFF
+hi Normal guifg=#000000 guibg=#FFFFFF
 hi Comment guifg=#696969
 hi String guifg=#000000
 hi Function guifg=#000000
@@ -14,7 +14,7 @@ hi Constant guifg=#000000
 hi Identifier guifg=#000000
 hi Statement guifg=#000000
 hi PreProc guifg=#000000
-hi Type guifg=#0000000
+hi Type guifg=#000000
 hi Special guifg=#000000
 hi Underlined guifg=#000000
 hi Ignore guifg=#000000
