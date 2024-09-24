@@ -19,11 +19,26 @@ bookmark_copy() {
 	esac
 }
 
+bookmark_add() {
+	if ! [ -z $1 ]; then
+		echo $1 >> $BOOKMARKS_FILE
+	else
+		read link
+		echo $link >> $BOOKMARKS_FILE 
+	fi
+}
+
+bookmarks_edit() {
+	vim $BOOKMARKS_FILE
+}
+
 bookmark_choose() {
-	choice=$(printf "open\\ncopy" | fzf)
+	choice=$(printf "open\\ncopy\\nadd\\nedit" | fzf)
 	case $choice in
 		open) bookmark_open ;;
 		copy) bookmark_copy ;;
+		add) bookmark_add ;;
+		edit) bookmarks_edit ;;
 		*) echo "BRO?"
 	esac
 }
@@ -31,5 +46,7 @@ bookmark_choose() {
 case "$1" in
 	open) bookmark_open ;;
 	copy) bookmark_copy ;;
+	add) bookmark_add $2 ;;
+	edit) bookmarks_edit ;;
 	*) bookmark_choose ;;
 esac

@@ -38,7 +38,7 @@ open_bookmarks_window(){
 	open -n /Applications/Alacritty.app \
 		--args --title "alacritty-bookmarks" \
 		--config-file "$ALACRITTY_FLOATED_TOML" \
-		-e zsh -c "~/.local/bin/bookmark open"
+		-e zsh -c "~/.local/bin/bookmark"
 }
 
 open_snippets_window() {
