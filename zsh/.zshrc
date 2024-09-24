@@ -1,15 +1,4 @@
-# vim: filetype=sh
-
-# /etc/zshenv
-# ~/.zshenv
-# /etc/zprofile
-# ~/.zprofile
-# /etc/zshrc
-# ~/.zshrc
-# /etc/zlogin
-# ~/.zlogin
-# /etc/zlogout
-# ~/.zlogout
+# vim: filetype=zsh
 
 # I'm not a sourcerer but I like sourcing
 source ~/.aliasrc

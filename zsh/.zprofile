@@ -1,4 +1,4 @@
-# vim: filetype=sh
+# vim: filetype=zsh
 
 # Append new paths to the existing PATH
 export PATH="/opt/homebrew/bin:$PATH"

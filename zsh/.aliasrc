@@ -1,4 +1,4 @@
-# vim: filetype=sh
+# vim: filetype=zsh
 
 alias cht=cht.sh
 
