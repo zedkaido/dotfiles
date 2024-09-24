@@ -1,15 +1,12 @@
 # vim: filetype=zsh
 
-alias cht=cht.sh
+alias szsh='source ~/.zshrc'
 
-alias svi='sudo vi'
-alias vis='vim "+set si"'
-alias edit='vim'
-alias nvimc='cd ~/dotfiles/nvim/.config/nvim'
-alias vim="stty stop '' -ixoff ; nvim" # https://vim.fandom.com/wiki/Map_Ctrl-S_to_save_current_or_new_files
+alias cht='cht.sh'
 
-alias km='nvim +KM'
-alias note='nvim +KMT'
+alias svi='sudo vim'
+alias km='vim +KM'
+alias note='vim +KMT'
 
 alias timer='countdown'
 

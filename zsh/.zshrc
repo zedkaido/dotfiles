@@ -14,7 +14,7 @@ set -o ignoreeof
 
 # Where should I put you?
 bindkey -s ^f "tmux-sessionizer\n"
-bindkey -s ^a "tmux-switch-session\n"
+bindkey -s ^b "tmux-switch-session\n"
 bindkey -s ^x "tmux-cht\n"
 
 # Useful for editing multi-line commands
@@ -44,6 +44,9 @@ setopt hist_ignore_all_dups
 bindkey "^R" history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-pattern-search-forward
 
+# z | NAVIGATE with ease
+eval "$(zoxide init zsh)"
+
 # https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
 if type brew &>/dev/null
 then
@@ -72,5 +75,4 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# z
-eval "$(zoxide init zsh)"
+[ -f "/Users/x/.ghcup/env" ] && . "/Users/x/.ghcup/env" # ghcup-env
