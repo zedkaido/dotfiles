@@ -6,14 +6,14 @@
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
  
-# global settings
+# global params
 yabai -m config \
     mouse_follows_focus on \
     focus_follows_mouse off \
     window_origin_display default \
     window_placement second_child \
     window_zoom_persist on \
-    window_shadow off \
+    window_shadow on \
     window_animation_duration 0 \
     window_animation_frame_rate 60 \
     window_opacity off \
@@ -39,12 +39,11 @@ yabai -m config \
 yabai -m config --dispaly 1 external_bar all:28:0
 
 # rules:
-yabai -m rule --add app="^ffplay$" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^App Eraser$" manage=off
 yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on
 
-for title in alacritty-launcher alacritty-cmd alacritty-pass alacritty-ch alacritty-bookmarks alacritty-snippets alacritty-webcam alacritty-floated; do
+for title in alacritty-launcher alacritty-cmd alacritty-pass alacritty-ch alacritty-bookmarks alacritty-snippets alacritty-webcam alacritty-radio alacritty-floated; do
     yabai -m rule --add app="^Alacritty$" title="^$title$" manage=off;
 done
 
