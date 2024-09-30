@@ -1,11 +1,12 @@
 #!/bin/bash
 
 options=(
-	style=square
-	width=6
+	style=rounded
+	width=7
 	hidpi=off
-	active_color=0xfff1f1f1
-	inactive_color=0xff000000
+	active_color=0xffD0D0D0
+	inactive_color=0x10000000
+	whitelist="alacritty, mpv"
 )
 
 borders "${options[@]}"
