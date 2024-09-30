@@ -1,9 +1,5 @@
 # Import additional configuration files
 import = [ "~/.config/alacritty/alacritty.toml" ]
 
-[window]
-opacity = 0.9
-blur = true
-
 [colors.primary]
 background = "#FFFFFF"
