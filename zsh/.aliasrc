@@ -4,9 +4,13 @@ alias szsh='source ~/.zshrc'
 
 alias cht='cht.sh'
 
-alias svi='sudo vim'
+alias svim='sudo vim'
 alias km='vim +KM'
 alias note='vim +KMT'
+alias osx='vim +OSX'
+
+# terminal from inside apple terminal:
+alias vimt='vim +MT'
 
 alias timer='countdown'
 
