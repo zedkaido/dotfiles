@@ -1,9 +1,20 @@
-#!/bin/zsh
+#!/bin/bash
 
-selected=$(cat ~/.config/tmux/tmux-cht-languages ~/.config/tmux/tmux-cht-commands | fzy)
-if [[ -z $selected ]]; then
+echo "[CHT] Choose Language:"
+language=$(cat ~/.config/tmux/tmux-cht-languages ~/.config/tmux/tmux-cht-commands | fzy)
+if [[ -z $language ]]; then
 	exit 0
 fi
 
 read -p "Enter Query: " query
-curl "cht.sh/$selected/$query?T"
+if [[ -z $query ]]; then
+	exit 0
+fi
+
+encoded_query=$(echo "$query" | sed 's/ /%20/g')
+
+echo "$language :: $query"
+query_file=/tmp/$language-$query.txt
+wget -O $query_file "https://cht.sh/$language/$encoded_query?T" && $EDITOR $query_file
+
+# wget -O - "https://cht.sh/$language/$encoded_query?T" | vim - 
