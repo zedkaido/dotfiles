@@ -1,46 +1,48 @@
-## Aplication Triggers
-alt - q : open -n /Applications/qutebrowser.app
-
-## Allacrity Triggers 
+# -------------------
+# Aplication Triggers
+# -------------------
 cmd - return : open -n /Applications/Alacritty.app
 
 alt - space : ~/.local/bin/alacritty-window cmd
 cmd - space : ~/.local/bin/alacritty-window cmd
 
 alt - o : ~/.local/bin/alacritty-window launcher 
-
 alt - c : ~/.local/bin/alacritty-window ch 
-hyper - c : ~/.local/bin/alacritty-window ch
 
+hyper - c : ~/.local/bin/alacritty-window ch
 hyper - a : ~/.local/bin/ch append # append current clipboard content to ch
+
 hyper - p : ~/.local/bin/alacritty-window pass 
 hyper - b : ~/.local/bin/alacritty-window bookmarks 
 hyper - s : ~/.local/bin/alacritty-window snippets
 hyper - w : ~/.local/bin/alacritty-window webcam
 hyper - r : ~/.local/bin/alacritty-window radio
+hyper - i : screencapture -ip
 
-## Nullify
-# cmd - m : ""a # nullify keybinding
+# -----------------
+# YABAI KEYBINDINGS
+# -----------------
 
-# Space commands
-## Create space, set index(last), change focus to space[index]
-ctrl + cmd - n : yabai -m space --create && \
-                 index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-                 yabai -m space --focus "${index}"
+alt - b : yabai -m space --layout bsp
+alt - f : yabai -m space --layout float
+alt - a : yabai -m space --balance
 
-## Create space, set index(last), move window to space[index], change focus to space[index]
-shift + ctrl + cmd - n : yabai -m space --create && \
-                         index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-                         yabai -m window --space "${index}" && \
-                         yabai -m space --focus "${index}"
+alt - e : yabai -m window --toggle split
 
-## Destroy current space, set index(last), change focus to index(last)
+
+# Expose App Windows
+alt - v : yabai -m window --toggle expose
+
+
+ctrl + cmd - n : yabai -m space --create
 ctrl + cmd - q : yabai -m space --destroy
+ctrl + cmd + shift - n : yabai -m space --create && \
+			                index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
+			                yabai -m window --space "${index}" && \
+			                yabai -m space --focus "${index}"
 
-## Focus space
+
 alt + shift - r : yabai -m space --focus recent
-alt - n : yabai -m space --focus next; or yabai -m space --focus first
-alt - p : yabai -m space --focus prev; or yabai -m space --focus last
 cmd - 1 : yabai -m space --focus 1
 cmd - 2 : yabai -m space --focus 2
 cmd - 3 : yabai -m space --focus 3
@@ -51,8 +53,7 @@ cmd - 7 : yabai -m space --focus 7
 cmd - 8 : yabai -m space --focus 8
 cmd - 9 : yabai -m space --focus 9
 
-## Send window to desktop and follow focus
-# cmd + shift - z : yabai -m window --space next; yabai -m space --focus next
+
 cmd + shift - 1 : yabai -m window --space 1; yabai -m space --focus 1; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
 cmd + shift - 2 : yabai -m window --space 2; yabai -m space --focus 2; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
 cmd + shift - 3 : yabai -m window --space 3; yabai -m space --focus 3; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
@@ -63,67 +64,73 @@ cmd + shift - 7 : yabai -m window --space 7; yabai -m space --focus 7; sleep 0.3
 cmd + shift - 8 : yabai -m window --space 8; yabai -m space --focus 8; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
 cmd + shift - 9 : yabai -m window --space 9; yabai -m space --focus 9; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
 
-# Window commands
-## Modify window tree
+
 alt - r : yabai -m window --focus recent
 alt - h : yabai -m window --focus west || $(yabai -m window --focus west; yabai -m display --focus west)
 alt - j : yabai -m window --focus south || $(yabai -m window --focus south; yabai -m display --focus south)
 alt - k : yabai -m window --focus north || $(yabai -m window --focus north; yabai -m display --focus north)
 alt - l : yabai -m window --focus east || $(yabai -m window --focus east; yabai -m display --focus east)
 
-## Swap focused window
+
 ctrl + alt - h : yabai -m window --swap west  || $(yabai -m window --display west; yabai -m display --focus west)
 ctrl + alt - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
 ctrl + alt - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
 ctrl + alt - l : yabai -m window --swap east  || $(yabai -m window --display east; yabai -m display --focus east)
 
-## Make floating window fill screen
-cmd + shift - f  : yabai -m window --grid 1:1:1:0:1:1
 
-## Make floating window fill some space
-cmd + alt - left : yabai -m window --grid 1:2:0:0:1:1
-cmd + alt - right  : yabai -m window --grid 1:2:1:0:1:1
+# Float / Un-float window and center on screen
+alt - u : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2
 
-# control window size
+# Make floating window fill screen
+cmd + alt - f : yabai -m window --grid 1:1:1:0:1:1
+cmd + alt - n : yabai -m window --grid 4:4:1:1:2:2
+
+# Make floating window fill some space
+cmd + alt - h : yabai -m window --grid 1:2:0:0:1:1
+cmd + alt - l  : yabai -m window --grid 1:2:1:0:1:1
+cmd + alt - k : yabai -m window --grid 2:1:0:0:1:1
+cmd + alt - j : yabai -m window --grid 2:1:0:2:1:1
+
+
 ctrl + alt - left : yabai -m window --resize left:-60:0
 ctrl + alt - right : yabai -m window --resize left:60:0
 ctrl + alt - up : yabai -m window --resize top:0:-60
 ctrl + alt - down : yabai -m window --resize top:0:60
 
-## Add 10 to gap between windows
-# alt - a : yabai -m space --gap rel:+10
-# shift + alt - a : yabai -m space --gap rel:-10
+ctrl + alt + shift - left : yabai -m window --move rel:-100:0
+ctrl + alt + shift - right : yabai -m window --move rel:100:0
+ctrl + alt + shift - up : yabai -m window --move rel:0:-100
+ctrl + alt + shift - down : yabai -m window --move rel:100:100
 
-alt - a : yabai -m space --layout bsp
-alt - b : yabai -m space --balance
+alt - z : yabai -m window --toggle zoom-parent
+alt + shift - z : yabai -m window --toggle zoom-fullscreen
+
 alt - m : yabai -m space --mirror y-axis
 shift + alt - m : yabai -m space --mirror x-axis
 
-# Toggle window zoom
-# alt -  : yabai -m window --toggle zoom-parent
-alt - f : yabai -m window --toggle zoom-fullscreen
 
-# Toggle window split type
-alt - e : yabai -m window --toggle split
+# Picture-in-Picture
+alt - p : yabai -m window --toggle sticky --toggle pip
 
+# Toggle topmost
 alt - t : yabai -m window --toggle topmost;
 
-# Float / Un-float window and center on screen
-alt - u : yabai -m window --toggle float;\
-           yabai -m window --grid 4:4:1:1:2:2
 
-# Expose App Windows
-alt - v : yabai -m window --toggle expose
-
-# Toggle sticky(+float), topmost, picture-in-picture
-alt - s : yabai -m window --toggle sticky;\
-          yabai -m window --toggle topmost;\
-          yabai -m window --toggle pip
-
+# ---------
+# BLACKLIST
+# ---------
 #.blacklist [
 #   "qutebrowser"
 #]
 
+# ----------------------
+# Nullifying keybindings
+# ----------------------
+# cmd - m : ""
+
+# ----------------
+# USED KEYBINDINGS
+# ----------------
 # [USED] alt - a
 # [USED] alt - b
 # [USED] alt - c
@@ -132,15 +139,15 @@ alt - s : yabai -m window --toggle sticky;\
 # [USED] alt - f
 # alt - g
 # [USED] alt - h
-# [USED] alt - i
+# alt - i
 # [USED] alt - j
 # [USED] alt - k
 # [USED] alt - l
 # [USED] alt - m
-# [USED] alt - n
+# alt - n
 # [USED] alt - o
-# [USED] alt - p
-# [USED] alt - q
+# alt - p
+# alt - q
 # [USED] alt - r
 # [USED] alt - s
 # [USED] alt - t
@@ -148,6 +155,6 @@ alt - s : yabai -m window --toggle sticky;\
 # [USED] alt - u
 # [USED] alt - v
 # alt - w
-# [USED] alt - x
+# alt - x
 #  alt - y 
 # [USED] alt - z
