@@ -9,9 +9,9 @@ live_config_reload = true  # Default: true
 [window]
 dimensions = { columns = 0, lines = 0 }  # Default: columns = 0, lines = 0
 position = "None"  # Default: "None"
-padding = { x = 0, y = 0 }  # Default: x = 0, y = 0
+padding = { x = 4, y = 4 }  # Default: x = 0, y = 0
 dynamic_padding = false  # Default: false
-decorations = "None"  # Default: "Full"
+decorations = "Buttonless"  # Default: "Full" | "None" | "Buttonless"
 opacity = 1.0  # Default: 1.0
 blur = false  # Default: false
 startup_mode = "Windowed"  # Default: "Windowed"
@@ -27,7 +27,7 @@ history = 10000  # Default: 10000
 multiplier = 3  # Default: 3
 
 [font]
-normal = { family = "Berkeley Mono", style = "Regular" }  # Default for Linux/BSD: "monospace", Regular
+normal = { family = "Berkeley Mono Variable", style = "Regular" }  # Default for Linux/BSD: "monospace", Regular
 bold = { style = "Regular" }  # Inherits family from normal, Default style: Bold
 italic = { style = "Italic" }  # Inherits family from normal, Default style: Italic
 bold_italic = { style = "Italic" }  # Inherits family from normal, Default style: Bold Italic
@@ -79,38 +79,38 @@ foreground = "#000000"  # Default
 background = "#d8d8d8"  # Default
 
 [colors.selection]
-text = "CellBackground"  # Default
-background = "CellForeground"  # Default
+text = "#FFFFFF"  # Default
+background = "#000000"  # Default
 
 [colors.normal]
-black = "#E4E4E4"  # Default
+black = "#000000"  # Default
 red = "#960F2F"  # Default
 green = "#50956c"  # Default
 yellow = "#000000"  # Default
 blue = "#000000"  # Default
 magenta = "#000000"  # Default
 cyan = "#000000"  # Default
-white = "#000000"  # Default
+white = "#FFFFFF"  # Default
 
 [colors.bright]
-black = "#E4E4E4"  # Default
+black = "#000000"  # Default
 red = "#960F2F"  # Default
 green = "#50956c"  # Default
 yellow = "#000000"  # Default
 blue = "#000000"  # Default
 magenta = "#000000"  # Default
 cyan = "#000000"  # Default
-white = "#000000"  # Default
+white = "#FFFFFF"  # Default
 
 [colors.dim]
-black = "#E4E4E4"  # Default
+black = "#000000"  # Default
 red = "#960F2F"  # Default
 green = "#50956c"  # Default
 yellow = "#000000"  # Default
 blue = "#000000"  # Default
 magenta = "#000000"  # Default
 cyan = "#000000"  # Default
-white = "#000000"  # Default
+white = "#FFFFFF"  # Default
 
 [bell]
 animation = "Linear"  # Default: "Linear"
