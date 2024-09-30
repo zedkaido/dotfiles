@@ -1,9 +1,5 @@
 #!/bin/zsh
 
-# if ! pgrep -f "Alacritty.*--title alacritty_cmd" > /dev/null; then
-#    // OPEN HERE, OTHERWISE IGNORE (for duplicate windows)
-# fi
-
 ALACRITTY_FLOATED_TOML=~/.config/alacritty/alacritty-floated.toml
 
 open_launcher_window() {
@@ -48,6 +44,13 @@ open_snippets_window() {
 		-e zsh -c "~/.local/bin/snippet-copy"
 }
 
+open_radio_window() {
+	open -n /Applications/Alacritty.app \
+		--args --title "alacritty-radio" \
+		--config-file "$ALACRITTY_FLOATED_TOML" \
+		-e zsh -c "~/.local/bin/radio"
+}
+
 open_webcam_window() {
 	open -n /Applications/Alacritty.app \
 		--args --title "alacritty-webcam" \
@@ -56,13 +59,14 @@ open_webcam_window() {
 }
 
 choose_window() {
-	choice=$(printf "launcher\\ncmd\\nch\\npass\\nbookmarks\\nsnipppets\\nwebcam" | fzf)
+	choice=$(printf "launcher\\ncmd\\nch\\npass\\nbookmarks\\nsnipppets\\nwebcam" | fzy)
 	case "$choice" in
 		launcher) open_launcher_window ;;
 		cmd) open_cmd_window ;;
 		ch) open_ch_window ;;
 		pass) open_pass_window ;;
 		bookmarks) open_bookmarks_window ;;
+		radio) open_radio_window ;;
 		webcam) open_webcam_window ;;
 		*) echo "You must choose a an alacritty window to open (i.e. alacritty-win launcher)" ;;
 	esac	
@@ -75,6 +79,7 @@ case "$1" in
 	pass) open_pass_window ;;
 	bookmarks) open_bookmarks_window ;;
 	snippets) open_snippets_window ;; 
+	radio) open_radio_window ;;
 	webcam) open_webcam_window ;;
 	*) choose_window ;;
 esac	

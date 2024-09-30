@@ -17,6 +17,7 @@ hyper - p : ~/.local/bin/alacritty-window pass
 hyper - b : ~/.local/bin/alacritty-window bookmarks 
 hyper - s : ~/.local/bin/alacritty-window snippets
 hyper - w : ~/.local/bin/alacritty-window webcam
+hyper - r : ~/.local/bin/alacritty-window radio
 
 ## Nullify
 # cmd - m : ""a # nullify keybinding

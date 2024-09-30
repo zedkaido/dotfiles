@@ -1,0 +1,44 @@
+#!/bin/zsh
+
+RADIO_STATIONS=~/.local/share/radio-stations
+
+radio_listen() {
+	station=$(cat $RADIO_STATIONS | fzy) 
+	station_url=$(print $station | awk -F ' :: ' '{ print $1 }')
+	station_name=$(print $station | awk -F ' :: ' '{ print $2 }')
+	if [[ -z station ]] ; then 
+		exit 0
+	fi
+	tmux new-session -s "$station_name" "mpv '$station_url'" 
+}
+
+radio_station_add() {
+	print "<radio_station_url> :: <radio_station_name>"
+	if [ -z $1 ]; then
+		read radio_station	
+	else 
+		radio_station=$1
+	fi
+	echo $radio_station >> $RADIO_STATIONS
+}
+
+radio_stations_edit() {
+	$EDITOR $RADIO_STATIONS
+}
+
+radio_choose() {
+	option=$(printf "listen\\nadd\\nedit" | fzy )
+	case $option in
+		listen) radio_listen ;;
+		add) radio_station_add ;;
+		edit) radio_stations_edit ;;
+		*) echo "No radio option selected." ;;
+	esac
+}
+
+case $1 in 
+	listen) radio_listen ;;
+	add) radio_station_add $2 ;;
+	edit) radio_stations_edit ;;
+	*) radio_choose ;;
+esac
