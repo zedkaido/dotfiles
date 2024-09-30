@@ -36,7 +36,7 @@ webcam_record() {
 }
 
 webcam_choose() {
-	choice=$(printf "open\\nrecord" | fzf)
+	choice=$(printf "open\\nrecord" | fzy)
 	case "$choice" in
 		open) webcam_open ;;
 		record) webcam_record ;;

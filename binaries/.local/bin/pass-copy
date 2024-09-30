@@ -1,7 +1,7 @@
 #!/bin/zsh
 
-if ! command -v fzf >/dev/null 2>&1; then
-	echo "fzf required"
+if ! command -v fzy >/dev/null 2>&1; then
+	echo "fzy required"
 	exit 1
 fi
 if ! command -v pass >/dev/null 2>&1; then
@@ -10,23 +10,23 @@ if ! command -v pass >/dev/null 2>&1; then
 fi
 
 select_pass_type() {
-	printf "pass\nusername\notp\nurl" | fzf
+	printf "pass\nusername\notp\nurl" | fzy
 }
 
 select_pass_file() {
-	find . -type f -name '*.gpg' | sed 's/\.gpg//' | sed 's/^\.\///' | sort | fzf
+	find . -type f -name '*.gpg' | sed 's/\.gpg//' | sed 's/^\.\///' | sort | fzy
 }
 
 select_username_file() {
-	find . -type f -name '*username.gpg' | sed 's/\.gpg//' | sed 's/^\.\///' | sort | fzf 
+	find . -type f -name '*username.gpg' | sed 's/\.gpg//' | sed 's/^\.\///' | sort | fzy 
 }
 
 select_otp_file() {
-	find . -type f -name '*otp.gpg' | sed 's/\.gpg//' | sed 's/^\.\///' | sort | fzf 
+	find . -type f -name '*otp.gpg' | sed 's/\.gpg//' | sed 's/^\.\///' | sort | fzy
 }
 
 select_url_file() {
-	find . -type f -name '*url.gpg' | sed 's/\.gpg//' | sed 's/^\.\///' | sort | fzf 
+	find . -type f -name '*url.gpg' | sed 's/\.gpg//' | sed 's/^\.\///' | sort | fzy
 }
 
 # MAIN

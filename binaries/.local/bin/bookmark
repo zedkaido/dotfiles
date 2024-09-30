@@ -21,19 +21,19 @@ bookmark_copy() {
 
 bookmark_add() {
 	if ! [ -z $1 ]; then
-		echo $1 >> $BOOKMARKS_FILE
+		print $1 >> $BOOKMARKS_FILE
 	else
 		read link
-		echo $link >> $BOOKMARKS_FILE 
+		print $link >> $BOOKMARKS_FILE 
 	fi
 }
 
 bookmarks_edit() {
-	vim $BOOKMARKS_FILE
+	$EDITOR $BOOKMARKS_FILE
 }
 
 bookmark_choose() {
-	choice=$(printf "open\\ncopy\\nadd\\nedit" | fzf)
+	choice=$(printf "open\\ncopy\\nadd\\nedit" | fzy)
 	case $choice in
 		open) bookmark_open ;;
 		copy) bookmark_copy ;;
