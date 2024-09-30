@@ -5,12 +5,13 @@ setopt PROMPT_SUBST
 function git_branch() {
 	local branch_name=$(git symbolic-ref --short HEAD 2>/dev/null)
 	if [ -n "$branch_name" ]; then
-		echo " (%F{blue}${branch_name}%f)"
+		echo "(%F{blue}${branch_name}%f)"
 	fi
 }
 
 funciton relative_path() {
-echo "%~"
+	# relative path with :: echo "%~"
+        echo "%/"
 }
 
 function lambda_symbol() {
@@ -24,6 +25,5 @@ function vi_mode_indicator() {
 }
 
 NEWLINE=$'\n'
-RPROMPT='%T'
 PROMPT='$(relative_path) $(git_branch) $(vi_mode_indicator)${NEWLINE}$(lambda_symbol) '
 PROMPT="$NEWLINE$PROMPT"
