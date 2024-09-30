@@ -1,24 +1,22 @@
 # vim: filetype=zsh
 
-# I'm not a sourcerer but I like sourcing
+source ~/.zsh_prompt
 source ~/.aliasrc
 source ~/.funcrc
-source ~/.zsh_prompt
 
-# GPG Launch
-gpgconf --launch gpg-agent
-# gpg-agent --daemon
+# -------
+# History
+# -------
+SAVEHIST=12345
+HISTSIZE=12345
+HISTFILE=~/.zsh_history
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
 
-# Ctrl+D was closing terminal
-set -o ignoreeof
-
-# Where should I put you?
-bindkey -s ^f "tmux-sessionizer\n"
-bindkey -s ^b "tmux-switch-session\n"
-bindkey -s ^x "tmux-cht\n"
-
-# Useful for editing multi-line commands
-bindkey -v
+# -----------
+# Keybindings
+# -----------
+bindkey -v # vi mode
 function vi-yank-xclip {
 	zle vi-yank
 	echo "$CUTBUFFER" | pbcopy -i
@@ -30,49 +28,32 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 
-# Option + Backspace
-bindkey "\e\177" backward-kill-word
-
-# Ain't history great?
-SAVEHIST=12345
-HISTSIZE=12345
-HISTFILE=~/.zsh_history
-
-setopt inc_append_history
-setopt hist_ignore_all_dups
-
+bindkey "\e\177" backward-kill-word # Option + Backspace
 bindkey "^R" history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-pattern-search-forward
 
-# z | NAVIGATE with ease
-eval "$(zoxide init zsh)"
+bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^b "tmux-switch-session\n"
+bindkey -s ^x "tmux-cht\n"
 
+set -o ignoreeof # Ctrl + D shouldn't close the terminal
+
+# ----------
+# COMPLETION
+# ----------
 # https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
-if type brew &>/dev/null
-then
+if type brew &>/dev/null ; then
 	FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-	autoload -Uz compinit
+	autoload -Uz compinit bashcompinit
 	compinit
+	bashcompinit
 fi
-export PATH="/usr/local/opt/libxml2/bin:$PATH"
 
-# node (nvm)
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# ---------
+# SERVICES
+# --------
+# GPG Launch
+gpgconf --launch gpg-agent
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/x/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/x/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/x/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/x/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
-# pnpm
-export PNPM_HOME="/Users/x/Library/pnpm"
-case ":$PATH:" in
-	*":$PNPM_HOME:"*) ;;
-	*) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-[ -f "/Users/x/.ghcup/env" ] && . "/Users/x/.ghcup/env" # ghcup-env
+# z | NAVIGATE with ease
+# eval "$(zoxide init zsh)"
