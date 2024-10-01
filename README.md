@@ -1,10 +1,13 @@
-# dotfiles
+> NO WARRANTY!
 
-> Using `stow` directory structure for `dotfile` management.
+```sh
+stow <dir>
+stow <dir> --override
+stow <dir> --adopt # adopts file
+stow <dir> --restow # (first unstow, then stow again)
 
-```bash
-stow zsh
-stow zsh --override
-stow zsh --adopt // adopts file
-stow zsh --restow // (first unstow, then stow again)
+# stow all dirs at once (not recommended)
+for dir in */; do
+  [[ "$dir" == ".git/" ]] || stow "$dir" --simulate
+done
 ```
