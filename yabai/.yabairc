@@ -30,7 +30,7 @@ yabai -m config \
     right_padding 4 \
     bottom_padding 4 \
     layout bsp \
-    mouse_modifier ctrl \
+    mouse_modifier alt \
     mouse_action1 move \
     mouse_action2 resize \
     mouse_drop_action swap
@@ -44,7 +44,7 @@ yabai -m rule --add app="^App Eraser$" manage=off
 yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on
 
 for title in alacritty-launcher alacritty-cmd alacritty-pass alacritty-ch alacritty-bookmarks alacritty-snippets alacritty-webcam alacritty-radio alacritty-floated; do
-    yabai -m rule --add app="^Alacritty$" title="^$title$" manage=off;
+    yabai -m rule --add app="^Alacritty$" title="^$title$" manage=off
 done
 
 # signals:
