@@ -23,15 +23,36 @@ hyper - i : screencapture -ip
 # YABAI KEYBINDINGS
 # -----------------
 
-alt - b : yabai -m space --layout bsp
-alt - f : yabai -m space --layout float
-alt - a : yabai -m space --balance
+# Expose App Windows
+alt - v : yabai -m window --toggle expose
 
+# ----------
+# BSP LAYOUT
+# ----------
+alt - b : yabai -m space --layout bsp
+alt - a : yabai -m space --balance
 alt - e : yabai -m window --toggle split
 
 
-# Expose App Windows
-alt - v : yabai -m window --toggle expose
+# ------------
+# FLOAT LAYOUT
+# ------------
+alt - f : yabai -m space --layout float
+
+alt - 4 : yabai -m window --lower
+alt - 5 : yabai -m window --raise 
+
+alt - n : yabai -m window --focus next 
+alt - p : yabai -m window --focus prev
+
+
+# ------------
+# STACK LAYOUT
+# ------------
+alt - s : yabai -m space --layout stack
+
+alt - 7 : yabai -m window --focus stack.next
+alt - 1 : yabai -m window --focus stack.prev 
 
 
 ctrl + cmd - n : yabai -m space --create
@@ -77,7 +98,6 @@ ctrl + alt - j : yabai -m window --swap south || $(yabai -m window --display sou
 ctrl + alt - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
 ctrl + alt - l : yabai -m window --swap east  || $(yabai -m window --display east; yabai -m display --focus east)
 
-
 # Float / Un-float window and center on screen
 alt - u : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2
 
@@ -91,7 +111,6 @@ cmd + alt - l  : yabai -m window --grid 1:2:1:0:1:1
 cmd + alt - k : yabai -m window --grid 2:1:0:0:1:1
 cmd + alt - j : yabai -m window --grid 2:1:0:2:1:1
 
-
 ctrl + alt - left : yabai -m window --resize left:-60:0
 ctrl + alt - right : yabai -m window --resize left:60:0
 ctrl + alt - up : yabai -m window --resize top:0:-60
@@ -100,7 +119,7 @@ ctrl + alt - down : yabai -m window --resize top:0:60
 ctrl + alt + shift - left : yabai -m window --move rel:-100:0
 ctrl + alt + shift - right : yabai -m window --move rel:100:0
 ctrl + alt + shift - up : yabai -m window --move rel:0:-100
-ctrl + alt + shift - down : yabai -m window --move rel:100:100
+ctrl + alt + shift - down : yabai -m window --move rel:0:100
 
 alt - z : yabai -m window --toggle zoom-parent
 alt + shift - z : yabai -m window --toggle zoom-fullscreen
@@ -109,11 +128,9 @@ alt - m : yabai -m space --mirror y-axis
 shift + alt - m : yabai -m space --mirror x-axis
 
 
-# Picture-in-Picture
-alt - p : yabai -m window --toggle sticky --toggle pip
-
-# Toggle topmost
-alt - t : yabai -m window --toggle topmost;
+# STICKY Picture-in-Picture
+alt - i : yabai -m window --toggle sticky --toggle pip
+alt - t : yabai -m window --toggle sticky
 
 
 # ---------
@@ -139,22 +156,21 @@ alt - t : yabai -m window --toggle topmost;
 # [USED] alt - f
 # alt - g
 # [USED] alt - h
-# alt - i
+# [USED] alt - i
 # [USED] alt - j
 # [USED] alt - k
 # [USED] alt - l
 # [USED] alt - m
-# alt - n
+# [USED] alt - n
 # [USED] alt - o
-# alt - p
+# [USED] alt - p
 # alt - q
 # [USED] alt - r
 # [USED] alt - s
-# [USED] alt - t
 # [USED] alt - t
 # [USED] alt - u
 # [USED] alt - v
 # alt - w
 # alt - x
-#  alt - y 
+# alt - y 
 # [USED] alt - z
