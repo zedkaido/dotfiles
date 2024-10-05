@@ -1,4 +1,4 @@
 #!/bin/zsh
 
 SNIPPET_FILE=~/.local/share/snippets
-cat $SNIPPET_FILE | fzf --reverse | awk -F ' :: ' '{ print $1 }' | pbcopy
+cat $SNIPPET_FILE | fzf --reverse | awk -F ' :: ' '{ printf $1 }' | pbcopy
