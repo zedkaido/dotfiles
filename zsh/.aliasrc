@@ -9,9 +9,6 @@ alias km='vim +KM'
 alias note='vim +KMT'
 alias osx='vim +OSX'
 
-# terminal from inside apple terminal:
-alias vimt='vim +MT'
-
 alias timer='countdown'
 
 alias t='find /System/Applications /Applications ~/Applications -name "*.app" -maxdepth 2 | fzy | xargs -I{} open "{}" && exit'
