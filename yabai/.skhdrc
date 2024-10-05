@@ -3,6 +3,8 @@
 # -------------------
 cmd - return : open -n /Applications/Alacritty.app
 
+alt - d : ~/.local/bin/alacritty-window ddg #duckduckgo (ddgr)
+
 alt - space : ~/.local/bin/alacritty-window cmd
 cmd - space : ~/.local/bin/alacritty-window cmd
 
@@ -145,7 +147,7 @@ alt - t : yabai -m window --toggle sticky
 # [USED] alt - a
 # [USED] alt - b
 # alt - c
-# alt - d
+# [USED] alt - d
 # [USED] alt - e
 # [USED] alt - f
 # alt - g

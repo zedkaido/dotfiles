@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+open_in_w3m() {
+	BROWSER=w3m ddgr -C -n 8 -x $argv
+}
+
+open_in_browser() {
+	ddgr -C -n 8 -x $argv
+}
+
+open_in=$1
+if [ -z "$1" ]; then
+	open_in=$(printf "w3m\\nbrowser" | fzy) || exit 0
+fi
+
+case $open_in in 
+	w3m) open_in_w3m $2 ;;
+	browser) open_in_browser $2 ;;
+	*) open_in_w3m $open_in ;;
+esac

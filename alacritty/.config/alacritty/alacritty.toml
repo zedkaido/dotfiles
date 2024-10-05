@@ -15,7 +15,7 @@ decorations = "Buttonless"  # Options: "Full" | "None" | "Buttonless"
 opacity = 1.0  # Default: 1.0
 blur = false # Default: false
 startup_mode = "Windowed"  # Default: "Windowed"
-title = "Alacritty"
+title = "Λ"
 dynamic_title = true  # Default: true
 class = { instance = "Alacritty", general = "Alacritty" }  # Default: instance = "Alacritty", general = "Alacritty"
 decorations_theme_variant = "None"  # Default: "None"

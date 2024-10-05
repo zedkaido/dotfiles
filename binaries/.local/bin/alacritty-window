@@ -1,93 +1,43 @@
 #!/bin/zsh
 
-open_ch_window() {
-	open -n /Applications/Alacritty.app/ \
-		--args --title "f-alacritty-ch" \
-		-e zsh -c "~/.local/bin/ch"
-}
-
-open_launcher_window() {
+floating_window() {
+	title="f:$1" && cmd=$2
+	if [ -z $title ] || [ -z $cmd ]; then
+		echo "ERROR: title and cmd required"
+		exit 1
+	fi
 	open -n /Applications/Alacritty.app \
-		--args --title "f-alacritty-launcher" \
-		-e zsh -c "~/.local/bin/app-open"
+		--args --title $title \
+		-e zsh -c $cmd \
 }
 
-open_cmd_window() {
-	open -n /Applications/Alacritty.app \
-		--args --title "f-alacritty-cmd" \
-		-e zsh -c 'tmux a -t "cmd" || tmux new -s "cmd"'
-}
+window_types=(
+	ch # clipboard history
+	launcher
+	cmd
+	colorscheme
+	pass
+	ddg
+	bookmarks
+	snippets
+	webcam
+)
 
-open_colorscheme_window() {
-	open -n /Applications/Alacritty.app \
-		--args --title "f-alacritty-colorscheme" \
-		-e zsh -c "~/.local/bin/colorscheme"
-}
-
-open_pass_window(){
-	open -n /Applications/Alacritty.app \
-		--args --title "f-alacritty-pass" \
-		-e zsh -c "~/.local/bin/pass-copy"
-}
-
-open_bookmarks_window(){
-	open -n /Applications/Alacritty.app \
-		--args --title "f-alacritty-bookmarks" \
-		-e zsh -c "~/.local/bin/bookmark"
-}
-
-open_snippets_window() {
-	open -n /Applications/Alacritty.app \
-		--args --title "f-alacritty-snippets" \
-		-e zsh -c "~/.local/bin/snippet-copy"
-}
-
-open_radio_window() {
-	open -n /Applications/Alacritty.app \
-		--args --title "f-alacritty-radio" \
-		-e zsh -c "~/.local/bin/radio"
-}
-
-open_webcam_window() {
-	open -n /Applications/Alacritty.app \
-		--args --title "f-alacritty-webcam" \
-		-e zsh -c "~/.local/bin/webcam"
-}
-
-choose_window() {
-	window_types=(
-		ch # clipboard history
-		launcher
-		cmd
-		colorscheme
-		pass
-		bookmarks
-		snippets
-		webcam
-	)
+chosen_window=$1
+if [ -z $chosen_window ]; then
 	chosen_window=$(printf "%s\n" "${window_types[@]}" | fzy)
-	case "$chosen_window" in
-		ch) open_ch_window ;;
-		launcher) open_launcher_window ;;
-		cmd) open_cmd_window ;;
-		colorscheme) open_colorscheme_window ;;
-		pass) open_pass_window ;;
-		bookmarks) open_bookmarks_window ;;
-		radio) open_radio_window ;;
-		webcam) open_webcam_window ;;
-		*) echo "You must choose a an alacritty window to open (i.e. alacritty-win launcher)" ;;
-	esac	
-}
+fi
 
-case "$1" in
-	ch) open_ch_window ;;
-	launcher) open_launcher_window ;;
-	cmd) open_cmd_window ;;
-	colorscheme) open_colorscheme_window ;;
-	pass) open_pass_window ;;
-	bookmarks) open_bookmarks_window ;;
-	snippets) open_snippets_window ;; 
-	radio) open_radio_window ;;
-	webcam) open_webcam_window ;;
-	*) choose_window ;;
+case "$chosen_window" in
+	ch) floating_window "ch" "~/.local/bin/ch" ;;
+	launcher) floating_window "launcher" "~/.local/bin/app-open" ;;
+	cmd) floating_window "cmd" "tmux a -t \"cmd\" || tmux new -s \"cmd\"" ;;
+	colorscheme) floating_window "colorscheme" "~/.local/bin/colorscheme" ;;
+	pass) floating_window "pass" "~/.local/bin/pass" ;;
+	ddg) floating_window "ddg" "~/.local/bin/d" ;;
+	bookmarks) floating_window "bookmarks" "~/.local/bin/bookmarks" ;;
+	snippets) floating_window "snippets" "~/.local/bin/snippet-copy" ;;
+	radio) floating_window "radio" "~/.local/bin/radio" ;;
+	webcam) floating_window "webcam" "~/.local/bin/webcam" ;;
+	*) exit 0 ;;
 esac	

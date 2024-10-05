@@ -47,7 +47,7 @@ yabai -m config --dispaly 1 external_bar all:28:0
 # -----
 # RULES
 # -----
-yabai -m rule --add app="^Alacritty$" title="^f-.+" manage=off
+yabai -m rule --add app="^Alacritty$" title="^f:.+" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^App Eraser$" manage=off
 yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on
