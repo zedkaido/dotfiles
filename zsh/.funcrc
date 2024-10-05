@@ -1,5 +1,7 @@
 # vim: filetype=zsh
 
+source ~/.local/bin/lfcd
+
 hex() {
 	echo -n $1 | od -A n -t x1 | tr -d '[:space:]'
 }

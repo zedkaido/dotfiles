@@ -1,9 +1,12 @@
 #!/bin/zsh
 
-tmp="$(mktemp -uq)"
-trap 'rm -f $tmp >/dev/null 2>f1' HUP INT QUIT TERM EXIT
-lf -last-dir-path="$tmp" "$@"
-if [ -f "$tmp" ]; then
-	dir="$(cat "$tmp")"
-	[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-fi
+# In order for this to work source it in the shell environment you want it to change dir.
+lfcd() {
+	tmp="$(mktemp -uq)"
+	trap 'rm -f $tmp >/dev/null 2>&1' HUP INT QUIT TERM EXIT
+	lf -last-dir-path="$tmp" "$@"
+	if [ -f "$tmp" ]; then
+		dir="$(cat "$tmp")"
+		[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+	fi
+}
