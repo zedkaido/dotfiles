@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+theme=$(defaults read -g AppleInterfaceStyle 2>/dev/null)
+case $theme in 
+	Dark) osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to false' ;;
+	*) osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true' ;;
+esac
