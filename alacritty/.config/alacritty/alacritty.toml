@@ -1,21 +1,21 @@
-# Import additional configuration files
-import = []
+import = [
+	"~/.config/alacritty/colors/suckless-blue.toml",
+]
 
 live_config_reload = true  # Default: true
 
 [env]
-# Environment variables
 
 [window]
 dimensions = { columns = 0, lines = 0 }  # Default: columns = 0, lines = 0
 position = "None"  # Default: "None"
 padding = { x = 4, y = 4 }  # Default: x = 0, y = 0
 dynamic_padding = false  # Default: false
-decorations = "Buttonless"  # Default: "Full" | "None" | "Buttonless"
+decorations = "Buttonless"  # Options: "Full" | "None" | "Buttonless"
 opacity = 1.0  # Default: 1.0
-blur = false  # Default: false
+blur = false # Default: false
 startup_mode = "Windowed"  # Default: "Windowed"
-title = "Alacritty"  # Default: "Alacritty"
+title = "Alacritty"
 dynamic_title = true  # Default: true
 class = { instance = "Alacritty", general = "Alacritty" }  # Default: instance = "Alacritty", general = "Alacritty"
 decorations_theme_variant = "None"  # Default: "None"
@@ -28,89 +28,17 @@ multiplier = 3  # Default: 3
 
 [font]
 normal = { family = "Berkeley Mono Variable", style = "Regular" }  # Default for Linux/BSD: "monospace", Regular
-bold = { style = "Regular" }  # Inherits family from normal, Default style: Bold
+bold = { style = "Bold" }  # Inherits family from normal, Default style: Bold
 italic = { style = "Italic" }  # Inherits family from normal, Default style: Italic
-bold_italic = { style = "Italic" }  # Inherits family from normal, Default style: Bold Italic
+bold_italic = { style = "Bold Italic" }  # Inherits family from normal, Default style: Bold Italic
 size = 16
 offset = { x = 0, y = 0 }  # Default: x = 0, y = 0
 glyph_offset = { x = 0, y = 0 }  # Default: x = 0, y = 0
 builtin_box_drawing = true  # Default: true
 
 [colors]
-transparent_background_colors = false  # Default
-draw_bold_text_with_bright_colors = false  # Default
-
-[colors.primary]
-background = "#FFFFFF"  # Default
-foreground = "#000000"  # Default
-dim_foreground = "#000000"  # Default
-bright_foreground = "#000000"  # Default
-
-[colors.cursor]
-text = "CellBackground"  # Default
-cursor = "CellForeground"  # Default
-
-[colors.vi_mode_cursor]
-text = "CellBackground"  # Default
-cursor = "CellForeground"  # Default
-
-[colors.search.matches]
-foreground = "#E4E4E4"  # Default
-background = "#000000"  # Default
-
-[colors.search.focused_match]
-foreground = "#000000"  # Default
-background = "#f4bf75"  # Default
-
-[colors.hints.start]
-foreground = "#000000"  # Default
-background = "#f4bf75"  # Default
-
-[colors.hints.end]
-foreground = "#000000"  # Default
-background = "#ac4242"  # Default
-
-[colors.line_indicator]
-foreground = "None"  # Default
-background = "None"  # Default
-
-[colors.footer_bar]
-foreground = "#000000"  # Default
-background = "#d8d8d8"  # Default
-
-[colors.selection]
-text = "#FFFFFF"  # Default
-background = "#000000"  # Default
-
-[colors.normal]
-black = "#000000"  # Default
-red = "#960F2F"  # Default
-green = "#50956c"  # Default
-yellow = "#000000"  # Default
-blue = "#000000"  # Default
-magenta = "#000000"  # Default
-cyan = "#000000"  # Default
-white = "#FFFFFF"  # Default
-
-[colors.bright]
-black = "#000000"  # Default
-red = "#960F2F"  # Default
-green = "#50956c"  # Default
-yellow = "#000000"  # Default
-blue = "#000000"  # Default
-magenta = "#000000"  # Default
-cyan = "#000000"  # Default
-white = "#FFFFFF"  # Default
-
-[colors.dim]
-black = "#000000"  # Default
-red = "#960F2F"  # Default
-green = "#50956c"  # Default
-yellow = "#000000"  # Default
-blue = "#000000"  # Default
-magenta = "#000000"  # Default
-cyan = "#000000"  # Default
-white = "#FFFFFF"  # Default
+transparent_background_colors = false
+draw_bold_text_with_bright_colors = false
 
 [bell]
 animation = "Linear"  # Default: "Linear"
@@ -139,18 +67,6 @@ bindings = []
 
 [hints]
 alphabet = "jfkdls;ahgurieowpq"  # Default: "jfkdls;ahgurieowpq"
-
-# Enable specific hints
-#[[hints.enabled]]
-# Example configuration (actual settings to be defined based on user preference)
-# regex = "..."
-# hyperlinks = true
-# post_processing = true
-# persist = false
-# action = "..."
-# command = "..."
-# binding = { key = "...", mods = "...", mode = "..." }
-# mouse = { mods = "...", enabled = true }
 
 [keyboard]
 bindings = [

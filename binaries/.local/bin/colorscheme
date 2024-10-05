@@ -1,0 +1,33 @@
+#!/bin/zsh
+
+colorschemes=(
+	suckless-dark
+	suckless-light
+	suckless-blue
+)
+
+selected_scheme=$1
+if [ -z "$1" ]; then 
+	selected_scheme=$(printf "%s\n" "${colorschemes[@]}" | fzy)
+	if [ -z $selected_scheme ]; then
+		exit 0
+	fi
+fi
+
+echo "SETTING COLORSCHEME :: $selected_scheme"
+# ----------------------------
+# ALACRITTY COLORSCHEME UPDATE
+# ----------------------------
+alacritty_colors_path='~/.config/alacritty/colors/'
+sed -i .backup -E "s|$alacritty_colors_path.+|$alacritty_colors_path$selected_scheme.toml\",|g" ~/.config/alacritty/alacritty.toml
+
+# ----------------------
+# VIM COLORSCHEME UPDATE
+# ----------------------
+sed -i .backup -E "s/colorscheme.+/colorscheme $selected_scheme/g" ~/dotfiles/vim/.vim/vimrc
+
+# -----------------------
+# TMUX COLORSCHEME UPDATE
+# -----------------------
+tmux_colors_path='~/.config/tmux/colors/'
+sed -i .backup -E "s|source $tmux_colors_path.+|source $tmux_colors_path$selected_scheme.conf|g" ~/.config/tmux/tmux.conf

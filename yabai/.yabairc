@@ -1,12 +1,16 @@
 #!/usr/bin/env sh
 
-## view the last lines of the error log 
-# tail -f /tmp/yabai_$USER.err.log
+## ERROR LOGS :: tail -f /tmp/yabai_$USER.err.log
 
+# ------------------
+# SCRIPTING ADDITION
+# ------------------
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
  
-# global params
+# ------
+# PARAMS
+# ------
 yabai -m config \
     mouse_follows_focus on \
     focus_follows_mouse off \
@@ -35,19 +39,22 @@ yabai -m config \
     mouse_action2 resize \
     mouse_drop_action swap
 
-# padding 
+# ----------------- 
+# ADDITIONAL PARAMS
+# ----------------- 
 yabai -m config --dispaly 1 external_bar all:28:0
 
-# rules:
+# -----
+# RULES
+# -----
+yabai -m rule --add app="^Alacritty$" title="^f-.+" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^App Eraser$" manage=off
 yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on
 
-for title in alacritty-launcher alacritty-cmd alacritty-pass alacritty-ch alacritty-bookmarks alacritty-snippets alacritty-webcam alacritty-radio alacritty-floated; do
-    yabai -m rule --add app="^Alacritty$" title="^$title$" manage=off
-done
-
-# signals:
+# -------
+# SIGNALS
+# -------
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 

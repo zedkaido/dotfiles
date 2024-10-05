@@ -1,5 +1,0 @@
-# Import additional configuration files
-import = [ "~/.config/alacritty/alacritty.toml" ]
-
-[colors.primary]
-background = "#FFFFFF"

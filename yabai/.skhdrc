@@ -1,42 +1,38 @@
 # -------------------
-# Aplication Triggers
+# APLICATION TRIGGERS
 # -------------------
 cmd - return : open -n /Applications/Alacritty.app
 
 alt - space : ~/.local/bin/alacritty-window cmd
 cmd - space : ~/.local/bin/alacritty-window cmd
 
-alt - o : ~/.local/bin/alacritty-window launcher 
-alt - c : ~/.local/bin/alacritty-window ch 
-
-hyper - c : ~/.local/bin/alacritty-window ch
+hyper - o : ~/.local/bin/alacritty-window launcher 
+hyper - c : ~/.local/bin/alacritty-window ch 
 hyper - a : ~/.local/bin/ch append # append current clipboard content to ch
+
+hyper - z : ~/.local/bin/alacritty-window colorscheme
+hyper - d : ~/.local/bin/toggle-dark-theme
 
 hyper - p : ~/.local/bin/alacritty-window pass 
 hyper - b : ~/.local/bin/alacritty-window bookmarks 
 hyper - s : ~/.local/bin/alacritty-window snippets
 hyper - w : ~/.local/bin/alacritty-window webcam
 hyper - r : ~/.local/bin/alacritty-window radio
+
 hyper - i : screencapture -ip
 
 # -----------------
 # YABAI KEYBINDINGS
 # -----------------
-
-# Expose App Windows
 alt - v : yabai -m window --toggle expose
 
-# ----------
 # BSP LAYOUT
-# ----------
 alt - b : yabai -m space --layout bsp
 alt - a : yabai -m space --balance
 alt - e : yabai -m window --toggle split
 
 
-# ------------
 # FLOAT LAYOUT
-# ------------
 alt - f : yabai -m space --layout float
 
 alt - 4 : yabai -m window --lower
@@ -46,9 +42,7 @@ alt - n : yabai -m window --focus next
 alt - p : yabai -m window --focus prev
 
 
-# ------------
 # STACK LAYOUT
-# ------------
 alt - s : yabai -m space --layout stack
 
 alt - 7 : yabai -m window --focus stack.next
@@ -150,7 +144,7 @@ alt - t : yabai -m window --toggle sticky
 # ----------------
 # [USED] alt - a
 # [USED] alt - b
-# [USED] alt - c
+# alt - c
 # alt - d
 # [USED] alt - e
 # [USED] alt - f
@@ -162,7 +156,7 @@ alt - t : yabai -m window --toggle sticky
 # [USED] alt - l
 # [USED] alt - m
 # [USED] alt - n
-# [USED] alt - o
+# alt - o
 # [USED] alt - p
 # alt - q
 # [USED] alt - r
