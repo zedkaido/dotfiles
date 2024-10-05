@@ -32,9 +32,9 @@ bindkey "\e\177" backward-kill-word # Option + Backspace
 bindkey "^R" history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-pattern-search-forward
 
-bindkey -s ^f "tmux-sessionizer\n"
-bindkey -s ^b "tmux-switch-session\n"
-bindkey -s ^x "tmux-cht\n"
+bindkey -s ^b^f "tmux-sessionizer\n"
+bindkey -s ^b^b "tmux-switch-session\n"
+bindkey -s ^b^x "tmux-cht\n"
 
 set -o ignoreeof # Ctrl + D shouldn't close the terminal
 
@@ -56,4 +56,4 @@ fi
 gpgconf --launch gpg-agent
 
 # z | NAVIGATE with ease
-# eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh)"
