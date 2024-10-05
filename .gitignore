@@ -1,2 +1,3 @@
+*.backup
 qutebrowser/.qutebrowser/bookmarks
 qutebrowser/.qutebrowser/quickmarks
