@@ -57,6 +57,12 @@ alias most='du -hsx * | sort -rh | head -10'
 
 alias archive='tar --create --gzip --verbose --file'
 
+# ---------------
+# OSX (ONLY) CMDS
+# TODO: add linux support (replace with binaries) 
+# -----------------------------------------------
+alias empty-trash="osascript -e 'tell application \"Finder\" to empty trash'"
+
 alias os-sleep='pmset sleepnow'
 alias os-display-sleep='pmset displaysleepnow'
 alias os-shut-down='sudo shutdown -h now'
