@@ -5,7 +5,7 @@ setopt PROMPT_SUBST
 function git_branch() {
 	local branch_name=$(git symbolic-ref --short HEAD 2>/dev/null)
 	if [ -n "$branch_name" ]; then
-		echo "(%F{blue}${branch_name}%f)"
+		echo "(${branch_name}%f)"
 	fi
 }
 
