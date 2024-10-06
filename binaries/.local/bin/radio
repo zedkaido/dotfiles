@@ -9,7 +9,22 @@ radio_listen() {
 	if [[ -z station ]] ; then 
 		exit 0
 	fi
-	tmux new-session -s "$station_name" "mpv '$station_url'" 
+
+	tmux_running=$(pgrep tmux)
+	
+	if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+		tmux new-session -s "$station_name" "mpv '$station_url'" 
+	fi
+
+	if ! tmux has-session -ds $station_name 2> /dev/null; then
+		tmux new-session -s "$station_name" "mpv '$station_url'"
+	fi
+
+	if [[ -n "${TMUX}" ]]; then
+		tmux switch-client -t "$station_name"
+	else
+		tmux a -t "$station_name"
+	fi
 }
 
 radio_station_add() {
