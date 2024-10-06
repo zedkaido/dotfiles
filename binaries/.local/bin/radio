@@ -17,7 +17,7 @@ radio_listen() {
 	fi
 
 	if ! tmux has-session -ds $station_name 2> /dev/null; then
-		tmux new-session -s "$station_name" "mpv '$station_url'"
+		tmux new-session -ds "$station_name" "mpv '$station_url'"
 	fi
 
 	if [[ -n "${TMUX}" ]]; then
