@@ -4,9 +4,9 @@ source ~/.zsh_prompt
 source ~/.aliasrc
 source ~/.funcrc
 
-# -------
-# History
-# -------
+# ------------
+# ZSH SETTINGS
+# ------------
 SAVEHIST=12345
 HISTSIZE=12345
 HISTFILE=~/.zsh_history
@@ -49,11 +49,14 @@ if type brew &>/dev/null ; then
 	bashcompinit
 fi
 
-# ---------
+# --------
 # SERVICES
 # --------
-# GPG Launch
 gpgconf --launch gpg-agent
 
 # z | NAVIGATE with ease
 eval "$(zoxide init zsh)"
+
+# --------
+# ApPeNded
+# --------
