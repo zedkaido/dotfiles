@@ -33,7 +33,7 @@ case "$chosen_window" in
 	launcher) floating_window "launcher" "~/.local/bin/app-open" ;;
 	cmd) floating_window "cmd" "tmux a -t \"cmd\" || tmux new -s \"cmd\"" ;;
 	colorscheme) floating_window "colorscheme" "~/.local/bin/colorscheme" ;;
-	pass) floating_window "pass" "~/.local/bin/pass" ;;
+	pass) floating_window "pass" "~/.local/bin/pass-copy" ;;
 	ddg) floating_window "ddg" "~/.local/bin/d" ;;
 	bookmarks) floating_window "bookmarks" "~/.local/bin/bookmarks" ;;
 	snippets) floating_window "snippets" "~/.local/bin/snippet-copy" ;;
