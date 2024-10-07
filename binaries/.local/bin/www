@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+echo -n "www :: "
+read query
+qutebrowser :open $query

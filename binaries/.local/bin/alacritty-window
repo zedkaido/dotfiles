@@ -18,8 +18,10 @@ window_types=(
 	colorscheme
 	pass
 	ddg
+	www
 	bookmarks
 	snippets
+	radio
 	webcam
 )
 
@@ -35,6 +37,7 @@ case "$chosen_window" in
 	colorscheme) floating_window "colorscheme" "~/.local/bin/colorscheme" ;;
 	pass) floating_window "pass" "~/.local/bin/pass-copy" ;;
 	ddg) floating_window "ddg" "~/.local/bin/d" ;;
+	www) floating_window "www" "~/.local/bin/www" ;;
 	bookmarks) floating_window "bookmarks" "~/.local/bin/bookmarks" ;;
 	snippets) floating_window "snippets" "~/.local/bin/snippet-copy" ;;
 	radio) floating_window "radio" "~/.local/bin/radio" ;;
