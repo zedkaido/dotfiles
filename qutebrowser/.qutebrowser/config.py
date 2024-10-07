@@ -175,6 +175,7 @@ nunmap("'")
 
 # real quickmarks
 nmap("'51", ':open --tab localhost:5173')
+nmap("'bl", ':open about:blank') 
 
 c.aliases = {'q': 'quit', 'w': 'session-save', 'wq': 'quit --save'}
 c.aliases['archive'] = 'open --tab https://web.archive.org/save/{url}'
@@ -194,9 +195,6 @@ nmap('t', 'set-cmd-text -s :open -t')
 nmap('xb', 'config-cycle statusbar.show always never')
 nmap('xt', 'config-cycle tabs.show always never')
 nmap('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
-
-nmap('yw', 'yank ;; spawn bash -c \'echo "* $(date "+%Y-%m-%d %H:%M:%S") $1(($(pbpaste)))" >> ~/zk/garden/web_list.md\'')
-nmap(';Y', 'hint links spawn bash -c \'echo "* $(date "+%Y-%m-%d %H:%M:%S") $1" >> ~/zk/garden/web_list.md\' _ (({hint-url}))')
 
 # Bindings for insert mode
 imap('<Ctrl-w>','fake-key <Alt-Backspace>')
