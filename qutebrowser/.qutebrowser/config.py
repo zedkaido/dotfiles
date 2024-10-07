@@ -49,7 +49,7 @@ c.downloads.location.directory = '~/Downloads'
 #   - never: Always hide the tab bar.
 #   - multiple: Hide the tab bar if only one tab is open.
 #   - switching: Show the tab bar when switching tabs.
-c.tabs.show = 'multiple'
+c.tabs.show = 'switching'
 
 c.content.blocking.adblock.lists = [ 
 	"https://easylist.to/easylist/easylist.txt", 
