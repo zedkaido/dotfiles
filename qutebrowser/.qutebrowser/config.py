@@ -2,7 +2,7 @@
 config.load_autoconfig()
 
 import os
-os.environ['PATH'] = '/opt/homebrew/bin:/opt/homebrew/sbin:/Users/x/.local/bin:/usr/local/bin'
+os.environ['PATH'] = '/opt/homebrew/bin:/Users/x/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
 
 c.qt.workarounds.remove_service_workers = True
 
@@ -12,17 +12,11 @@ c.url.start_pages = 'about:blank'
 c.auto_save.session = True
 c.session.lazy_restore = True
 
-c.editor.command = [
-	"alacritty",
-	"-e",
-	"vim",
-	"-f",
-	"{file}"
-]
+c.editor.command = ['alacritty', '-e', 'vim', '-f', '{file}']
 
 config.set("fileselect.handler", "external")
-config.set("fileselect.single_file.command", ['alacritty', '-e', 'ranger', '--choosefile', '{}'])
-config.set("fileselect.multiple_files.command", ['alacritty', '-e', 'ranger', '--choosefiles', '{}'])
+config.set("fileselect.single_file.command", ['alacritty', '-e', 'lf', '-selection-path', '{}'])
+config.set("fileselect.multiple_files.command", ['alacritty', '-e', 'lf', '-selection-path', '{}'])
 
 c.url.searchengines = {
 	'DEFAULT': 'https://duckduckgo.com/?q={}',
