@@ -172,11 +172,9 @@ def nunmap(key):
 
 # ** Quickmarks and Marks
 nunmap("'")
+
 # real quickmarks
 nmap("'51", ':open --tab localhost:5173')
-nmap("'zk", ':open --tab zedkaido.com')
-nmap("'sv", ':open --tab https://kit.svelte.dev/docs/')
-nmap("'gh", ':open --tab https://github.com')
 
 c.aliases = {'q': 'quit', 'w': 'session-save', 'wq': 'quit --save'}
 c.aliases['archive'] = 'open --tab https://web.archive.org/save/{url}'
@@ -186,11 +184,13 @@ c.aliases['view-google-cache'] = 'open https://www.google.com/search?q=cache:{ur
 c.aliases['vgc'] = 'open https://www.google.com/search?q=cache:{url}'
 
 # Bindings for normal mode
+nmap("ge", 'edit-url')
+
 nmap(',m', 'spawn mpv {url}')
 nmap(',M', 'hint links spawn mpv {hint-url}')
 nmap(',D', 'hint links spawn st -e youtube-dl {hint-url}')
+
 nmap('t', 'set-cmd-text -s :open -t')
-nmap("e", 'edit-url')
 nmap('xb', 'config-cycle statusbar.show always never')
 nmap('xt', 'config-cycle tabs.show always never')
 nmap('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
