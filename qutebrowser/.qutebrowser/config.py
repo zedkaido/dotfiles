@@ -2,7 +2,7 @@
 config.load_autoconfig()
 
 import os
-os.environ['PATH'] = '/Users/xusr/go/bin:/Users/xusr/.local/go/bin:/Users/xusr/.local/n/bin:/Users/xusr/.local/bin:/Users/xusr/.local/scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/xusr/.nvm/versions/node/v16.17.1/bin:/Users/xusr/go/bin'
+os.environ['PATH'] = '/opt/homebrew/bin:/opt/homebrew/sbin:/Users/x/.local/bin:/usr/local/bin'
 
 c.qt.workarounds.remove_service_workers = True
 
@@ -15,7 +15,7 @@ c.session.lazy_restore = True
 c.editor.command = [
 	"alacritty",
 	"-e",
-	"nvim",
+	"vim",
 	"-f",
 	"{file}"
 ]
@@ -26,6 +26,7 @@ config.set("fileselect.multiple_files.command", ['alacritty', '-e', 'ranger', '-
 
 c.url.searchengines = {
 	'DEFAULT': 'https://duckduckgo.com/?q={}',
+	'www': 'https://wiby.me/?q={}',
 	'cows': 'https://swisscows.com/web/query?={}',
 	'b': 'https://search.brave.com/search?q={}',
 	's': 'https://startpage.com/sp/search?q={}',
@@ -81,45 +82,53 @@ c.colors.completion.fg = ['#eeeeee', '#eeeeee', '#eeeeee']
 c.colors.completion.odd.bg = '#000000'
 c.colors.completion.even.bg = '#000000'
 c.colors.completion.category.fg = '#eeeeee'
-c.colors.completion.category.bg = '#000000'
-c.colors.completion.category.border.top = '#3f4147'
-c.colors.completion.category.border.bottom = '#3f4147'
-c.colors.completion.item.selected.fg = '#ffffff'
-c.colors.completion.item.selected.bg = '#000000'
+c.colors.completion.category.bg = '#151515'
+c.colors.completion.category.border.top = '#000000'
+c.colors.completion.category.border.bottom = '#000000'
+c.colors.completion.item.selected.fg = '#eeeeee'
+c.colors.completion.item.selected.bg = '#000087'
+c.colors.completion.item.selected.border.top = '#000087'
+c.colors.completion.item.selected.border.bottom = '#000087'
 c.colors.completion.item.selected.match.fg = '#ffd700'
 c.colors.completion.match.fg = '#ffd700'
 c.colors.completion.scrollbar.fg = '#eeeeee'
-c.colors.downloads.bar.bg = '#000000'
-c.colors.downloads.error.bg = '#ff0000'
+
 c.colors.hints.fg = '#ffffff'
 c.colors.hints.bg = '#000000'
 c.colors.hints.match.fg = '#999999'
+
 c.colors.messages.info.bg = '#000000'
+c.colors.prompts.bg = '#000000'
+
 c.colors.statusbar.normal.bg = '#000000'
 c.colors.statusbar.insert.fg = '#eeeeee'
 c.colors.statusbar.insert.bg = '#000000'
 c.colors.statusbar.passthrough.bg = '#000000'
 c.colors.statusbar.command.bg = '#000000'
 c.colors.statusbar.url.warn.fg = '#ffd700'
+c.colors.statusbar.url.success.http.fg = '#ffffff'
+c.colors.statusbar.url.success.https.fg = '#ffffff'
+
 c.colors.tabs.bar.bg = '#000000'
 c.colors.tabs.odd.bg = '#000000'
-c.colors.tabs.even.bg = '#282c34'
-c.colors.tabs.selected.odd.bg = '#242424'
-c.colors.tabs.selected.even.bg = '#242424'
+c.colors.tabs.even.bg = '#000000'
+c.colors.tabs.selected.odd.bg = '#000087'
+c.colors.tabs.selected.odd.fg = '#eeeeee'
+c.colors.tabs.selected.even.bg = '#000087'
+c.colors.tabs.selected.even.fg = '#eeeeee'
 c.colors.tabs.pinned.odd.bg = '#202020'
 c.colors.tabs.pinned.even.bg = '#000000'
 c.colors.tabs.pinned.selected.odd.bg = '#242424'
-c.colors.tabs.selected.even.bg = '#fafafa'
-c.colors.tabs.selected.even.fg = '#101010'
-c.colors.tabs.selected.odd.bg = '#fafafa'
-c.colors.tabs.selected.odd.fg = '#101010'
 c.colors.tabs.indicator.start = '#0000ff'
 c.colors.tabs.indicator.stop = '#ffffff' 
 c.colors.tabs.indicator.error = '#ff0000'
-c.colors.downloads.start.bg = '#0000ff'
-c.colors.downloads.stop.bg = '#ffffff'
-c.colors.statusbar.url.success.http.fg = '#ffffff'
-c.colors.statusbar.url.success.https.fg = '#ffffff'
+
+c.colors.downloads.bar.bg = '#000000'
+c.colors.downloads.error.bg = '#ff0000'
+c.colors.downloads.start.bg = '#000000'
+c.colors.downloads.start.fg = '#eeeeee'
+c.colors.downloads.stop.bg = '#eeeeee'
+c.colors.downloads.stop.fg = '#000000'
 
 ## Position of the tab bar.
 ## Type: Position
