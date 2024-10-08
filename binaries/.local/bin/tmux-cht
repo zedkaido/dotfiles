@@ -16,5 +16,3 @@ encoded_query=$(echo "$query" | sed 's/ /%20/g')
 echo "$language :: $query"
 query_file=/tmp/$language-$query.txt
 wget -O $query_file "https://cht.sh/$language/$encoded_query?T" && $EDITOR $query_file
-
-# wget -O - "https://cht.sh/$language/$encoded_query?T" | vim - 

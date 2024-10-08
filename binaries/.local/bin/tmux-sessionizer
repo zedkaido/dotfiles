@@ -3,36 +3,36 @@
 echo "[TMUX] Select Project:"
 
 if [[ $# -eq 1 ]]; then
-    selected=$1
+	selected=$1
 else
-    project_dirs=(
-        ~/sr
-		  ~/wit
-        ~/zk
-		  ~/dotfiles
-		  ~/dotfiles/vim/.vim
-		  ~/dotfiles/tmux/.config/tmux
-		  ~/dotfiles/alacritty/.config/alacritty
-    )
-    ignore_dirs=(
-        .git
-        node_modules
-        build
-        obj
-        debug
-        release
-        deps
-        lib
-    )
-    custom_dirs=()
-    search_dirs=("${project_dirs[@]}" "${custom_dirs[@]}")
+	project_dirs=(
+		~/sr
+		~/wit
+		~/zk
+		~/dotfiles
+		~/dotfiles/vim/.vim
+		~/dotfiles/tmux/.config/tmux
+		~/dotfiles/alacritty/.config/alacritty
+	)
+	ignore_dirs=(
+		.git
+		node_modules
+		build
+		obj
+		debug
+		release
+		deps
+		lib
+	)
+	custom_dirs=()
+	search_dirs=("${project_dirs[@]}" "${custom_dirs[@]}")
 
-    ignore_conditions=()
-    for dir in "${ignore_dirs[@]}"; do
-        ignore_conditions+=(-not -path "*$dir*")
-    done
+	ignore_conditions=()
+	for dir in "${ignore_dirs[@]}"; do
+		ignore_conditions+=(-not -path "*$dir*")
+	done
 
-    selected=$(find "${search_dirs[@]}" -mindepth 0 -maxdepth 1 -type d "${ignore_conditions[@]}" | fzy)
+	selected=$(find "${search_dirs[@]}" -mindepth 0 -maxdepth 1 -type d "${ignore_conditions[@]}" | fzy)
 fi
 
 if [[ -z $selected ]]; then
