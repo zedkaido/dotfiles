@@ -57,6 +57,9 @@ alias most='du -hsx * | sort -rh | head -10'
 
 alias archive='tar --create --gzip --verbose --file'
 
+# mpv video/audio limit for ytdl
+alias mpvhd='mpv --ytdl-format="bestvideo[height<=1080][vcodec!=vp9]+bestaudio/best"'
+
 # ---------------
 # OSX (ONLY) CMDS
 # TODO: add linux support (replace with binaries) 
