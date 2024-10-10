@@ -1,0 +1,11 @@
+url m!^https?://([a-z]+\.)?reddit\.com/!
+substitute_url "https://safereddit.com/"
+
+url m!^https?://([a-z]+\.)?wikipedia\.com/!
+substitute_url "https://wl.vern.cc/"
+
+url "https://medium.com/" exact
+substitute_url "https://scribe.rip/"
+
+url "https://web.archive.org/" exact
+substitute_url "https://wayback-classic.net/"

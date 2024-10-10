@@ -1,207 +1,216 @@
-# VIM-like keybindings in w3m by @sansna
-# <https://github.com/sansna/keymap.w3m/blob/master/keymap.w3m>
+# w3m config
+# vim-like keybindings
 
-# -------------------
-# INVALIDATE DEFAULTS
-# ------------------- 
-keymap K NULL
+# Ctrl  : C-, ^
+# Escape: ESC-, M-, ^[
+# Space : SPC, ' '
+# Tab   : TAB, ^i, ^I
+# Delete: DEL, ^?
+# Up    : UP, ^[[A
+# Down  : DOWN, ^[[B
+# Right : RIGHT, ^[[C
+# Left  : LEFT, ^[[D
+
+# ------------------------
+# INVALIDATE some DEFAULTS
+# ------------------------
+keymap o NULL # options panel, use :O to trigger it
+
+keymap H NULL
 keymap J NULL
-keymap SPC NULL
-keymap - NULL
-keymap + NULL
-keymap C-v NULL
-keymap ESC-v NULL
-keymap C-f NULL
-keymap C-b NULL
-keymap C-n NULL
-keymap C-p NULL
-keymap < NULL
-keymap > NULL
-keymap . NULL
-keymap , NULL
-keymap ^ NULL
-keymap C-a NULL
-keymap W NULL
-keymap ^[[6~ NULL
-keymap ^[[5~ NULL
-keymap g NULL
-keymap ^[[1~ NULL
-keymap ^[[4~ NULL
-keymap ESC-< NULL
-keymap ESC-> NULL
-keymap [ NULL
-keymap ] NULL
-keymap ^[[Z NULL
-keymap ESC-m NULL
-keymap ( NULL
-keymap ) NULL
-keymap C-j NULL
-keymap C-m NULL
-keymap ESC-C-j NULL
-keymap ESC-C-m NULL
-keymap ESC-w NULL
-keymap ESC-W NULL
-keymap C-s NULL
-keymap = NULL
-keymap ESC-l NULL
-keymap U NULL
-keymap V NULL
-keymap v NULL
-keymap R NULL
-keymap ESC-s NULL
-keymap : NULL
-keymap C-q NULL
-keymap T NULL
-keymap } NULL
-keymap { NULL
-keymap ESC-a NULL
-keymap ESC-b NULL
-keymap c NULL
-keymap ESC-: NULL
-keymap C-h NULL
-keymap q NULL
-keymap Q NULL
-keymap C-w NULL
-keymap C-d NULL
-keymap C-u NULL
-keymap RIGHT NULL
-keymap l NULL
-keymap LEFT NULL
+keymap K NULL
+keymap L NULL
 keymap h NULL
 keymap j NULL
-keymap DOWN NULL
 keymap k NULL
-keymap UP NULL
-keymap C-e NULL
-keymap C-y NULL
+keymap l NULL
+
+keymap ZZ NULL
+keymap ZQ NULL
+
 keymap 0 NULL
 keymap $ NULL
 keymap Z NULL
 keymap z NULL
-keymap ESC-g NULL
-keymap gg NULL
-keymap G NULL
-keymap w NULL
+
+keymap SPC NULL
+keymap - NULL
+keymap + NULL
+
+keymap C-v NULL # next page
+keymap ESC-v NULL # previous page
+
+keymap < NULL
+keymap > NULL
+
+keymap : NULL
+
+keymap C-o NULL
+
+keymap ^[[6~ NULL
+keymap ESC-v NULL
+keymap ^[[5~ NULL
 keymap b NULL
+keymap C-f NULL
+keymap C-b NULL
+keymap C-f NULL
+keymap C-b NULL
 keymap C-n NULL
 keymap C-p NULL
-keymap ESC-TAB NULL
-keymap f NULL
-keymap C-o NULL
+keymap J NULL
+keymap K NULL
+keymap > NULL
+keymap < NULL
+keymap , NULL
+keymap . NULL
+keymap C-a NULL
+keymap ^ NULL
+keymap $ NULL
+keymap C-e NULL
+keymap 0 NULL
+keymap Z NULL
+keymap z NULL
+keymap w NULL
+keymap W NULL
+keymap b NULL
+keymap ESC-g NULL
+keymap ESC-< NULL
+keymap ESC-> NULL
+keymap ^[[1~ NULL
+keymap ^[[4~ NULL
+keymap G NULL
+keymap g NULL
+keymap [ NULL
+keymap ] NULL
 keymap TAB NULL
+keymap C-u NULL
+keymap ESC-TAB NULL
+keymap ^[[Z NULL
+keymap ESC-m NULL
+keymap u NULL
+keymap C-r NULL
 keymap C-j NULL
-keymap C-] NULL
+keymap C-m NULL
+keymap C-t NULL
+keymap ESC-C-j NULL
+keymap ESC-C-m NULL
+keymap a NULL
 keymap I NULL
 keymap ESC-I NULL
-keymap ESC-C-j NULL
-keymap y NULL
+keymap c NULL
 keymap u NULL
 keymap i NULL
-keymap gC-g NULL
+keymap = NULL
 keymap C-g NULL
+keymap : NULL
 keymap ";" NULL
+keymap ESC-: NULL
+keymap F NULL
 keymap M NULL
 keymap ESC-M NULL
-keymap F NULL
+keymap L NULL
+keymap ESC-l NULL
+keymap U NULL
 keymap ESC-u NULL
-keymap t NULL
+keymap V NULL
 keymap @ NULL
 keymap "#" NULL
 keymap | NULL
 keymap B NULL
-keymap L NULL
-keymap H NULL
+keymap C-_ NULL
 keymap s NULL
-keymap gf NULL
+keymap v NULL
+keymap ESC-s NULL
 keymap S NULL
 keymap E NULL
 keymap ESC-e NULL
-keymap C-r NULL
+keymap R NULL
 keymap r NULL
 keymap C-l NULL
-keymap C-t NULL
-keymap d NULL
-keymap gt NULL
-keymap gT NULL
+keymap T NULL
+keymap C-q NULL
+keymap { NULL
+keymap } NULL
 keymap ESC-t NULL
-keymap C-wL NULL
-keymap C-wH NULL
-keymap a NULL
-keymap n NULL
-keymap N NULL
-keymap / NULL
-keymap ? NULL
+keymap J NULL
+keymap K NULL
+keymap ESC-b NULL
+keymap ESC-a NULL
+keymap C-s NULL
+keymap C-r NULL
+keymap ESC-w NULL
+keymap ESC-W NULL
 keymap C-@ NULL
 keymap ESC-n NULL
 keymap ESC-p NULL
 keymap \" NULL
-keymap ^[[2~ NULL
 keymap ^[[28~ NULL
+keymap ^[[2~ NULL
 keymap ^[[E NULL
 keymap ^[[L NULL
+keymap H NULL
 keymap o NULL
+keymap r NULL
 keymap C-k NULL
+keymap C-h NULL
 keymap D NULL
 keymap m NULL
+keymap C-w NULL
 keymap ESC-c NULL
 keymap ESC-o NULL
 keymap ESC-k NULL
-keymap \\ NULL
 keymap ! NULL
 keymap C-z NULL
-keymap ZZ NULL
-keymap ZQ NULL
-
-# -------
-# COMMAND
-# -------
-keymap :: COMMAND
-keymap :H HELP
-keymap :O OPTIONS
-keymap :d DOWNLOAD_LIST
-
-# ------------------
-# HISTORY NAVIGATION
-# ------------------
-keymap L NEXT
-keymap H PREV
-keymap :p SELECT_MENU
-keymap :h HISTORY
-
-# ---------
-# SCROLLING
-# ---------
-keymap C-e UP
-keymap C-y DOWN
-keymap gg BEGIN
-keymap G END
-keymap C-d NEXT_PAGE
-keymap d NEXT_PAGE
-keymap C-u PREV_PAGE
-keymap u PREV_PAGE
-keymap zz CENTER_V
 
 # ------
-# CURSOR
+# CONFIG
 # ------
-keymap l MOVE_RIGHT
-keymap h MOVE_LEFT
-keymap j MOVE_DOWN1
-keymap k MOVE_UP1
-keymap RIGHT MOVE_RIGHT
-keymap LEFT MOVE_LEFT
-keymap DOWN MOVE_DOWN1
-keymap UP MOVE_UP1
-keymap 0 LINE_BEGIN
-keymap $ LINE_END
-keymap w NEXT_WORD
-keymap b PREV_WORD
+keymap gb TAB_GOTO file://~/.w3m/blank.html 
+keymap gK TAB_GOTO file://~/.w3m/keymap # view keymaps
 
 # --------------
-# CURSOR HISTORY
+# SEARCH ENGINES
 # --------------
-keymap C-i REDO
-keymap C-o UNDO
+keymap sg COMMAND "SET_OPTION dictcommand=file:///cgi-bin/google.cgi ; DICT_WORD"
+keymap sd COMMAND "SET_OPTION dictcommand=file:///cgi-bin/ddg.cgi ; DICT_WORD"
+keymap sp COMMAND "SET_OPTION dictcommand=file:///cgi-bin/tpb.cgi ; DICT_WORD"
+keymap sy COMMAND "SET_OPTION dictcommand=file:///cgi-bin/yewtube.cgi ; DICT_WORD"
+keymap sw COMMAND "SET_OPTION dictcommand=file:///cgi-bin/wikipedia.cgi ; DICT_WORD"
+
+# --------              
+# COMMANDS
+# --------              
+keymap :: COMMAND       
+keymap :H HELP          
+keymap :O OPTIONS       
+keymap :d DOWNLOAD_LIST 
+
+# ------------
+# PAGE RELATED
+# ------------
+keymap r RELOAD
+keymap C-r RELOAD
+
+keymap o GOTO
+keymap O EXTERN
+keymap gx EXTERN_LINK
+keymap yy EXTERN 'printf %s | pbcopy'
+
+keymap :w SAVE
+keymap :W PRINT
+keymap :e LOAD
+keymap :f PEEK_LINK
+keymap :b SELECT_MENU
+
+keymap c PEEK
+keymap gC-g INFO
+keymap C-g LINE_INFO
+keymap gf VIEW
+
+# ---------------------
+# READER MODE (rdrview)
+# ---------------------
+keymap R COMMAND "READ_SHELL 'rdrview $W3M_URL -H 2> /dev/null 1> /tmp/readable.html' ; LOAD /tmp/readable.html"
 
 # ----------
 # NAVIGATION
@@ -210,68 +219,87 @@ keymap f MOVE_LIST_MENU
 keymap F LIST_MENU
 keymap C-n NEXT_LINK
 keymap C-p PREV_LINK
-keymap :l PEEK_LINK
+keymap TAB NEXT_LINK
+keymap S-TAB PREV_LINK
 
-# ------
-# RELOAD
-# ------
-keymap r RELOAD
-keymap C-r RELOAD
-
-# ----
-# SAVE
-# ----
-keymap :w SAVE
-keymap :W PRINT
-keymap :o GOTO
-keymap :e LOAD
+# ------------------
+# HISTORY NAVIGATION
+# ------------------
+keymap L NEXT
+keymap H PREV
+keymap :h HISTORY
 
 # ----
 # JUMP
 # ----
-keymap ESC-C-j SUBMIT
+keymap ESC-C-j SUBMIT #?
 keymap C-] TAB_LINK
 keymap C-j GOTO_LINK
 
-# ----
-# INFO
-# ----
-keymap y PEEK
-keymap gC-g INFO
-keymap C-g LINE_INFO
-keymap gf VIEW
+# ---------
+# SCROLLING
+# ---------
+# keymap C-e UP
+keymap C-e EDIT_SCREEN
+keymap C-y DOWN
+keymap gg BEGIN
+keymap GG END
+keymap C-d NEXT_PAGE
+keymap C-u PREV_PAGE
+keymap d NEXT_PAGE
+keymap u PREV_PAGE
+keymap zz CENTER_V 
 
-# ------
-# SEARCH
-# ------
-keymap / ISEARCH
-keymap ? ISEARCH_BACK
-keymap n SEARCH_NEXT
-keymap N SEARCH_PREV
+# ------------------
+# CURSOR MOTION
+# ------------------
+keymap l MOVE_RIGHT
+keymap h MOVE_LEFT
+keymap j MOVE_DOWN1
+keymap k MOVE_UP1
+keymap RIGHT MOVE_RIGHT
+keymap LEFT MOVE_LEFT
+keymap DOWN MOVE_DOWN1
+
+keymap UP MOVE_UP1
+keymap 0 LINE_BEGIN
+keymap $ LINE_END
+keymap w NEXT_WORD
+keymap b PREV_WORD
+
+keymap < SHIFT_LEFT
+keymap > SHIFT_RIGHT
+
+# --------------
+# CURSOR HISTORY
+# --------------
+keymap C-i REDO
+keymap C-o UNDO
 
 # ---------
 # BOOKMARKS
 # ---------
-keymap a ADD_BOOKMARK
-keymap :b VIEW_BOOKMARK
+keymap m ADD_BOOKMARK
+keymap :m VIEW_BOOKMARK
 
 # ---
 # TAB
 # ---
-keymap x CLOSE_TAB
-keymap gh GOTO http://www.google.com/en
-keymap gH TAB_GOTO http://www.google.com/en
-keymap C-t NEW_TAB
-keymap gt NEXT_TAB
-keymap gT PREV_TAB
-keymap C-wL TAB_RIGHT
-keymap C-wH TAB_LEFT
 keymap t TAB_GOTO
 keymap T TAB_MENU
 
+keymap d CLOSE_TAB
+keymap C-t NEW_TAB
+keymap gt NEXT_TAB
+keymap gT PREV_TAB
+keymap J NEXT_TAB
+keymap K PREV_TAB
+keymap C-wL TAB_RIGHT
+keymap C-wH TAB_LEFT
+
 # ----
-# EXIT
-# ----
-keymap ZZ EXIT
-keymap ZQ QUIT
-keymap :q QUIT
+# EXIT         
+# ----         
+keymap ZZ EXIT 
+keymap ZQ QUIT 
+keymap :q QUIT 
