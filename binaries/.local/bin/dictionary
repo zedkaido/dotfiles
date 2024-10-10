@@ -1,0 +1,63 @@
+#!/bin/zsh
+
+open_sdcv() sdcv 
+
+lookup_offline_word_definition() {
+	word=$1
+	if [[ -z $word ]]; then
+		printf "Definition for: "
+		read word
+	fi
+	sdcv $word | vim - -R 
+}
+
+lookup_word_synonyms() {
+	word=$1
+	if [[ -z $word ]]; then 
+		printf "Synonyms for: "
+		read word
+	fi
+	www "$word !synonyms"
+}
+
+lookup_online_word_definition() {
+	word=$1
+	if [[ -z $word ]]; then
+		printf "(Online) Definition for: "
+		read word
+	fi
+	dict $word | vim - -R
+}
+
+prompt() {
+	opts=(
+		"definition :: Lookup Definition - Offline: sdcv"
+		"synonym :: Lookup Synonym (Open in Browser)"
+		"sdcv :: Open SDCV APP (Offline)"
+		"dict :: Lookup Definition (Online: dict)"
+	)
+	selected=$(printf $(printf "%s\n" "${opts[@]}" | fzy) | awk -F " :: " '{ print $0 }')
+	case $selected in
+		definition) lookup_offline_word_definition ;;
+		sdcv) open_sdcv ;;
+		synonym) lookup_word_synonyms ;;
+		dict) lookup_online_word_definition ;;
+		*) exit 0 
+	esac
+}
+
+case "$1" in 
+	sdcv) open_sdcv ;;
+	offline) open_sdcv ;;
+
+	def) lookup_offline_word_definition $2 ;;
+	definition) lookup_offline_word_definition $2 ;;
+
+	syn) lookup_word_synonyms $2 ;;
+	synonym) lookup_word_synonyms $2 ;;
+
+	dict) lookup_online_word_definition $2 ;;
+	online) lookup_online_word_definition $2 ;;
+
+	*) prompt ;;
+esac	
