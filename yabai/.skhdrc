@@ -3,19 +3,21 @@
 # -------------------
 cmd - return : open -n /Applications/Alacritty.app
 
-alt - d : ~/.local/bin/alacritty-window ddg #duckduckgo (ddgr)
-alt - o : ~/.local/bin/alacritty-window www
-
 cmd - space : ~/.local/bin/alacritty-window cmd
 
-hyper - o : ~/.local/bin/alacritty-window launcher 
+alt - o : ~/.local/bin/alacritty-window launcher
+
+hyper - o : ~/.local/bin/alacritty-window www
+hyper - e : ~/.local/bin/alacritty-window bweb
+
 hyper - c : ~/.local/bin/alacritty-window ch 
 hyper - a : ~/.local/bin/ch append # append current clipboard content to ch
 
-hyper - z : ~/.local/bin/alacritty-window colorscheme
 hyper - d : ~/.local/bin/toggle-dark-theme
+hyper - z : ~/.local/bin/alacritty-window colorscheme
 
-hyper - p : ~/.local/bin/alacritty-window pass 
+hyper - p : ~/.local/bin/alacritty-window pass
+hyper - m : ~/.local/bin/alacritty-window dictionary # m for meaning
 hyper - b : ~/.local/bin/alacritty-window bookmarks 
 hyper - s : ~/.local/bin/alacritty-window snippets
 hyper - w : ~/.local/bin/alacritty-window webcam

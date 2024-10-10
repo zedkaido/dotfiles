@@ -17,8 +17,9 @@ window_types=(
 	cmd
 	colorscheme
 	pass
-	ddg
+	bweb # browse web
 	www
+	dictionary
 	bookmarks
 	snippets
 	radio
@@ -33,11 +34,12 @@ fi
 case "$chosen_window" in
 	ch) floating_window "ch" "~/.local/bin/ch" ;;
 	launcher) floating_window "launcher" "~/.local/bin/app-open" ;;
-	cmd) floating_window "cmd" "tmux a -t \"cmd\" || tmux new -s \"cmd\"" ;;
+	cmd) floating_window "cmd" "tmux a -t cmd || tmux new -s cmd" ;;
 	colorscheme) floating_window "colorscheme" "~/.local/bin/colorscheme" ;;
 	pass) floating_window "pass" "~/.local/bin/pass-copy" ;;
-	ddg) floating_window "ddg" "~/.local/bin/d" ;;
+	bweb) floating_window "bweb" "tmux a -t bweb || tmux new -s bweb" ;;
 	www) floating_window "www" "~/.local/bin/www" ;;
+	dictionary) floating_window "dictionary" "~/.local/bin/dictionary" ;;
 	bookmarks) floating_window "bookmarks" "~/.local/bin/bookmarks" ;;
 	snippets) floating_window "snippets" "~/.local/bin/snippet-copy" ;;
 	radio) floating_window "radio" "~/.local/bin/radio" ;;

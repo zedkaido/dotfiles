@@ -1,5 +1,8 @@
 #!/bin/zsh
 
-echo -n "www :: "
-read query
-qutebrowser :open $query
+query=$1
+if [[ -z $query ]]; then
+	echo -n "www :: "
+	read query
+fi
+qutebrowser :open-tab $query
