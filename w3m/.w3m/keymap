@@ -98,7 +98,6 @@ keymap a NULL
 keymap I NULL
 keymap ESC-I NULL
 keymap c NULL
-keymap u NULL
 keymap i NULL
 keymap = NULL
 keymap C-g NULL
@@ -246,8 +245,6 @@ keymap gg BEGIN
 keymap GG END
 keymap C-d NEXT_PAGE
 keymap C-u PREV_PAGE
-keymap d NEXT_PAGE
-keymap u PREV_PAGE
 keymap zz CENTER_V 
 
 # ------------------
@@ -288,7 +285,6 @@ keymap :m VIEW_BOOKMARK
 keymap t TAB_GOTO
 keymap T TAB_MENU
 
-keymap d CLOSE_TAB
 keymap C-t NEW_TAB
 keymap gt NEXT_TAB
 keymap gT PREV_TAB
@@ -296,6 +292,9 @@ keymap J NEXT_TAB
 keymap K PREV_TAB
 keymap C-wL TAB_RIGHT
 keymap C-wH TAB_LEFT
+
+keymap d COMMAND "EXTERN 'echo %s >> ~/.w3m/.restore_tab.txt' ; CLOSE_TAB"
+keymap u COMMAND TAB_GOTO file://cgi-bin/restore_tab.cgi
 
 # ----
 # EXIT         
