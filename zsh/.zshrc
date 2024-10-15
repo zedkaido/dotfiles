@@ -12,6 +12,7 @@ HISTSIZE=12345
 HISTFILE=~/.zsh_history
 setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
 
 # -----------
 # Keybindings
