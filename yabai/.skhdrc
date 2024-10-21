@@ -1,11 +1,10 @@
 # -------------------
 # APLICATION TRIGGERS
 # -------------------
-cmd - return : open -n /Applications/Alacritty.app
+alt - x : open -n /Applications/Alacritty.app
+alt - o : ~/.local/bin/alacritty-window launcher
 
 cmd - space : ~/.local/bin/alacritty-window cmd
-
-alt - o : ~/.local/bin/alacritty-window launcher
 
 hyper - o : ~/.local/bin/alacritty-window www
 hyper - e : ~/.local/bin/alacritty-window bweb
