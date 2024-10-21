@@ -35,6 +35,7 @@ c.url.searchengines = {
 	'yt': 'https://www.youtube.com/results?search_query={}',
 	'q': 'https://www.qwant.com/?q=%s{}=web',
 	'per': 'https://www.perplexity.ai/search?focus=internet&q={}',
+	'gpt': 'https://www.chatgpt.com/?q={}',
 }
 
 c.downloads.location.directory = '~/Downloads'
