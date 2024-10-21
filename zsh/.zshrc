@@ -30,8 +30,10 @@ zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 
 bindkey "\e\177" backward-kill-word # Option + Backspace
-bindkey "^R" history-incremental-pattern-search-backward
-bindkey "^F" history-incremental-pattern-search-forward
+bindkey "^k" kill-line
+
+bindkey "^r" history-incremental-pattern-search-backward
+bindkey "^f" history-incremental-pattern-search-forward
 
 bindkey -s ^b^f "tmux-sessionizer\n"
 bindkey -s ^b^b "tmux-switch-session\n"
