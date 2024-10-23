@@ -8,8 +8,8 @@ c.window.title_format = '{perc}{current_title}'
 c.window.hide_decoration = True
 c.statusbar.show = 'always'
 
-c.url.default_page = 'file:///Users/x/.sys/blank.html'
-c.url.start_pages = 'file:///Users/x/.sys/blank.html'
+c.url.default_page = 'file:///Users/x/.local/share/blank.html'
+c.url.start_pages = 'file:///Users/x/.local/share/blank.html'
 
 c.auto_save.session = True
 c.session.lazy_restore = True
