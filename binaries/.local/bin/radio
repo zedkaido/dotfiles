@@ -4,8 +4,8 @@ RADIO_STATIONS=~/.local/share/radio-stations
 
 radio_listen() {
 	station=$(cat $RADIO_STATIONS | fzy) 
-	station_url=$(print $station | awk -F ' :: ' '{ print $1 }')
-	station_name=$(print $station | awk -F ' :: ' '{ print $2 }')
+	station_url=$(print $station | cut -d ' ' -f1)
+	station_name=$(print $station | cut -d ' ' -f3)
 	if [[ -z station ]] ; then 
 		exit 0
 	fi

@@ -36,8 +36,9 @@ prompt() {
 		"sdcv :: Open SDCV APP (Offline)"
 		"dict :: Lookup Definition (Online: dict)"
 	)
-	selected=$(printf $(printf "%s\n" "${opts[@]}" | fzy) | awk -F " :: " '{ print $0 }')
-	case $selected in
+	selected=$(printf "%s\n" "${opts[@]}" | fzy)
+	action=${selected%% ::*}
+	case $action in
 		definition) lookup_offline_word_definition ;;
 		sdcv) open_sdcv ;;
 		synonym) lookup_word_synonyms ;;

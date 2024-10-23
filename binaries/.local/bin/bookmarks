@@ -5,16 +5,16 @@ BOOKMARKS_FILE="$HOME/.qutebrowser/bookmarks/urls"
 
 bookmark_open() {
 	case "$OS" in 
-		Linux) cat $BOOKMARKS_FILE | fzf --reverse | awk '{ print $1 }' | xargs xdg-open ;;
-		Darwin) cat $BOOKMARKS_FILE | fzf --reverse | awk '{ print $1 }' | xargs open ;;
+		Linux) cat $BOOKMARKS_FILE | fzf --reverse | cut -d ' ' -f1 | xargs xdg-open ;;
+		Darwin) cat $BOOKMARKS_FILE | fzf --reverse | cut -d ' ' -f1 | xargs open ;;
 		*) echo "Unsupported OS. Are you running on a potato?" ;;
 	esac
 }
 
 bookmark_copy() {
 	case "$OS" in 
-		Linux) cat $BOOKMARKS_FILE | fzf --reverse | awk '{ print $1 }' | xclip -selection clipboard ;;
-		Darwin) cat $BOOKMARKS_FILE | fzf --reverse | awk '{ print $1 }' | pbcopy ;;
+		Linux) cat $BOOKMARKS_FILE | fzf --reverse | cut -d ' ' -f1 | xclip -selection clipboard ;;
+		Darwin) cat $BOOKMARKS_FILE | fzf --reverse | cut -d ' ' -f1 | pbcopy ;;
 		*) echo "Unsupported OS. Are you running on a potato?" ;;
 	esac
 }
