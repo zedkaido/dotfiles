@@ -4,10 +4,12 @@ config.load_autoconfig()
 import os
 os.environ['PATH'] = '/opt/homebrew/bin:/Users/x/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
 
-c.qt.workarounds.remove_service_workers = True
+c.window.title_format = '{perc}{current_title}' 
+c.window.hide_decoration = True
+c.statusbar.show = 'always'
 
-c.url.default_page = 'about:blank'
-c.url.start_pages = 'about:blank'
+c.url.default_page = 'file:///Users/x/.sys/blank.html'
+c.url.start_pages = 'file:///Users/x/.sys/blank.html'
 
 c.auto_save.session = True
 c.session.lazy_restore = True
@@ -41,7 +43,6 @@ c.url.searchengines = {
 c.downloads.location.directory = '~/Downloads'
 c.content.fullscreen.window = True
 c.content.autoplay = False
-c.window.title_format = '{perc}{current_title}' 
 
 c.downloads.location.directory = '~/Downloads'
 
