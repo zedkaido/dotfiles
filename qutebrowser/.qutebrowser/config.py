@@ -178,7 +178,7 @@ nunmap("'")
 
 # real quickmarks
 nmap("'51", ':open --tab localhost:5173')
-nmap("'bl", ':open about:blank') 
+nmap("'bl", ':open file:///Users/x/.local/share/blank.html') 
 
 c.aliases = {'q': 'quit', 'w': 'session-save', 'wq': 'quit --save'}
 c.aliases['archive'] = 'open --tab https://web.archive.org/save/{url}'
