@@ -113,10 +113,10 @@ ctrl + alt - right : yabai -m window --resize left:60:0
 ctrl + alt - up : yabai -m window --resize top:0:-60
 ctrl + alt - down : yabai -m window --resize top:0:60
 
-ctrl + alt + shift - left : yabai -m window --move rel:-100:0
-ctrl + alt + shift - right : yabai -m window --move rel:100:0
-ctrl + alt + shift - up : yabai -m window --move rel:0:-100
-ctrl + alt + shift - down : yabai -m window --move rel:0:100
+ctrl + alt + shift - left : yabai -m window --move rel:-20:0
+ctrl + alt + shift - right : yabai -m window --move rel:20:0
+ctrl + alt + shift - up : yabai -m window --move rel:0:-20
+ctrl + alt + shift - down : yabai -m window --move rel:0:20
 
 alt - z : yabai -m window --toggle zoom-parent
 alt + shift - z : yabai -m window --toggle zoom-fullscreen
