@@ -1,8 +1,8 @@
-import = [
-	"~/.config/alacritty/colors/suckless-blue.toml",
+general.import = [
+	"~/.config/alacritty/colors/suckless-light.toml",
 ]
 
-live_config_reload = true  # Default: true
+general.live_config_reload = true  # Default: true
 
 [env]
 
