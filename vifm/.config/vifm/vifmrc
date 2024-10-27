@@ -108,6 +108,9 @@ colorscheme suckless
 mark b ~/bin/
 mark h ~/
 mark d ~/Downloads
+mark w ~/wit
+mark p ~/pro
+mark v /Volumes
 
 " ------------------------------------------------------------------------------
 " Commands
@@ -173,62 +176,61 @@ command! reload :write | restart full
 " You can also add %CLEAR if you want to clear screen before running FUSE
 " program.  There is also %FOREGROUND, which is useful for entering passwords.
 
-" Pdf
+" pdf
 filetype {*.pdf},<application/pdf>
-       \ {Open in Preview}
-       \ open -a Preview.app,
-       \ {Open in Skim}
-       \ open -a Skim.app,
+         \ {Opn in sioeyk}
+         \ open -a sioyek.app,
+         \ {Open in Preview}
+			\ open -a Preview.app,
 fileviewer {*.pdf},<application/pdf> pdftotext -nopgbrk %c -
 
 " PostScript
 filetype {*.ps,*.eps,*.ps.gz},<application/postscript> open -a Preview.app
 
-" Djvu
-filetype {*.djvu},<image/vnd.djvu> open -a MacDjView.app
-
 " Audio
 filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,
-         \*.aac,*.mpga},
-        \<audio/*>
-       \ {Open in Music}
-       \ open -a Music.app,
-       \ {Open in QuickTime Player}
-       \ open -a QuickTime\ Player.app,
-       \ {Open in IINA}
-       \ open -a IINA.app,
+         \*.aac,*.mpga},<audio/*>
+         \ {mpv}
+         \ mpv --no-video %f %s &,
+         \ {ffplay}
+         \ ffplay -nodisp %c,
+         \ {Music.app} 
+         \ open -a Music.app,
+         \ {QuickTime} 
+         \ open -a QuickTime\ Player.app,
 fileviewer {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,
            \*.aac,*.mpga},
-          \<audio/*>
-         \ ffprobe -hide_banner -pretty %c 2>&1
+           \<audio/*>
+           \ ffprobe -hide_banner -pretty %c 2>&1
 
 " Video
 filetype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
          \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-         \*.as[fx],*.unknown_video},
-        \<video/*>
-       \ {Open in QuickTime Player}
-       \ open -a QuickTime\ Player.app,
-       \ {Open in IINA}
-       \ open -a IINA.app,
-       \ {Open in VLC}
-       \ open -a VLC.app,
+         \*.as[fx],*.unknown_video},<video/*>
+			\ {mpv}
+			\ mpv %f &,
+			\ {ffplay}
+	 		\ ffplay %f,
+         \ {QuickTime}
+         \ open -a QuickTime\ Player.app,
 fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
            \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
            \*.as[fx],*.unknown_video},
-          \<video/*>
-         \ ffprobe -hide_banner -pretty %c 2>&1
+           \<video/*>
+           \ ffprobe -hide_banner -pretty %c 2>&1
 
 " Web
 filetype {*.xhtml,*.html,*.htm},<text/html>
-       \ {Open in Safari}
-       \ open -a Safari.app,
-       \ {Open in Firefox}
-       \ open -a Firefox.app,
-       \ {Open in Chrome}
-       \ open -a Google\ Chrome.app,
-       \ {Open in vim}
-       \ vim,
+		   \ {Open in Qutebrowser} 
+		   \ open -a qutebrowser.app,
+         \ {Open in Safari}
+         \ open -a Safari.app,
+         \ {Open in Librewolf}
+         \ open -a Librewolf.app,
+         \ {Open in Chromium}
+         \ open -a Chromium.app,
+         \ {Open in vim}
+         \ vim,
 fileviewer {*.xhtml,*.html,*.htm},<text/html> w3m -dump -T text/html
 
 " Object
@@ -240,12 +242,12 @@ fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
 
 " Image
 filetype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-       \ {Open in qView}
-       \ open -a qView.app,
-       \ {Open in Preview},
-       \ open -a Preview.app,
+         \ {Open in qView}
+         \ open -a qView.app,
+         \ {Open in Preview},
+         \ open -a Preview.app,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-         \ identify %f
+           \ identify %f
 
 " MD5
 filetype *.md5
@@ -268,27 +270,27 @@ filetype *.sha512
        \ shasum -a 512 -c %f %S,
 
 " Torrent
-filetype {*.torrent},<application/x-bittorrent> open -a Transmission.app
+filetype {*.torrent},<application/x-bittorrent> open -a qBittorrent.app
 fileviewer {*.torrent},<application/x-bittorrent>
-         \ dumptorrent -v %c,
-         \ transmission-show %c
+           \ dumptorrent -v %c,
+           \ transmission-show %c
 
 " Extract zip files
 filetype {*.zip},<application/zip,application/java-archive>
-       \ mkdir %f:r && tar -vxf %f --directory %f:r
+         \ mkdir %f:r && tar -vxf %f --directory %f:r
 fileviewer {*.zip,*.jar,*.war,*.ear},
-          \<application/zip,application/java-archive>
-          \ tar -tf %f
+           \<application/zip,application/java-archive>
+           \ tar -tf %f
 
 " Extract tar archives
 filetype {*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz,*.tar.zst,
          \*.tzst},
-        \<application/x-tar>
-       \ tar -vxf %f
+         \<application/x-tar>
+         \ tar -vxf %f
 fileviewer {*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz,*.tar.zst,
            \*.tzst},
-          \<application/x-tar>
-         \ tar -tf %f
+           \<application/x-tar>
+           \ tar -tf %f
 
 " Extract .bz2 archives
 filetype *.bz2 bzip2 -d %f
@@ -312,14 +314,14 @@ filetype *.pkg open
 " Office files
 filetype {*.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx,*.ppt},
          \<application/vnd.openxmlformats-officedocument.*,
-          \application/msword,
-          \application/vnd.ms-excel>
-       \ open -a LibreOffice.app
+         \application/msword,
+         \application/vnd.ms-excel>
+         \ open -a LibreOffice.app
 fileviewer {*.doc},<application/msword> antiword -
 fileviewer {*.docx},
-          \<application/
+           \<application/
            \vnd.openxmlformats-officedocument.wordprocessingml.document>
-         \ docx2txt.pl %f -
+           \ docx2txt.pl %f -
 
 " Syntax highlighting in preview
 "
@@ -373,6 +375,9 @@ vnoremap w :view<cr>gv
 
 nnoremap o :!vim %f<cr>
 nnoremap O :!sudo vim %f<cr>
+nnoremap L :file<cr>
+
+nnoremap % :touch ./
 
 " Open file in the background using its default program
 nnoremap gb :!open -g %f<cr>
