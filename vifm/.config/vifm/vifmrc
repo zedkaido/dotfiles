@@ -178,10 +178,10 @@ command! reload :write | restart full
 
 " pdf
 filetype {*.pdf},<application/pdf>
-         \ {Opn in sioeyk}
-         \ open -a sioyek.app,
          \ {Open in Preview}
 			\ open -a Preview.app,
+         \ {Open in sioeyk}
+			\ open -a sioyek.app,
 fileviewer {*.pdf},<application/pdf> pdftotext -nopgbrk %c -
 
 " PostScript
@@ -191,7 +191,7 @@ filetype {*.ps,*.eps,*.ps.gz},<application/postscript> open -a Preview.app
 filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,
          \*.aac,*.mpga},<audio/*>
          \ {mpv}
-         \ mpv --no-video %f %s &,
+         \ mpv --no-video %f %s,
          \ {ffplay}
          \ ffplay -nodisp %c,
          \ {Music.app} 
