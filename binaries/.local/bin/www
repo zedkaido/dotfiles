@@ -5,5 +5,5 @@ if [[ -z $query ]]; then
 	echo -n "www :: "
 	read query
 fi
-query="$query !lite"
+query="$query"
 qutebrowser --target=tab $query 
