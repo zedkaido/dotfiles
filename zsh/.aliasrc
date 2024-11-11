@@ -8,6 +8,7 @@ alias svim='sudo vim'
 alias km='vim +KM'
 alias note='vim +KMT'
 alias osx='vim +OSX'
+alias webm='vim +WEBM'
 
 alias timer='countdown'
 
