@@ -33,7 +33,7 @@ alt - v : yabai -m window --toggle expose
 
 # BSP LAYOUT
 alt - b [
-   * : yabai -m space --layout bsp 
+   * : yabai -m space --layout bsp && sketchybar --trigger yabai_layout_changed
    "Bitwig Studio" ~ 
 ]
 alt - a [
@@ -52,11 +52,11 @@ shift + alt - p : yabai -m space --focus prev
 
 
 # FLOAT LAYOUT
-alt - f : yabai -m space --layout float
+alt - f : yabai -m space --layout float && sketchybar --trigger yabai_layout_changed
 
 
 # STACK LAYOUT
-alt - s : yabai -m space --layout stack
+alt - s : yabai -m space --layout stack && sketchybar --trigger yabai_layout_changed
 
 ctrl + alt - 7 : yabai -m window --focus stack.next
 ctrl + alt - 1 : yabai -m window --focus stack.prev 
