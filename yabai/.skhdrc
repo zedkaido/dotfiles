@@ -23,7 +23,8 @@ hyper - s : ~/.local/bin/alacritty-window snippets
 hyper - w : ~/.local/bin/alacritty-window webcam
 hyper - r : ~/.local/bin/alacritty-window radio
 
-hyper - i : screencapture -ip
+hyper - t : screencapture -ip
+# hyper - i : opens soundsource panel
 
 # -----------------
 # YABAI KEYBINDINGS
