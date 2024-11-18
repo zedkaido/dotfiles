@@ -184,6 +184,14 @@ filetype {*.pdf},<application/pdf>
 			\ open -a sioyek.app,
 fileviewer {*.pdf},<application/pdf> pdftotext -nopgbrk %c -
 
+" epub
+filetype {*.epub},<application/epub>
+			\ {Open in bk} 
+			\ bk,
+			\ {Open in sioeye}
+			\ open -a sioyek.app,
+fileviewer {*.epub},<application/epub> bk
+
 " PostScript
 filetype {*.ps,*.eps,*.ps.gz},<application/postscript> open -a Preview.app
 
