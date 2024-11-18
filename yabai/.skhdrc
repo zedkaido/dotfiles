@@ -2,7 +2,7 @@
 # APLICATION TRIGGERS
 # -------------------
 alt - w : open ~/
-alt - x : open -n /Applications/Alacritty.app
+alt - y : open -n /Applications/Alacritty.app
 alt - o : ~/.local/bin/alacritty-window launcher
 
 cmd - space : ~/.local/bin/alacritty-window cmd
@@ -25,6 +25,7 @@ hyper - r : ~/.local/bin/alacritty-window radio
 
 hyper - t : screencapture -ip
 # hyper - i : opens soundsource panel
+
 
 # -----------------
 # YABAI KEYBINDINGS
@@ -177,7 +178,7 @@ alt - t : yabai -m window --toggle sticky
 # [USED] alt - t
 # [USED] alt - u
 # [USED] alt - v
-# alt - w
-# alt - x
-# alt - y 
+# [USED] alt - w
+# alt - x (DO NOT USE if you want compatibility with emacs)
+# [USED] alt - y 
 # [USED] alt - z
