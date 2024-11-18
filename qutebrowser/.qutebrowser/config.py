@@ -17,8 +17,8 @@ c.session.lazy_restore = True
 c.editor.command = ['alacritty', '-e', 'vim', '-f', '{file}']
 
 config.set("fileselect.handler", "external")
-config.set("fileselect.single_file.command", ['alacritty', '-e', 'lf', '-selection-path', '{}'])
-config.set("fileselect.multiple_files.command", ['alacritty', '-e', 'lf', '-selection-path', '{}'])
+config.set("fileselect.single_file.command", ['alacritty', '-e', 'vifm', '--select', '{}'])
+config.set("fileselect.multiple_files.command", ['alacritty', '-e', 'vifm', '--choose-files', '{}'])
 
 c.url.searchengines = {
 	'DEFAULT': 'https://duckduckgo.com/?q={}',
