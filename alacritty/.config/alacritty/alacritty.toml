@@ -27,11 +27,11 @@ history = 10000  # Default: 10000
 multiplier = 3  # Default: 3
 
 [font]
-normal = { family = "Berkeley Mono Variable", style = "Regular" }  # Default for Linux/BSD: "monospace", Regular
+normal = { family = "Berkeley Mono", style = "Regular" }  # Default for Linux/BSD: "monospace", Regular
 bold = { style = "Bold" }  # Inherits family from normal, Default style: Bold
 italic = { style = "Italic" }  # Inherits family from normal, Default style: Italic
 bold_italic = { style = "Bold Italic" }  # Inherits family from normal, Default style: Bold Italic
-size = 16
+size = 18
 offset = { x = 0, y = 0 }  # Default: x = 0, y = 0
 glyph_offset = { x = 0, y = 0 }  # Default: x = 0, y = 0
 builtin_box_drawing = true  # Default: true
