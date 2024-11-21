@@ -24,8 +24,7 @@ hyper - w : ~/.local/bin/alacritty-window webcam
 hyper - r : ~/.local/bin/alacritty-window radio
 
 hyper - t : screencapture -ip
-# hyper - i : opens soundsource panel
-
+hyper - i : opens soundsource panel
 
 # -----------------
 # YABAI KEYBINDINGS
@@ -33,10 +32,7 @@ hyper - t : screencapture -ip
 alt - v : yabai -m window --toggle expose
 
 # BSP LAYOUT
-alt - b [
-   * : yabai -m space --layout bsp && sketchybar --trigger yabai_layout_changed
-   "Bitwig Studio" ~ 
-]
+alt - b : yabai -m space --layout bsp && sketchybar --trigger yabai_layout_changed
 alt - a [
    * : yabai -m space --balance
    "Bitwig Studio" ~
@@ -51,10 +47,8 @@ alt - p : yabai -m window --focus prev
 shift + alt - n : yabai -m space --focus next
 shift + alt - p : yabai -m space --focus prev
 
-
 # FLOAT LAYOUT
 alt - f : yabai -m space --layout float && sketchybar --trigger yabai_layout_changed
-
 
 # STACK LAYOUT
 alt - s : yabai -m space --layout stack && sketchybar --trigger yabai_layout_changed
@@ -62,14 +56,12 @@ alt - s : yabai -m space --layout stack && sketchybar --trigger yabai_layout_cha
 ctrl + alt - 7 : yabai -m window --focus stack.next
 ctrl + alt - 1 : yabai -m window --focus stack.prev 
 
-
 ctrl + cmd - n : yabai -m space --create
 ctrl + cmd - q : yabai -m space --destroy
 ctrl + cmd + shift - n : yabai -m space --create && \
 			                index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
 			                yabai -m window --space "${index}" && \
 			                yabai -m space --focus "${index}"
-
 
 alt + shift - r : yabai -m space --focus recent
 cmd - 1 : yabai -m space --focus 1
@@ -82,7 +74,6 @@ cmd - 7 : yabai -m space --focus 7
 cmd - 8 : yabai -m space --focus 8
 cmd - 9 : yabai -m space --focus 9
 
-
 cmd + shift - 1 : yabai -m window --space 1; yabai -m space --focus 1; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
 cmd + shift - 2 : yabai -m window --space 2; yabai -m space --focus 2; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
 cmd + shift - 3 : yabai -m window --space 3; yabai -m space --focus 3; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
@@ -93,19 +84,16 @@ cmd + shift - 7 : yabai -m window --space 7; yabai -m space --focus 7; sleep 0.3
 cmd + shift - 8 : yabai -m window --space 8; yabai -m space --focus 8; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
 cmd + shift - 9 : yabai -m window --space 9; yabai -m space --focus 9; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
 
-
 alt - r : yabai -m window --focus recent
 alt - h : yabai -m window --focus west || $(yabai -m window --focus west; yabai -m display --focus west)
 alt - j : yabai -m window --focus south || $(yabai -m window --focus south; yabai -m display --focus south)
 alt - k : yabai -m window --focus north || $(yabai -m window --focus north; yabai -m display --focus north)
 alt - l : yabai -m window --focus east || $(yabai -m window --focus east; yabai -m display --focus east)
 
-
 ctrl + alt - h : yabai -m window --swap west  || $(yabai -m window --display west; yabai -m display --focus west)
 ctrl + alt - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
 ctrl + alt - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
 ctrl + alt - l : yabai -m window --swap east  || $(yabai -m window --display east; yabai -m display --focus east)
-
 
 # Float / Un-float window and center on screen
 alt - u : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2
@@ -135,7 +123,6 @@ alt + shift - z : yabai -m window --toggle zoom-fullscreen
 
 alt - m : yabai -m space --mirror y-axis
 shift + alt - m : yabai -m space --mirror x-axis
-
 
 # STICKY Picture-in-Picture
 alt - i : yabai -m window --toggle sticky --toggle pip
