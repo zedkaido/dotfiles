@@ -6,9 +6,12 @@ if [[ $# -eq 1 ]]; then
 	selected=$1
 else
 	project_dirs=(
+		~/d
 		~/sr
 		~/wit
+		~/pro
 		~/zk
+		~/zk/sr
 		~/dotfiles
 		~/dotfiles/vim/.vim
 		~/dotfiles/tmux/.config/tmux
