@@ -56,11 +56,10 @@ fi
 # --------
 # SERVICES
 # --------
-gpgconf --launch gpg-agent
+if [ ! -S "$HOME/.gnupg/S.gpg-agent" ]; then
+  gpgconf --launch gpg-agent
+fi
 
-# z | NAVIGATE with ease
-eval "$(zoxide init zsh)"
-
-# --------
-# ApPeNded
-# --------
+# ------------
+# ApPeNded ...
+# ------------
