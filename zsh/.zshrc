@@ -30,6 +30,7 @@ zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 
 bindkey "\e\177" backward-kill-word # Option + Backspace
+bindkey "^H" backward-kill-word # Ctrl + Backspace
 bindkey "^k" kill-line
 
 bindkey "^r" history-incremental-pattern-search-backward
