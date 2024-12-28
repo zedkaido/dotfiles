@@ -1,3 +1,6 @@
 #!/bin/zsh
 
-find /System/Applications /Applications -name "*.app" -maxdepth 2 | fzy | xargs -I{} open "{}" && exit
+find /System/Applications\
+	  /Applications\
+	  /System/Library/CoreServices\
+	  -name "*.app" -maxdepth 2 | fzy | xargs -I{} open "{}" && exit
