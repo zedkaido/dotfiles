@@ -2,13 +2,20 @@
 
 open_sdcv() sdcv 
 
+
 lookup_offline_word_definition() {
 	word=$1
-	if [[ -z $word ]]; then
-		printf "Definition for: "
-		read word
+	if [[ -n $word ]]; then
+		sdcv "$word"
+	else 
+		sdcv
 	fi
-	sdcv $word | vim - -R 
+	
+	# if output=$(sdcv --no-gui "$word"); then
+	# 	vim - -R <<< "$output"
+	# else
+	# 	printf "Word '%s' not found in the dictionary.\n" "$word"
+	# fi
 }
 
 lookup_word_synonyms() {
