@@ -107,7 +107,8 @@ colorscheme suckless
 
 mark b ~/bin/
 mark h ~/
-mark d ~/Downloads
+mark d ~/d/
+mark D ~/Downloads
 mark w ~/wit
 mark p ~/pro
 mark v /Volumes
@@ -178,18 +179,18 @@ command! reload :write | restart full
 
 " pdf
 filetype {*.pdf},<application/pdf>
-         \ {Open in Preview}
-			\ open -a Preview.app,
+         \ {Open in Default (Preview.app)}
+         \ open,
          \ {Open in sioeyk}
-			\ open -a sioyek.app,
+         \ open -a sioyek.app,
 fileviewer {*.pdf},<application/pdf> pdftotext -nopgbrk %c -
 
 " epub
 filetype {*.epub},<application/epub>
-			\ {Open in bk} 
-			\ bk,
-			\ {Open in sioeye}
-			\ open -a sioyek.app,
+         \ {Open in bk} 
+         \ bk,
+         \ {Open in sioeye}
+         \ open -a sioyek.app,
 fileviewer {*.epub},<application/epub> bk
 
 " PostScript
