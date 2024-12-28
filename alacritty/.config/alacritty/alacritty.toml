@@ -1,5 +1,5 @@
 general.import = [
-	"~/.config/alacritty/colors/suckless-light.toml",
+	"~/.config/alacritty/colors/suckless-blue.toml",
 ]
 
 general.live_config_reload = true  # Default: true
@@ -11,7 +11,7 @@ dimensions = { columns = 0, lines = 0 }  # Default: columns = 0, lines = 0
 position = "None"  # Default: "None"
 padding = { x = 4, y = 4 }  # Default: x = 0, y = 0
 dynamic_padding = false  # Default: false
-decorations = "Buttonless"  # Options: "Full" | "None" | "Buttonless"
+decorations = "None"  # Options: "Full" | "None" | "Buttonless"
 opacity = 1.0  # Default: 1.0
 blur = false # Default: false
 startup_mode = "Windowed"  # Default: "Windowed"
@@ -27,7 +27,7 @@ history = 10000  # Default: 10000
 multiplier = 3  # Default: 3
 
 [font]
-normal = { family = "Berkeley Mono", style = "Regular" }  # Default for Linux/BSD: "monospace", Regular
+normal = { family = "TX-02", style = "Regular" }  # Default for Linux/BSD: "monospace", Regular
 bold = { style = "Bold" }  # Inherits family from normal, Default style: Bold
 italic = { style = "Italic" }  # Inherits family from normal, Default style: Italic
 bold_italic = { style = "Bold Italic" }  # Inherits family from normal, Default style: Bold Italic
