@@ -1,0 +1,20 @@
+theme = "suckless-blue"
+
+window-decoration = false
+window-width = 80
+window-height = 60 
+
+font-size = 18
+font-family = "TX-02"
+font-style = "Regular"
+font-style-bold = "SemiBold"
+font-style-italic = "Oblique"
+font-style-bold-italic = "Bold Oblique"
+
+cursor-style = "block"
+cursor-style-blink = false
+
+shell-integration = none
+confirm-close-surface = false
+mouse-hide-while-typing = true
+macos-auto-secure-input = false

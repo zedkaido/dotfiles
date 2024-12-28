@@ -2,26 +2,26 @@
 # APLICATION TRIGGERS
 # -------------------
 alt - w : open ~/
-alt - y : open -n /Applications/Alacritty.app
-alt - o : ~/.local/bin/alacritty-window launcher
+alt - y : open -n /Applications/Ghostty.app
+alt - o : ~/.local/bin/term-window launcher
 
-cmd - space : ~/.local/bin/alacritty-window cmd
+cmd - space : ~/.local/Bin/term-window cmd
 
-hyper - o : ~/.local/bin/alacritty-window www
-hyper - e : ~/.local/bin/alacritty-window bweb
+hyper - o : ~/.local/bin/term-window www
+hyper - e : ~/.local/bin/term-window bweb
 
-hyper - c : ~/.local/bin/alacritty-window ch 
+hyper - c : ~/.local/bin/term-window ch 
 hyper - a : ~/.local/bin/ch append # append current clipboard content to ch
 
 hyper - d : ~/.local/bin/toggle-dark-theme
-hyper - q : ~/.local/bin/alacritty-window colorscheme
+hyper - q : ~/.local/bin/term-window colorscheme
 
-hyper - p : ~/.local/bin/alacritty-window pass
-hyper - m : ~/.local/bin/alacritty-window dictionary # m for meaning
-hyper - b : ~/.local/bin/alacritty-window bookmarks 
-hyper - s : ~/.local/bin/alacritty-window snippets
-hyper - w : ~/.local/bin/alacritty-window webcam
-hyper - r : ~/.local/bin/alacritty-window radio
+hyper - p : ~/.local/bin/term-window pass
+hyper - m : ~/.local/bin/term-window dictionary # m for meaning
+hyper - b : ~/.local/bin/term-window bookmarks 
+hyper - s : ~/.local/bin/term-window snippets
+hyper - w : ~/.local/bin/term-window webcam
+hyper - r : ~/.local/bin/term-window radio
 
 hyper - t : screencapture -ip
 hyper - i : opens soundsource panel

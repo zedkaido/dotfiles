@@ -15,11 +15,11 @@ if [ -z "$1" ]; then
 fi
 
 echo "SETTING COLORSCHEME :: $selected_scheme"
-# ----------------------------
-# ALACRITTY COLORSCHEME UPDATE
-# ----------------------------
-alacritty_colors_path='~/.config/alacritty/colors/'
-sed -i .backup -E "s|$alacritty_colors_path.+|$alacritty_colors_path$selected_scheme.toml\",|g" ~/.config/alacritty/alacritty.toml
+
+# -------------------------
+# GHOSTTY COLORSCHME UPDATE
+# -------------------------
+sed -i .backup -E "s/theme.+/theme = \"$selected_scheme\"/g" ~/dotfiles/ghostty/.config/ghostty/config
 
 # ----------------------
 # VIM COLORSCHEME UPDATE
@@ -29,5 +29,11 @@ sed -i .backup -E "s/colorscheme.+/colorscheme $selected_scheme/g" ~/dotfiles/vi
 # -----------------------
 # TMUX COLORSCHEME UPDATE
 # -----------------------
-tmux_colors_path='~/.config/tmux/colors/'
-sed -i .backup -E "s|source $tmux_colors_path.+|source $tmux_colors_path$selected_scheme.conf|g" ~/.config/tmux/tmux.conf
+tmux_colors_path="~/.config/tmux/colors/"
+sed -i .backup -E "s|source $tmux_colors_path.+|source $tmux_colors_path$selected_scheme.conf|g" ~/dotfiles/tmux/.config/tmux/tmux.conf
+
+# ----------------------------
+# ALACRITTY COLORSCHEME UPDATE
+# ----------------------------
+alacritty_colors_path="~/.config/alacritty/colors/"
+sed -i .backup -E "s|$alacritty_colors_path.+|$alacritty_colors_path$selected_scheme.toml\",|g" ~/dotfiles/alacritty/.config/alacritty/alacritty.toml

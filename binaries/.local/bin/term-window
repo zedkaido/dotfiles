@@ -1,14 +1,15 @@
 #!/bin/zsh
 
-floating_window() {
-	title="f:$1" && cmd=$2
+floating_window() 
+{
+	title="f:$1" && cmd="$2"
 	if [ -z $title ] || [ -z $cmd ]; then
 		echo "ERROR: title and cmd required"
 		exit 1
 	fi
-	open -n /Applications/Alacritty.app \
-		--args --title $title \
-		-e zsh -c $cmd \
+	open -n /Applications/Ghostty-Launcher.app \
+		--args --title=$title \
+		-e zsh -c $cmd
 }
 
 window_types=(
@@ -34,7 +35,7 @@ fi
 case "$chosen_window" in
 	ch) floating_window "ch" "~/.local/bin/ch" ;;
 	launcher) floating_window "launcher" "~/.local/bin/app-open" ;;
-	cmd) floating_window "cmd" "tmux a -t cmd || tmux new -s cmd" ;;
+	cmd) floating_window "cmd" "~/.local/bin/cmd" ;;
 	colorscheme) floating_window "colorscheme" "~/.local/bin/colorscheme" ;;
 	pass) floating_window "pass" "~/.local/bin/pass-copy" ;;
 	bweb) floating_window "bweb" "tmux a -t bweb || tmux new -s bweb" ;;
