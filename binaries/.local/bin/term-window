@@ -7,7 +7,7 @@ floating_window()
 		echo "ERROR: title and cmd required"
 		exit 1
 	fi
-	open -n /Applications/Ghostty-Launcher.app \
+	open -n /Applications/Ghostty.app \
 		--args --title=$title \
 		-e zsh -c $cmd
 }
