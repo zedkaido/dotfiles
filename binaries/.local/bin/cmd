@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+tmux a -t cmd || tmux new -s cmd
