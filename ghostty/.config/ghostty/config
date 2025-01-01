@@ -18,3 +18,4 @@ shell-integration = none
 confirm-close-surface = false
 mouse-hide-while-typing = true
 macos-auto-secure-input = false
+quit-after-last-window-closed = true
