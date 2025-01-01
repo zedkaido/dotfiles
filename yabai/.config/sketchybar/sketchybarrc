@@ -8,8 +8,8 @@ sketchybar --bar height=24 \
                  blur_radius=0 \
                  position=top \
                  sticky=off \
-                 padding_left=10  \
-                 padding_right=10 \
+                 padding_left=0  \
+                 padding_right=0 \
                  color=0x15000000 \
                  display=all
 
