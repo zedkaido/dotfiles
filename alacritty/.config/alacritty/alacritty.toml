@@ -32,7 +32,7 @@ bold = { style = "Bold" }  # Inherits family from normal, Default style: Bold
 italic = { style = "Italic" }  # Inherits family from normal, Default style: Italic
 bold_italic = { style = "Bold Italic" }  # Inherits family from normal, Default style: Bold Italic
 size = 18
-offset = { x = 0, y = 0 }  # Default: x = 0, y = 0
+offset = { x = 1, y = 0 }  # Default: x = 0, y = 0
 glyph_offset = { x = 0, y = 0 }  # Default: x = 0, y = 0
 builtin_box_drawing = true  # Default: true
 
