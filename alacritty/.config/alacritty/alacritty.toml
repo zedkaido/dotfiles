@@ -2,71 +2,71 @@ general.import = [
 	"~/.config/alacritty/colors/suckless-blue.toml",
 ]
 
-general.live_config_reload = true  # Default: true
+general.live_config_reload = true
 
 [env]
 
 [window]
-dimensions = { columns = 0, lines = 0 }  # Default: columns = 0, lines = 0
-position = "None"  # Default: "None"
-padding = { x = 4, y = 4 }  # Default: x = 0, y = 0
-dynamic_padding = false  # Default: false
+dimensions = { columns = 0, lines = 0 }
+position = "None"
+padding = { x = 4, y = 2 }
+dynamic_padding = false
 decorations = "None"  # Options: "Full" | "None" | "Buttonless"
-opacity = 1.0  # Default: 1.0
-blur = false # Default: false
-startup_mode = "Windowed"  # Default: "Windowed"
+opacity = 1.0
+blur = false
+startup_mode = "Windowed"
 title = "Λ"
-dynamic_title = true  # Default: true
-class = { instance = "Alacritty", general = "Alacritty" }  # Default: instance = "Alacritty", general = "Alacritty"
-decorations_theme_variant = "None"  # Default: "None"
-resize_increments = false  # Default: false
-option_as_alt = "Both"  # Default: "None"
+dynamic_title = true
+class = { instance = "Alacritty", general = "Alacritty" }
+decorations_theme_variant = "None"
+resize_increments = false
+option_as_alt = "Both"
 
 [scrolling]
-history = 10000  # Default: 10000
-multiplier = 3  # Default: 3
+history = 10000
+multiplier = 3
 
 [font]
-normal = { family = "TX-02", style = "Regular" }  # Default for Linux/BSD: "monospace", Regular
-bold = { style = "Bold" }  # Inherits family from normal, Default style: Bold
-italic = { style = "Italic" }  # Inherits family from normal, Default style: Italic
-bold_italic = { style = "Bold Italic" }  # Inherits family from normal, Default style: Bold Italic
+normal = { family = "TX-02", style = "Regular" }
+bold = { style = "Bold" }
+italic = { style = "Italic" }
+bold_italic = { style = "Bold Italic" }
 size = 18
 offset = { x = 1, y = 0 }  # Default: x = 0, y = 0
 glyph_offset = { x = 0, y = 0 }  # Default: x = 0, y = 0
-builtin_box_drawing = true  # Default: true
+builtin_box_drawing = true
 
 [colors]
 transparent_background_colors = false
 draw_bold_text_with_bright_colors = false
 
 [bell]
-animation = "Linear"  # Default: "Linear"
-duration = 0  # Default: 0
-color = "#ffffff"  # Default: "#ffffff"
-command = "None"  # Default: "None"
+animation = "Linear"
+duration = 0 
+color = "#ffffff"
+command = "None"
 
 [selection]
-semantic_escape_chars = ",│`|:\"' ()[]{}<>\\t"  # Default: ",│`|:\"' ()[]{}<>\\t"
-save_to_clipboard = false  # Default: false
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\\t"
+save_to_clipboard = false
 
 [cursor]
-style = { shape = "Block", blinking = "Off" }  # Default: shape = "Block", blinking = "Off"
-vi_mode_style = "None"  # Default: "None"
-blink_interval = 750  # Default: 750
-blink_timeout = 0  # Default: 5
-unfocused_hollow = true  # Default: true
-thickness = 0.15  # Default: 0.15
+style = { shape = "Block", blinking = "Off" }
+vi_mode_style = "None"
+blink_interval = 750
+blink_timeout = 0
+unfocused_hollow = true
+thickness = 0.15
 
 [terminal]
-osc52 = "CopyPaste"  # Default: "OnlyCopy"
+osc52 = "CopyPaste"
 
 [mouse]
-hide_when_typing = true  # Default: false
+hide_when_typing = true
 bindings = []
 
 [hints]
-alphabet = "jfkdls;ahgurieowpq"  # Default: "jfkdls;ahgurieowpq"
+alphabet = "jfkdls;ahgurieowpq"
 
 [keyboard]
 bindings = [
