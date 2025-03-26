@@ -1,4 +1,4 @@
-> NO WARRANTY!
+> WARNING: USE AT YOUR OWN RISK
 
 ```sh
 stow <dir>
