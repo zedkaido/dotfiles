@@ -38,8 +38,9 @@ do
   sketchybar --add space space.$sid left \
              --set space.$sid associated_space=$sid \
                    icon=${SPACE_ICONS[i]} \
-                   background.color=0xff000087 \
-                   background.corner_radius=2 \
+                   icon.color=0xffb2b2b2 \
+                   background.color=0xff343434 \
+                   background.corner_radius=0 \
                    background.height=20 \
                    background.drawing=off \
                    label.drawing=off \
