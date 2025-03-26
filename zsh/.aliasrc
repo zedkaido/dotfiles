@@ -6,9 +6,12 @@ alias cht='cht.sh'
 
 alias svim='sudo vim'
 alias km='vim +KM'
-alias note='vim +KMT'
+alias journal='vim +JR'
+alias note='vim +KMNote'
 alias osx='vim +OSX'
 alias webm='vim +WEBM'
+
+alias e='emacs'
 
 alias timer='countdown'
 
