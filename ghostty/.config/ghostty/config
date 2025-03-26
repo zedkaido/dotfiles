@@ -22,3 +22,5 @@ macos-auto-secure-input = false
 macos-option-as-alt = true
 
 quit-after-last-window-closed = true
+
+keybind = cmd+t=ignore
