@@ -372,6 +372,9 @@ filetype * vim
 " Sample keyboard mappings
 " ------------------------------------------------------------------------------
 
+" tpope/vim-vinegar :: `-` 
+nnoremap - h
+
 " Start shell in current directory
 nnoremap s :shell<cr>
 
