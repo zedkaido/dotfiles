@@ -115,13 +115,13 @@ ctrl + alt - right : yabai -m window --resize left:60:0
 ctrl + alt - up : yabai -m window --resize top:0:-60
 ctrl + alt - down : yabai -m window --resize top:0:60
 
-ctrl + alt + shift - left : yabai -m window --move rel:-20:0
-ctrl + alt + shift - right : yabai -m window --move rel:20:0
-ctrl + alt + shift - up : yabai -m window --move rel:0:-20
-ctrl + alt + shift - down : yabai -m window --move rel:0:20
+cmd + alt + ctrl + shift - left : yabai -m window --move rel:-20:0
+cmd + alt + ctrl + shift - right : yabai -m window --move rel:20:0
+cmd + alt + ctrl + shift - up : yabai -m window --move rel:0:-20
+cmd + alt + ctrl + shift - down : yabai -m window --move rel:0:20
 
-alt - z : yabai -m window --toggle zoom-parent
-alt + shift - z : yabai -m window --toggle zoom-fullscreen
+alt - z : yabai -m window --toggle zoom-fullscreen
+alt + shift - z : yabai -m window --toggle zoom-parent
 
 alt - m : yabai -m space --mirror y-axis
 shift + alt - m : yabai -m space --mirror x-axis
@@ -148,7 +148,7 @@ alt - t : yabai -m window --toggle sticky
 # [USED] alt - a
 # [USED] alt - b
 # alt - c
-# [USED] alt - d
+# [UESD] alt - d (DASH)
 # [USED] alt - e
 # [USED] alt - f
 # alt - g
