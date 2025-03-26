@@ -14,11 +14,12 @@ c.url.start_pages = 'file:///Users/x/.local/share/blank.html'
 c.auto_save.session = True
 c.session.lazy_restore = True
 
-c.editor.command = ['alacritty', '-e', 'vim', '-f', '{file}']
+term_open_cmd = 'alacritty'
+c.editor.command = [term_open_cmd, '-e', 'vim', '-f', '{file}']
 
 config.set("fileselect.handler", "external")
-config.set("fileselect.single_file.command", ['alacritty', '-e', 'vifm', '--select', '{}'])
-config.set("fileselect.multiple_files.command", ['alacritty', '-e', 'vifm', '--choose-files', '{}'])
+config.set("fileselect.single_file.command", [term_open_cmd, '-e', 'vifm', '--select', '{}'])
+config.set("fileselect.multiple_files.command", [term_open_cmd, '-e', 'vifm', '--choose-files', '{}'])
 
 c.url.searchengines = {
 	'DEFAULT': 'https://duckduckgo.com/?q={}',
