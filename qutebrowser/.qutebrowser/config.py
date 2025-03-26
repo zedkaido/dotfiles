@@ -22,7 +22,8 @@ config.set("fileselect.single_file.command", [term_open_cmd, '-e', 'vifm', '--se
 config.set("fileselect.multiple_files.command", [term_open_cmd, '-e', 'vifm', '--choose-files', '{}'])
 
 c.url.searchengines = {
-	'DEFAULT': 'https://duckduckgo.com/?q={}',
+	'DEFAULT': 'https://xes.zedkaido.com/?q={}',
+	'xes': 'https://xes.zedkaido.com/?q={}',
 	'www': 'https://wiby.me/?q={}',
 	'cows': 'https://swisscows.com/web/query?={}',
 	'b': 'https://search.brave.com/search?q={}',
