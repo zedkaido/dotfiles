@@ -57,7 +57,7 @@ fi
 # SERVICES
 # --------
 if [ ! -S "$HOME/.gnupg/S.gpg-agent" ]; then
-  gpgconf --launch gpg-agent
+	gpgconf --launch gpg-agent
 fi
 
 # ------------

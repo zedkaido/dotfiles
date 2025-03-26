@@ -9,21 +9,7 @@ function git_branch() {
 	fi
 }
 
-funciton relative_path() {
-	# relative path with :: echo "%~"
-        echo "%/"
-}
-
-function lambda_symbol() {
-	echo "λ"
-}
-
-function vi_mode_indicator() {
-	if [[ -n "${KEYMAP}" && "${KEYMAP}" == 'vicmd' ]]; then
-		echo '<V>'
-	fi
-}
-
+LAMBDA_SYMBOL=$'\λ'
 NEWLINE=$'\n'
-PROMPT='$(relative_path) $(git_branch) $(vi_mode_indicator)${NEWLINE}$(lambda_symbol) '
-PROMPT="$NEWLINE$PROMPT"
+
+PROMPT='$(pwd) $(git_branch)${NEWLINE}${LAMBDA_SYMBOL} '
