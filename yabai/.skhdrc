@@ -2,7 +2,9 @@
 # APLICATION TRIGGERS
 # -------------------
 alt - w : open ~/
-alt - y : open -n /Applications/Ghostty.app
+
+alt - y : open -n /Applications/Alacritty.app
+alt - g : open -n /Applications/Ghostty.app
 alt - o : ~/.local/bin/term-window launcher
 
 cmd - space : ~/.local/Bin/term-window cmd
