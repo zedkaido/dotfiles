@@ -1,5 +1,10 @@
 # vim: filetype=zsh
 
+precmd() {
+	# %n@%m"
+	print -Pn "\e]0;%~\a"
+}
+
 source ~/.zsh_prompt
 source ~/.aliasrc
 source ~/.funcrc

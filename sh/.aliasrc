@@ -1,8 +1,6 @@
-# vim: filetype=zsh
+# vim: filetype=sh
 
-alias szsh='source ~/.zshrc'
-
-alias cht='cht.sh'
+# alias cht='cht.sh'
 
 alias svim='sudo vim'
 alias km='vim +KM'
@@ -12,11 +10,11 @@ alias osx='vim +OSX'
 alias webm='vim +WEBM'
 
 alias e='emacs'
+alias ed='emacs --daemon'
+alias ec='emacsclient -t'
+alias ek="emacsclient -e '(kill-emacs)'"
 
 alias timer='countdown'
-
-alias t='find /System/Applications /Applications ~/Applications -name "*.app" -maxdepth 2 | fzy | xargs -I{} open "{}" && exit'
-alias of='open . && exit'
 
 alias q='exit'
 alias cs='clear;ls'
@@ -70,9 +68,9 @@ alias mpvhd='mpv --ytdl-format="bestvideo[height<=1080][vcodec!=vp9]+bestaudio/b
 # -----------------------------------------------
 alias empty-trash="osascript -e 'tell application \"Finder\" to empty trash'"
 
-alias os-sleep='pmset sleepnow'
+alias os-sleep='"Are you sure (sleep)?" "pmset sleepnow"' 
 alias os-display-sleep='pmset displaysleepnow'
-alias os-shut-down='sudo shutdown -h now'
+alias os-shut-down='prompt "Are you sure (shutdown)?" "sudo shutdown -h now"'
 
 alias turnEthernetOff='networksetup -setnetworkserviceenabled "Ethernet" off'
 alias turnEthernetOn='networksetup -setnetworkserviceenabled "Ethernet" on'
