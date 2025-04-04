@@ -1,71 +1,16 @@
-# https://github.com/FelixKratz/dotfiles
+#!/usr/bin/env bash
 
-PLUGIN_DIR="$CONFIG_DIR/plugins"
+./configs/defaults.sh
 
-sketchybar --add event yabai_layout_changed
+# LEFT
+./configs/layout-type.sh
+./configs/spaces.sh
+./configs/focus.sh
+./configs/modal.sh
 
-sketchybar --bar height=24 \
-                 blur_radius=0 \
-                 position=top \
-                 sticky=off \
-                 padding_left=0  \
-                 padding_right=0 \
-                 color=0x15000000 \
-                 display=all
-
-sketchybar --default icon.font="Berkeley Mono:Bold:14.0" \
-                     icon.color=0xff888888 \
-                     label.font="Berkeley Mono:Bold:14.0" \
-                     label.color=0xff888888 \
-                     padding_left=5 \
-                     padding_right=5 \
-                     label.padding_left=4 \
-                     label.padding_right=4 \
-                     icon.padding_left=3 \
-                     icon.padding_right=4
-
-
-sketchybar --add item yabai_layout left \
-           --set yabai_layout script="$PLUGIN_DIR/layout-type.sh" \
-           --subscribe yabai_layout space_change yabai_layout_changed display_change
-
- 
-SPACE_ICONS=("I" "II" "III" "IV" "V" "VI" "VII" "VIII" "IX" "X" "XI" "XII" "XIII" "XIV" "XV")
-
-for i in "${!SPACE_ICONS[@]}"
-do
-  sid=$(($i+1))
-  sketchybar --add space space.$sid left \
-             --set space.$sid associated_space=$sid \
-                   icon=${SPACE_ICONS[i]} \
-                   icon.color=0xffb2b2b2 \
-                   background.color=0xff343434 \
-                   background.corner_radius=0 \
-                   background.height=20 \
-                   background.drawing=off \
-                   label.drawing=off \
-                   script="$PLUGIN_DIR/space.sh" \
-                   click_script="yabai -m space --focus $sid"
-done
-
-
-sketchybar --add item space_separator layout_type left \
-           --add item front_app left \
-           --set space_separator icon=">" \
-                 padding_left=10 \
-                 padding_right=10 \
-                 label.drawing=off \
-           --set front_app script="$PLUGIN_DIR/front-app.sh" \
-                 icon.drawing=off \
-           --subscribe front_app front_app_switched
-
-
-sketchybar --add item clock right \
-           --set clock update_freq=10 script="$PLUGIN_DIR/clock.sh" \
-           --add item battery right \
-           --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-           --add item volume right \
-           --set volume script="$PLUGIN_DIR/volume.sh" \
-           --subscribe volume volume_change \
+# RIGHT
+./configs/time.sh
+./configs/battery.sh
+./configs/volume.sh
 
 sketchybar --update
