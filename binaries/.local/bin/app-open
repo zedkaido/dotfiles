@@ -1,6 +1,6 @@
-#!/bin/zsh
+#!/usr/bin/env sh
 
-find /System/Applications\
-	  /Applications\
-	  /System/Library/CoreServices\
-	  -name "*.app" -maxdepth 2 | fzy | xargs -I{} open "{}" && exit
+find /Applications \
+     /System/Applications \
+     ~/Applications \
+     -name "*.app" -maxdepth 2 | dmenu -i -p "OPEN APP" | xargs -I{} open "{}" && exit

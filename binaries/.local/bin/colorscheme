@@ -1,14 +1,10 @@
-#!/bin/zsh
+#!/usr/bin/env sh
 
-colorschemes=(
-	suckless-dark
-	suckless-light
-	suckless-blue
-)
+colorschemes="suckless-dark suckless-light suckless-blue"
 
 selected_scheme=$1
 if [ -z "$1" ]; then 
-	selected_scheme=$(printf "%s\n" "${colorschemes[@]}" | fzy)
+	selected_scheme=$(printf "%s\n" $colorschemes | dmenu)
 	if [ -z $selected_scheme ]; then
 		exit 0
 	fi

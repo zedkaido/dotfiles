@@ -1,9 +1,9 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 echo "[TMUX] Select Project:"
 
-if [[ $# -eq 1 ]]; then
-	selected=$1
+if [ $# -eq 1 ]; then
+	selected="$1"
 else
 	project_dirs=(
 		~/d
@@ -38,23 +38,23 @@ else
 	selected=$(find "${search_dirs[@]}" -mindepth 0 -maxdepth 1 -type d "${ignore_conditions[@]}" | fzy)
 fi
 
-if [[ -z $selected ]]; then
+if [ -z "$selected" ]; then
 	exit 0
 fi
 
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-	tmux new-session -s $selected_name -c $selected
+if [ -z "$TMUX" ] && [ -z "$tmux_running" ]; then
+	tmux new-session -s "$selected_name" -c "$selected"
 	exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-	tmux new-session -ds $selected_name -c $selected
+if ! tmux has-session -t="$selected_name" 2> /dev/null; then
+	tmux new-session -ds "$selected_name" -c "$selected"
 fi
 
-if [[ -n "${TMUX}" ]]; then
+if [ -n "${TMUX}" ]; then
 	tmux switch-client -t "$selected_name"
 else
 	tmux a -t "$selected_name"

@@ -1,39 +1,34 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
-open_sdcv() sdcv 
-
+open_sdcv() {
+	sdcv 
+}
 
 lookup_offline_word_definition() {
 	word=$1
-	if [[ -n $word ]]; then
-		sdcv "$word"
-	else 
-		sdcv
+	if [ -z "$word" ]; then
+		printf "Definition for: "
+		read -r word
 	fi
-	
-	# if output=$(sdcv --no-gui "$word"); then
-	# 	vim - -R <<< "$output"
-	# else
-	# 	printf "Word '%s' not found in the dictionary.\n" "$word"
-	# fi
+	sdcv -n "$word" | vim - -R
 }
 
 lookup_word_synonyms() {
 	word=$1
-	if [[ -z $word ]]; then 
+	if [ -z "$word" ]; then 
 		printf "Synonyms for: "
-		read word
+		read -r word
 	fi
 	www "$word !synonyms"
 }
 
 lookup_online_word_definition() {
 	word=$1
-	if [[ -z $word ]]; then
+	if [ -z "$word" ]; then
 		printf "(Online) Definition for: "
-		read word
+		read -r word
 	fi
-	dict $word | vim - -R
+	dict "$word" | vim - -R
 }
 
 prompt() {
@@ -58,14 +53,14 @@ case "$1" in
 	sdcv) open_sdcv ;;
 	offline) open_sdcv ;;
 
-	def) lookup_offline_word_definition $2 ;;
-	definition) lookup_offline_word_definition $2 ;;
+	def) lookup_offline_word_definition "$2" ;;
+	definition) lookup_offline_word_definition "$2" ;;
 
-	syn) lookup_word_synonyms $2 ;;
-	synonym) lookup_word_synonyms $2 ;;
+	syn) lookup_word_synonyms "$2" ;;
+	synonym) lookup_word_synonyms "$2" ;;
 
-	dict) lookup_online_word_definition $2 ;;
-	online) lookup_online_word_definition $2 ;;
+	dict) lookup_online_word_definition "$2" ;;
+	online) lookup_online_word_definition "$2" ;;
 
 	*) prompt ;;
-esac	
+esac

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env sh
 
 if ! command -v fzy >/dev/null 2>&1; then
 	echo "fzy required"

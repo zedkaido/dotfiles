@@ -1,21 +1,21 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 echo "[TMUX] Select Session:"
 
-if [[ $# -eq 1 ]]; then
-	selected=$1
+if [ $# -eq 1 ]; then
+	selected="$1"
 else
 	selected=$(tmux list-sessions -F "#{session_name}" | fzy)
 fi
 
-if [[ -z $selected ]]; then
+if [ -z "$selected" ]; then
 	exit 0
 fi
 
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+if [[ -z "$TMUX" ]] && [[ -z "$tmux_running" ]]; then
 	tmux new-session -s "$selected_name" -c "$selected"
 	exit 0
 fi

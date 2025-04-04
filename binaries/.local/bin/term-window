@@ -1,10 +1,10 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 floating_window() 
 {
 	title="f:$1" && cmd="$2"
-	if [ -z $title ] || [ -z $cmd ]; then
-		echo "ERROR: title and cmd required"
+	if [ -z "$title" ] || [ -z "$cmd" ]; then
+		echo "ERROR: \$1:title ANd \$2:cmd required"
 		exit 1
 	fi
 	open -n /Applications/Alacritty.app/ \
@@ -15,6 +15,7 @@ floating_window()
 window_types=(
 	ch # clipboard history
 	launcher
+	yabai-fzy-window
 	cmd
 	colorscheme
 	pass
@@ -35,6 +36,7 @@ fi
 case "$chosen_window" in
 	ch) floating_window "ch" "~/.local/bin/ch" ;;
 	launcher) floating_window "launcher" "~/.local/bin/app-open" ;;
+	yabai-fzy-window) floating_window "yabai-fzy-window" "~/.local/bin/yabai-fzy-window" ;;
 	cmd) floating_window "cmd" "~/.local/bin/cmd" ;;
 	colorscheme) floating_window "colorscheme" "~/.local/bin/colorscheme" ;;
 	pass) floating_window "pass" "~/.local/bin/pass-copy" ;;

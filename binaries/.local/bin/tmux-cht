@@ -1,13 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 echo "[CHT] Choose Language:"
 language=$(cat ~/.config/tmux/tmux-cht-languages ~/.config/tmux/tmux-cht-commands | fzy)
-if [[ -z $language ]]; then
+if [ -z $language ]; then
 	exit 0
 fi
 
 read -p "Enter Query: " query
-if [[ -z $query ]]; then
+if [ -z $query ]; then
 	exit 0
 fi
 

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env sh
 
 OS=$(uname -s)
 BOOKMARKS_FILE="$HOME/.qutebrowser/bookmarks/urls"

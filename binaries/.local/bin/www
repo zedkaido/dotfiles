@@ -1,9 +1,9 @@
-#!/bin/zsh
+#!/usr/bin/env sh
 
 query=$1
-if [[ -z $query ]]; then
+if [ -z "$query" ]; then
 	echo -n "www :: "
 	read query
 fi
 query="$query"
-qutebrowser --target=tab $query 
+qutebrowser --target=tab "$query"
