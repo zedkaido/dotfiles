@@ -129,6 +129,7 @@ c.colors.downloads.start.fg = '#87ff00'
 c.colors.downloads.stop.bg = '#000000'
 c.colors.downloads.stop.fg = '#ffffff'
 
+
 ## Position of the tab bar.
 ## Type: Position
 ## Valid values:
@@ -179,8 +180,8 @@ def nunmap(key):
 nunmap("'")
 
 # real quickmarks
-nmap("'51", ':open --tab localhost:5173')
-nmap("'bl", ':open file:///Users/x/.local/share/blank.html') 
+nmap(";51", ':open --tab localhost:5173')
+nmap(";bl", ':open file:///Users/x/.local/share/blank.html') 
 
 c.aliases = {'q': 'quit', 'w': 'session-save', 'wq': 'quit --save'}
 c.aliases['archive'] = 'open --tab https://web.archive.org/save/{url}'
@@ -192,11 +193,12 @@ c.aliases['vgc'] = 'open https://www.google.com/search?q=cache:{url}'
 # Bindings for normal mode
 nmap("ge", 'edit-url')
 
-nmap(',m', 'spawn mpv {url}')
-nmap(',M', 'hint links spawn mpv {hint-url}')
-nmap(',D', 'hint links spawn st -e youtube-dl {hint-url}')
+nmap(';mpv', 'spawn mpv {url}')
+nmap(';mf', 'hint links spawn mpv {hint-url}')
+nmap(';dy', 'hint links spawn st -e youtube-dl {url}')
+nmap(';df', 'hint links spawn st -e youtube-dl {hint-url}')
 
-nmap('t', 'set-cmd-text -s :open -t')
+nmap('t', 'cmd-set-text -s :open -t')
 nmap('xb', 'config-cycle statusbar.show always never')
 nmap('xt', 'config-cycle tabs.show always never')
 nmap('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
@@ -214,3 +216,9 @@ config.set('content.javascript.enabled', True, 'chrome-devtools://*')
 config.set('content.javascript.enabled', True, 'devtools://*')
 config.set('content.javascript.enabled', True, 'chrome://*/*')
 config.set('content.javascript.enabled', True, 'qute://*/*')
+
+c.content.javascript.log_message.excludes = {
+	"userscript:_qute_stylesheet": ["*Refused to apply inline style because it violates the following Content Security Policy directive: *"],
+	"userscript:_qute_js": ["*TrustedHTML*"],
+}
+
