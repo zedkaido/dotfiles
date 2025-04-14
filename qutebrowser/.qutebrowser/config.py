@@ -138,17 +138,18 @@ c.colors.downloads.stop.fg = '#ffffff'
 ##   - left
 ##   - right
 c.tabs.position = 'top'
-c.fonts.default_family = '"Berkeley Mono"'
+c.fonts.default_family = '"TX-02"'
 c.fonts.default_size = '16pt'
-c.fonts.completion.entry = '16pt "Berkeley Mono"'
-c.fonts.debug_console = 'default_size "Berkeley Mono"'
-c.fonts.prompts = 'default_size sans-serif'
-c.fonts.statusbar = '16pt "Berkeley Mono"'
+c.fonts.completion.entry = 'default_size "TX-02"'
+c.fonts.debug_console = 'default_size "TX-02"'
+c.fonts.prompts = 'default_size TX-02'
+c.fonts.statusbar = 'default_size "TX-02"'
 
-c.fonts.web.family.standard = "Berkeley Mono"
-c.fonts.web.family.fixed = "Berkeley Mono"
+c.fonts.web.family.standard = "Helvetica"
 c.fonts.web.size.default = 16
-c.fonts.web.size.default_fixed = 16
+
+c.fonts.web.family.fixed = "TX-02"
+c.fonts.web.size.default_fixed = 14
 
 # ---
 
