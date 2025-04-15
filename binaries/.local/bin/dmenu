@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+/usr/local/bin/dmenu -fn 'Berkeley Mono-13' -b -f -nb '#000000' -nf '#eeeeee' -sb '#000087' "$@"

@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+# essentially serves as focus
+open /Applications/Utilities/XQuartz.app/

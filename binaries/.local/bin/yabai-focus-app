@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+app="$1"
+path="$2"
+
+app_id=""
+if [ -z "$app" ]; then
+   app_id="$(yabai-fzy-window dmenu)"
+   if [ -z "$app_id" ]; then
+      exit 1;
+   fi
+else
+   app_id="$(yabai -m query --windows \
+      | jq --arg app_name "$app" 'map(select(.app == $app_name)) | .[0].id')"
+fi
+
+if yabai -m window --focus "$app_id"; then
+   exit 0 # found and focused
+else
+   if [ -n "$path" ]; then
+      open -n "$path"
+   else 
+      echo "ERROR: (\$2):path :: App Path not provided"
+   fi
+fi

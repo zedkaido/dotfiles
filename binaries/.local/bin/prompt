@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+# usage: prompt "Do you want to SHUTDOWN?" "sudo shutdown -h now"
+xq # preemptive focus 
+if [ -n "$1" ]; then
+	[ $(echo "No\nYes\n" | dmenu -i -p "$1") = "Yes" ] && $2
+	yabai -m window --focus recent
+	exit 0
+else
+	echo "That's life..."
+	yabai -m window --focus recent
+	exit 1
+fi
