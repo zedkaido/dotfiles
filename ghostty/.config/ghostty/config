@@ -1,4 +1,5 @@
-title = "tty"
+#vim: filetype=sh
+
 theme = "suckless-blue"
 
 window-decoration = false
@@ -20,6 +21,8 @@ confirm-close-surface = false
 mouse-hide-while-typing = true
 macos-auto-secure-input = false
 macos-option-as-alt = true
+
+clipboard-paste-protection = false
 
 quit-after-last-window-closed = true
 
