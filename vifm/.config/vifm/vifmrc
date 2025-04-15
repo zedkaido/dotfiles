@@ -179,18 +179,22 @@ command! reload :write | restart full
 
 " pdf
 filetype {*.pdf},<application/pdf>
+         \ {Open in Emacs.app}
+         \ open -a /Applications/Emacs.app,
+         \ {Open in Okular.app}
+         \ okular,
          \ {Open in Default (Preview.app)}
          \ open,
-         \ {Open in sioeyk}
-         \ open -a sioyek.app,
 fileviewer {*.pdf},<application/pdf> pdftotext -nopgbrk %c -
 
 " epub
 filetype {*.epub},<application/epub>
+         \ {Open in Emacs.app}
+         \ open -a /Applications/Emacs.app,
+         \ {Open in Emacs (tty)}
+         \ emacs,
          \ {Open in bk} 
          \ bk,
-         \ {Open in sioeye}
-         \ open -a sioyek.app,
 fileviewer {*.epub},<application/epub> bk
 
 " PostScript
