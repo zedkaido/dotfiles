@@ -1,32 +1,75 @@
+# -----
+# MODES
+# -----
+:: default : sketchybar -m --set modal label="[N]" label.color=0xFF888888
+:: yabai @ : sketchybar -m --set modal label="[YABAI]" label.color=0xFF14DFC4
+:: window @ : sketchybar -m --set modal label="[WINDOW]" label.color=0xFF14DFC4
+:: app @ : sketchybar -m --set modal label="[APP]" label.color=0xFFFFD700
+
+# MODE: yabai
+alt - y ; yabai
+yabai < escape ; default
+
+yabai < r : yabai --restart-service ; skhd -k "escape"
+
+# MODE: window
+alt - c ; window
+window < escape ; default
+
+window < h : yabai -m window --focus west
+window < j : yabai -m window --focus south
+window < k : yabai -m window --focus north
+window < l : yabai -m window --focus east
+
+# aka. GOTO-App
+alt - g : xq ; yabai-fzy-window dmenu || yabai -m window --focus recent 
+alt + shift - g: term-window yabai-fzy-window 
+
+shift + cmd + alt + ctrl - s : prompt "Put to SLEEP?" "sudo shutdown -s now"
+
+# MODE: open (app)
+alt - o ; app
+app < escape ; default
+
+app < o : skhd -k "escape" ; xq ; app-open ; yabai -m window --focus recent
+app < alt - o : skhd -k "escape"; xq ; app-open ; yabai -m window --focus recent
+
+app < w : skhd -k "escape" ; open -n ~/.
+app < q : open -n /Applications/qutebrowser.app ; skhd -k "escape"
+app < g : open -n /Applications/Ghostty.app ; skhd -k "escape"
+app < y : open -n /Applications/Alacritty.app ; skhd -k "escape"
+app < e : open -n /Applications/Emacs.app ; skhd -k "escape"
+app < t : open -n /Applications/Thorium.app ;  skhd -k "escape"
+app < l : open -n /Applications/LibreWolf.app ; skhd -k "escape"
+app < b : open -n /Applications/Bitwig\ Studio.app ; skhd -k "escape"
+
+# default < meh - m [
+#   "firefox" : skhd -k 'ctrl + shift - m'
+# ]
+
 # -------------------
 # APLICATION TRIGGERS
 # -------------------
-alt - w : open ~/
+alt + cmd + ctrl - space : ~/.local/bin/term-window cmd
+         
+alt + cmd + ctrl - o : term-window www
+alt + cmd + ctrl - e : term-window bweb
 
-alt - y : open -n /Applications/Alacritty.app
-alt - g : open -n /Applications/Ghostty.app
-alt - o : ~/.local/bin/term-window launcher
+alt + cmd + ctrl - c : term-window ch 
+alt + cmd + ctrl - a : ch append # append current clipboard content to ch
 
-cmd - space : ~/.local/Bin/term-window cmd
+alt + cmd + ctrl - d : toggle-dark-theme
+alt + cmd + ctrl - q : xq ; colorscheme ; yabai-focus-recent 
 
-hyper - o : ~/.local/bin/term-window www
-hyper - e : ~/.local/bin/term-window bweb
+alt + cmd + ctrl - p : term-window pass
+alt + cmd + ctrl - m : term-window dictionary # m for meaning
+alt + cmd + ctrl - b : term-window bookmarks 
+alt + cmd + ctrl - s : term-window snippets
+alt + cmd + ctrl - w : term-window webcam
+alt + cmd + ctrl - r : term-window radio
 
-hyper - c : ~/.local/bin/term-window ch 
-hyper - a : ~/.local/bin/ch append # append current clipboard content to ch
-
-hyper - d : ~/.local/bin/toggle-dark-theme
-hyper - q : ~/.local/bin/term-window colorscheme
-
-hyper - p : ~/.local/bin/term-window pass
-hyper - m : ~/.local/bin/term-window dictionary # m for meaning
-hyper - b : ~/.local/bin/term-window bookmarks 
-hyper - s : ~/.local/bin/term-window snippets
-hyper - w : ~/.local/bin/term-window webcam
-hyper - r : ~/.local/bin/term-window radio
-
-hyper - t : screencapture -ip
-hyper - i : opens soundsource panel
+alt + cmd + ctrl - t : screencapture -ip
+# (mapped externally) :: cmd + alt + ctrl - i :: opens soundsource panel
 
 # -----------------
 # YABAI KEYBINDINGS
@@ -35,19 +78,19 @@ alt - v : yabai -m window --toggle expose
 
 # BSP LAYOUT
 alt - b : yabai -m space --layout bsp && sketchybar --trigger yabai_layout_changed
+
 alt - a [
    * : yabai -m space --balance
    "Bitwig Studio" ~
 ]
-alt - e : yabai -m window --toggle split
 
-ctrl + alt - 4 : yabai -m window --lower
-ctrl + alt - 5 : yabai -m window --raise 
+alt - z : yabai -m space --balance
+alt - e : yabai -m window --toggle split
 
 alt - n : yabai -m window --focus next 
 alt - p : yabai -m window --focus prev
-shift + alt - n : yabai -m space --focus next
-shift + alt - p : yabai -m space --focus prev
+alt + shift - n : yabai -m space --focus next
+alt + shift - p : yabai -m space --focus prev
 
 # FLOAT LAYOUT
 alt - f : yabai -m space --layout float && sketchybar --trigger yabai_layout_changed
@@ -55,80 +98,85 @@ alt - f : yabai -m space --layout float && sketchybar --trigger yabai_layout_cha
 # STACK LAYOUT
 alt - s : yabai -m space --layout stack && sketchybar --trigger yabai_layout_changed
 
-ctrl + alt - 7 : yabai -m window --focus stack.next
-ctrl + alt - 1 : yabai -m window --focus stack.prev 
+alt + shift - j : yabai -m window --lower
+alt + shift - k : yabai -m window --raise 
 
-ctrl + cmd - n : yabai -m space --create
-ctrl + cmd - q : yabai -m space --destroy
-ctrl + cmd + shift - n : yabai -m space --create && \
-			                index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
-			                yabai -m window --space "${index}" && \
-			                yabai -m space --focus "${index}"
+alt + shift - u : yabai -m window --focus stack.prev
+alt + shift - m : yabai -m window --focus stack.next 
 
-alt + shift - r : yabai -m space --focus recent
-cmd - 1 : yabai -m space --focus 1
-cmd - 2 : yabai -m space --focus 2
-cmd - 3 : yabai -m space --focus 3
-cmd - 4 : yabai -m space --focus 4
-cmd - 5 : yabai -m space --focus 5
-cmd - 6 : yabai -m space --focus 6
-cmd - 7 : yabai -m space --focus 7
-cmd - 8 : yabai -m space --focus 8
-cmd - 9 : yabai -m space --focus 9
+cmd + alt - n : yabai -m space --create
+cmd + alt - q : yabai -m space --destroy
+cmd + alt + ctrl - n : yabai -m space --create && \
+                       index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
+                       yabai -m window --space "${index}" && \
+                       yabai -m space --focus "${index}"
 
-cmd + shift - 1 : yabai -m window --space 1; yabai -m space --focus 1; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
-cmd + shift - 2 : yabai -m window --space 2; yabai -m space --focus 2; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
-cmd + shift - 3 : yabai -m window --space 3; yabai -m space --focus 3; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
-cmd + shift - 4 : yabai -m window --space 4; yabai -m space --focus 4; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
-cmd + shift - 5 : yabai -m window --space 5; yabai -m space --focus 5; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
-cmd + shift - 6 : yabai -m window --space 6; yabai -m space --focus 6; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
-cmd + shift - 7 : yabai -m window --space 7; yabai -m space --focus 7; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
-cmd + shift - 8 : yabai -m window --space 8; yabai -m space --focus 8; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
-cmd + shift - 9 : yabai -m window --space 9; yabai -m space --focus 9; sleep 0.3; yabai -m window --focus $(yabai -m query --windows --window | jq '.id')
+alt - 1 : yabai -m space --focus 1
+alt - 2 : yabai -m space --focus 2
+alt - 3 : yabai -m space --focus 3
+alt - 4 : yabai -m space --focus 4
+alt - 5 : yabai -m space --focus 5
+alt - 6 : yabai -m space --focus 6
+alt - 7 : yabai -m space --focus 7
+alt - 8 : yabai -m space --focus 8
+alt - 9 : yabai -m space --focus 9
 
+alt + cmd - 1 : yabai -m window --space 1 --focus
+alt + cmd - 2 : yabai -m window --space 2 --focus
+alt + cmd - 3 : yabai -m window --space 3 --focus 
+alt + cmd - 4 : yabai -m window --space 4 --focus
+alt + cmd - 5 : yabai -m window --space 5 --focus
+alt + cmd - 6 : yabai -m window --space 6 --focus
+alt + cmd - 7 : yabai -m window --space 7 --focus
+alt + cmd - 8 : yabai -m window --space 8 --focus
+alt + cmd - 9 : yabai -m window --space 9 --focus
+                                                                    
 alt - r : yabai -m window --focus recent
+alt + shift - r : yabai -m space --focus recent
+
 alt - h : yabai -m window --focus west || $(yabai -m window --focus west; yabai -m display --focus west)
 alt - j : yabai -m window --focus south || $(yabai -m window --focus south; yabai -m display --focus south)
 alt - k : yabai -m window --focus north || $(yabai -m window --focus north; yabai -m display --focus north)
 alt - l : yabai -m window --focus east || $(yabai -m window --focus east; yabai -m display --focus east)
 
-ctrl + alt - h : yabai -m window --swap west  || $(yabai -m window --display west; yabai -m display --focus west)
-ctrl + alt - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
-ctrl + alt - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
-ctrl + alt - l : yabai -m window --swap east  || $(yabai -m window --display east; yabai -m display --focus east)
+cmd + alt - h : yabai -m window --swap west  || $(yabai -m window --display west --focus)
+cmd + alt - j : yabai -m window --swap south || $(yabai -m window --display south --focus)
+cmd + alt - k : yabai -m window --swap north || $(yabai -m window --display north --focus)
+cmd + alt - l : yabai -m window --swap east  || $(yabai -m window --display east --focus)
+
+cmd + alt + ctrl - z : yabai -m window --toggle zoom-fullscreen
+cmd + alt + shift - z : yabai -m window --toggle zoom-parent
+
+cmd + alt - m : yabai -m space --mirror y-axis
+cmd + alt + shift - m : yabai -m space --mirror x-axis
+cmd + alt - r : yabai -m space --rotate 90
+
+# STICKY / picture-IN-picture
+alt - i : yabai -m window --toggle sticky --toggle pip # `i` for inny
+alt - t : yabai -m window --toggle sticky
 
 # Float / Un-float window and center on screen
 alt - u : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2
 
 # Make floating window fill screen
-cmd + alt - f : yabai -m window --grid 1:1:1:0:1:1
-cmd + alt - n : yabai -m window --grid 4:4:1:1:2:2
+ctrl + alt + cmd - f : yabai -m window --grid 1:1:1:0:1:1
+ctrl + alt + cmd - g : yabai -m window --grid 4:4:1:1:2:2
 
 # Make floating window fill some space
-cmd + alt - h : yabai -m window --grid 1:2:0:0:1:1
-cmd + alt - l  : yabai -m window --grid 1:2:1:0:1:1
-cmd + alt - k : yabai -m window --grid 2:1:0:0:1:1
-cmd + alt - j : yabai -m window --grid 2:1:0:2:1:1
+ctrl + alt + cmd - h : yabai -m window --grid 1:2:0:0:1:1
+ctrl + alt + cmd - l : yabai -m window --grid 1:2:1:0:1:1
+ctrl + alt + cmd - k : yabai -m window --grid 2:1:0:0:1:1
+ctrl + alt + cmd - j : yabai -m window --grid 2:1:0:2:1:1
 
-ctrl + alt - left : yabai -m window --resize left:-60:0
-ctrl + alt - right : yabai -m window --resize left:60:0
-ctrl + alt - up : yabai -m window --resize top:0:-60
-ctrl + alt - down : yabai -m window --resize top:0:60
+cmd + alt - left : yabai -m window --resize left:-100:0 || yabai -m window --resize right:-100:0 || yabai -m window --resize left:100:0 || yabai -m window --resize right:100:0
+cmd + alt - right : yabai -m window --resize left:100:0 || yabai -m window --resize right:100:0 || yabai -m window --resize left:-100:0 || yabai -m window --resize right:-100:0
+cmd + alt - up : yabai -m window --resize top:0:-100 || yabai -m window --resize bottom:0:-100 || yabai -m window --resize top:0:100 || yabai -m window --resize bottom:0:100
+cmd + alt - down : yabai -m window --resize top:0:100 || yabai -m window --resize bottom:0:100 || yabai -m window --resize top:0:-100 || yabai -m window --resize bottom:0:-100
 
-cmd + alt + ctrl + shift - left : yabai -m window --move rel:-20:0
-cmd + alt + ctrl + shift - right : yabai -m window --move rel:20:0
-cmd + alt + ctrl + shift - up : yabai -m window --move rel:0:-20
-cmd + alt + ctrl + shift - down : yabai -m window --move rel:0:20
-
-alt - z : yabai -m window --toggle zoom-fullscreen
-alt + shift - z : yabai -m window --toggle zoom-parent
-
-alt - m : yabai -m space --mirror y-axis
-shift + alt - m : yabai -m space --mirror x-axis
-
-# STICKY Picture-in-Picture
-alt - i : yabai -m window --toggle sticky --toggle pip
-alt - t : yabai -m window --toggle sticky
+ctrl + alt + cmd - left : yabai -m window --move rel:-40:0
+ctrl + alt + cmd - right : yabai -m window --move rel:40:0
+ctrl + alt + cmd - up : yabai -m window --move rel:0:-40
+ctrl + alt + cmd - down : yabai -m window --move rel:0:40
 
 # ---------
 # BLACKLIST
@@ -145,29 +193,5 @@ alt - t : yabai -m window --toggle sticky
 # ----------------
 # USED KEYBINDINGS
 # ----------------
-# [USED] alt - a
-# [USED] alt - b
-# alt - c
 # [UESD] alt - d (DASH)
-# [USED] alt - e
-# [USED] alt - f
-# alt - g
-# [USED] alt - h
-# [USED] alt - i
-# [USED] alt - j
-# [USED] alt - k
-# [USED] alt - l
-# [USED] alt - m
-# [USED] alt - n
-# [USED] alt - o
-# [USED] alt - p
-# alt - q
-# [USED] alt - r
-# [USED] alt - s
-# [USED] alt - t
-# [USED] alt - u
-# [USED] alt - v
-# [USED] alt - w
-# alt - x (DO NOT USE if you want compatibility with emacs)
-# [USED] alt - y 
-# [USED] alt - z
+# [USED] alt - x (emacs)
