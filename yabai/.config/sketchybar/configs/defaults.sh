@@ -2,11 +2,11 @@
 
 sketchybar --bar \
    position=top \
-   height=24 \
+   height=28 \
    blur_radius=0 \
    sticky=on \
    color=0x15000000 \
-   padding_left=10 \
+   padding_left=8 \
    padding_right=20 \
    display=all \
 \
