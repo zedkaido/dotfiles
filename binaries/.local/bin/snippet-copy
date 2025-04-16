@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
 SNIPPET_FILE=~/.local/share/snippets
-cat $SNIPPET_FILE | fzf --reverse | awk -F ' :: ' '{ printf $1 }' | pbcopy
+cat $SNIPPET_FILE | fzf --reverse --no-color | awk -F ' :: ' '{ printf $1 }' | pbcopy
