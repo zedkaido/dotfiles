@@ -18,6 +18,7 @@ yabai -m config \
          window_origin_display default \
          window_placement second_child \
          window_zoom_persist on \
+         window_insertion_point focused \
          window_shadow on \
          window_opacity off \
          insert_feedback_color 0xffd75f5f \
