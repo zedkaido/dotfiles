@@ -17,6 +17,7 @@ alias ek="emacsclient -e '(kill-emacs)'"
 alias timer='countdown'
 
 alias fzf='fzf --no-color'
+alias htop='htop --no-color'
 
 alias q='exit'
 alias cs='clear;ls'
