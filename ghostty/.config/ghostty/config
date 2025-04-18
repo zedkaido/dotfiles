@@ -4,7 +4,7 @@ theme = "suckless-blue"
 
 window-decoration = false
 window-width = 80
-window-height = 60 
+window-height = 40
 
 font-size = 18
 font-family = "TX-02"
