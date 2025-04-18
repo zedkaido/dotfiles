@@ -7,9 +7,25 @@ floating_window()
 		echo "ERROR: \$1:title ANd \$2:cmd required"
 		exit 1
 	fi
-	open -n /Applications/Alacritty.app/ \
-		--args --title=$title \
-		-e zsh -c $cmd
+
+	screen_info=$(yabai -m query --displays --display | jq ".frame")
+	display_width=$(echo "$screen_info" | jq '.w | round')
+	display_height=$(echo "$screen_info" | jq '.h | round')
+
+	window_cols=80
+	window_rows=40
+	window_width=$(( $window_cols * 10 )) # ~
+	window_height=$(( $window_rows * 18 )) # ~
+	posx=$(( (display_width - window_width) / 2 ))
+	posy=$(( (display_height - window_height) / 2 ))
+
+	open -n /Applications/Ghostty-Nightly.app/ \
+		--args --title="$title" \
+		--window-width=$width \
+	       	--window-height=$height \
+		--window-position-x=$posx \
+		--window-position-y=$posy \
+		-e bash -c "$cmd"
 }
 
 window_types=(
