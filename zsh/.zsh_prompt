@@ -1,4 +1,4 @@
-# vim: filetype=zsh
+#!/usr/bin/env zsh
 
 setopt PROMPT_SUBST
 
@@ -9,7 +9,7 @@ function git_branch() {
 	fi
 }
 
-LAMBDA_SYMBOL=$'\λ'
-NEWLINE=$'\n'
+LAMBDA_SYMBOL=$"\λ"
+NEWLINE=$"\n"
 
-PROMPT='$(pwd) $(git_branch)${NEWLINE}${LAMBDA_SYMBOL} '
+PROMPT="$(pwd) $(git_branch)${NEWLINE}${LAMBDA_SYMBOL} "
