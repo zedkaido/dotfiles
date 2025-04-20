@@ -1,5 +1,5 @@
 general.import = [
-	"~/.config/alacritty/colors/suckless-blue.toml",
+	"~/.config/alacritty/colors/suckless-light.toml",
 ]
 
 general.live_config_reload = true
