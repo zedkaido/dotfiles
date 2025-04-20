@@ -51,7 +51,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>\\t"
 save_to_clipboard = false
 
 [cursor]
-style = { shape = "Block", blinking = "Off" }
+style = { shape = "Block", blinking = "On" }
 vi_mode_style = "None"
 blink_interval = 750
 blink_timeout = 0
