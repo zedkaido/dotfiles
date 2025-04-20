@@ -10,7 +10,7 @@ foreground = #000000
 palette = 0=#ffffff
 palette = 1=#ff0000
 palette = 2=#000000
-palette = 3=#ffd700
+palette = 3=#000087
 palette = 4=#000000
 palette = 5=#000000
 palette = 6=#000000
@@ -18,7 +18,7 @@ palette = 7=#000000
 palette = 8=#ffffff
 palette = 9=#ff0000
 palette = 10=#000000
-palette = 11=#ffd700
+palette = 11=#000087
 palette = 12=#000000
 palette = 13=#000000
 palette = 14=#000000

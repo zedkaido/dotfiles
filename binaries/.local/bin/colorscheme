@@ -12,21 +12,26 @@ fi
 
 echo "SETTING COLORSCHEME :: $selected_scheme"
 
-# -------------------------
-# GHOSTTY COLORSCHME UPDATE
-# -------------------------
-sed -i .backup -E "s/theme.+/theme = \"$selected_scheme\"/g" ~/dotfiles/ghostty/.config/ghostty/config
-
 # ----------------------
 # VIM COLORSCHEME UPDATE
 # ----------------------
 sed -i .backup -E "s/colorscheme.+/colorscheme $selected_scheme/g" ~/dotfiles/vim/.vim/vimrc
+
+# ------------------------
+# EMACS COLORSCHEME UPDATE
+# ------------------------
+sed -i .backup -E "s/\(load-theme.+)/\(load-theme '$selected_scheme t)/g" ~/dotfiles/emacs/.emacs.d/config.el
 
 # -----------------------
 # TMUX COLORSCHEME UPDATE
 # -----------------------
 tmux_colors_path="~/.config/tmux/colors/"
 sed -i .backup -E "s|source $tmux_colors_path.+|source $tmux_colors_path$selected_scheme.conf|g" ~/dotfiles/tmux/.config/tmux/tmux.conf
+
+# -------------------------
+# GHOSTTY COLORSCHME UPDATE
+# -------------------------
+sed -i .backup -E "s/theme.+/theme = \"$selected_scheme\"/g" ~/dotfiles/ghostty/.config/ghostty/config
 
 # ----------------------------
 # ALACRITTY COLORSCHEME UPDATE
