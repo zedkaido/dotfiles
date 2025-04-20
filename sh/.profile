@@ -8,6 +8,7 @@ export TZ="Europe/London"
 export LESSCHARSET="utf-8"
 
 export TERM="xterm"
+export NO_COLOR=1
 
 export EDITOR="vim"
 export VISUAL="vim"
