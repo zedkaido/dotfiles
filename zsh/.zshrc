@@ -8,6 +8,7 @@ precmd() {
 source ~/.zsh_prompt
 source ~/.aliasrc
 source ~/.funcrc
+source ~/.profile
 
 # ------------
 # ZSH SETTINGS
