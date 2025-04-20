@@ -17,7 +17,7 @@ yabai -m config \
          focus_follows_mouse off \
          window_origin_display default \
          window_placement second_child \
-         window_zoom_persist on \
+         window_zoom_persist off \
          window_insertion_point focused \
          window_shadow on \
          window_opacity off \
@@ -46,9 +46,9 @@ yabai -m config --display 1 external_bar all:33:0
 yabai -m rule --add app="LuLu" manage=off
 yabai -m rule --add app="Picture in Picture" sticky=on
 
+yabai -m rule --add title="^f:.+" manage=off
 yabai -m rule --add app="^Finder$" manage=off
 yabai -m rule --add app="^Stickies$" manage=off
-yabai -m rule --add app="^Alacritty$" title="^f:.+$" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^App Eraser$" manage=off
 
