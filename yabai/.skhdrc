@@ -1,33 +1,27 @@
-# -----
-# MODES
-# -----
 :: default : sketchybar -m --set modal label="[N]" label.color=0xFF888888
 :: yabai @ : sketchybar -m --set modal label="[YABAI]" label.color=0xFF14DFC4
 :: window @ : sketchybar -m --set modal label="[WINDOW]" label.color=0xFF14DFC4
 :: app @ : sketchybar -m --set modal label="[APP]" label.color=0xFFFFD700
 
+#------------
 # MODE: yabai
+#------------
 alt - y ; yabai
 yabai < escape ; default
 
 yabai < r : yabai --restart-service ; skhd -k "escape"
 
+#-------------
 # MODE: window
-alt - c ; window
+#-------------
+alt - w ; window
 window < escape ; default
 
-window < h : yabai -m window --focus west
-window < j : yabai -m window --focus south
-window < k : yabai -m window --focus north
-window < l : yabai -m window --focus east
+window < s : open /System/Applications/Utilities/Screenshot.app ; skhd -k "escape"
 
-# aka. GOTO-App
-alt - g : xq ; yabai-fzy-window dmenu || yabai -m window --focus recent 
-alt + shift - g: term-window yabai-fzy-window 
-
-shift + cmd + alt + ctrl - s : prompt "Put to SLEEP?" "sudo shutdown -s now"
-
+#-----------------
 # MODE: open (app)
+#-----------------
 alt - o ; app
 app < escape ; default
 
@@ -35,6 +29,7 @@ app < o : skhd -k "escape" ; xq ; app-open ; yabai -m window --focus recent
 app < alt - o : skhd -k "escape"; xq ; app-open ; yabai -m window --focus recent
 
 app < w : skhd -k "escape" ; open -n ~/.
+app < s : open -n ~/ScreenCapture/ 
 app < q : open -n /Applications/qutebrowser.app ; skhd -k "escape"
 app < g : open -n /Applications/Ghostty.app ; skhd -k "escape"
 app < y : open -n /Applications/Alacritty.app ; skhd -k "escape"
@@ -47,9 +42,12 @@ app < b : open -n /Applications/Bitwig\ Studio.app ; skhd -k "escape"
 #   "firefox" : skhd -k 'ctrl + shift - m'
 # ]
 
-# -------------------
-# APLICATION TRIGGERS
-# -------------------
+# ----
+# APPS 
+# ----
+alt - g : xq ; yabai-fzy-window dmenu || yabai -m window --focus recent # AKA. goto app
+alt + shift - g: term-window yabai-fzy-window 
+
 alt + cmd + ctrl - space : ~/.local/bin/term-window cmd
          
 alt + cmd + ctrl - o : term-window www
@@ -79,10 +77,10 @@ alt - v : yabai -m window --toggle expose
 # BSP LAYOUT
 alt - b : yabai -m space --layout bsp && sketchybar --trigger yabai_layout_changed
 
-alt - a [
-   * : yabai -m space --balance
-   "Bitwig Studio" ~
-]
+# alt - a [
+#    * : yabai -m space --balance
+#   "Bitwig Studio" ~
+# ]
 
 alt - z : yabai -m space --balance
 alt - e : yabai -m window --toggle split
