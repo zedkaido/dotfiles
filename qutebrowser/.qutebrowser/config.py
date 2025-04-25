@@ -199,6 +199,8 @@ nmap(';mf', 'hint links spawn mpv {hint-url}')
 nmap(';dy', 'hint links spawn st -e youtube-dl {url}')
 nmap(';df', 'hint links spawn st -e youtube-dl {hint-url}')
 
+nmap(';vim', 'edit-text')
+
 nmap('t', 'cmd-set-text -s :open -t')
 nmap('xb', 'config-cycle statusbar.show always never')
 nmap('xt', 'config-cycle tabs.show always never')
