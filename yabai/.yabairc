@@ -44,6 +44,7 @@ yabai -m config --display 1 external_bar all:33:0
 # RULES
 # -----
 yabai -m rule --add app="LuLu" manage=off
+yabai -m rule --add app="darktable" manage=off
 yabai -m rule --add app="Picture in Picture" sticky=on
 
 yabai -m rule --add title="^f:.+" manage=off
