@@ -254,11 +254,13 @@ filetype {*.[1-8]},<text/troff> man ./%c
 fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
 
 " Image
-filetype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+filetype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,*.dng},<image/*>
          \ {Open in qView}
          \ open -a qView.app,
          \ {Open in Preview},
          \ open -a Preview.app,
+         \ {Open in Affinity Photo}
+         \ open -a /Applications/Affinity\ Photo\ 2.app,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
            \ identify %f
 
@@ -283,7 +285,7 @@ filetype *.sha512
        \ shasum -a 512 -c %f %S,
 
 " Torrent
-filetype {*.torrent},<application/x-bittorrent> open -a qBittorrent.app
+filetype {*.torrent},<application/x-bittorrent> open -a Transmission.app
 fileviewer {*.torrent},<application/x-bittorrent>
            \ dumptorrent -v %c,
            \ transmission-show %c
