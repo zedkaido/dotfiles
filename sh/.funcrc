@@ -1,4 +1,22 @@
-# vim: filetype=zsh
+# vim: filetype=bash
+
+rmrf() {
+	read -p "Are you sure? " confirm
+	if [[ "$confirm" == [Yy] ]]; then
+		rm -rf "$1"
+	else
+		echo "Aborted."
+	fi
+}
+
+srmrf() {
+	read -p "Are you sure? " confirm
+	if [[ "$confirm" == [Yy] ]]; then
+		sudo rm -rf "$1"
+	else
+		echo "Aborted."
+	fi
+}
 
 hex() {
 	echo -n $1 | od -A n -t x1 | tr -d '[:space:]'
