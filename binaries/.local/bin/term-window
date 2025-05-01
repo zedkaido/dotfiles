@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
-floating_window() 
+floating_window()
 {
-	title="f:$1" && cmd="$2"
+	title="f:$1"
+	cmd="$2"
 	if [ -z "$title" ] || [ -z "$cmd" ]; then
-		echo "ERROR: \$1:title ANd \$2:cmd required"
+		echo "ERROR: \$1:title and \$2:cmd required"
 		exit 1
 	fi
 
@@ -12,17 +13,20 @@ floating_window()
 	display_width=$(echo "$screen_info" | jq '.w | round')
 	display_height=$(echo "$screen_info" | jq '.h | round')
 
-	window_cols=80
-	window_rows=40
-	window_width=$(( $window_cols * 10 )) # ~
-	window_height=$(( $window_rows * 18 )) # ~
+	window_cols="${3:-80}" # $3 arg
+       	window_rows="${4:-40}" # $4 arg
+
+	char_width=11
+	char_height=24
+	window_width=$(( $window_cols * char_width )) # ~
+	window_height=$(( $window_rows * char_height )) # ~
 	posx=$(( (display_width - window_width) / 2 ))
 	posy=$(( (display_height - window_height) / 2 ))
 
 	open -n /Applications/Ghostty-Nightly.app/ \
 		--args --title="$title" \
-		--window-width=$width \
-	       	--window-height=$height \
+		--window-width=$window_cols \
+	       	--window-height=$window_rows \
 		--window-position-x=$posx \
 		--window-position-y=$posy \
 		-e bash -c "$cmd"
@@ -32,8 +36,8 @@ window_types=(
 	ch # clipboard history
 	launcher
 	yabai-fzy-window
+	exe # execute custom $2 as cmd
 	cmd
-	colorscheme
 	pass
 	bweb # browse web
 	www
@@ -50,18 +54,18 @@ if [ -z $chosen_window ]; then
 fi
 
 case "$chosen_window" in
-	ch) floating_window "ch" "~/.local/bin/ch" ;;
+	ch) floating_window "ch" "~/.local/bin/ch" 150 80 ;;
 	launcher) floating_window "launcher" "~/.local/bin/app-open" ;;
 	yabai-fzy-window) floating_window "yabai-fzy-window" "~/.local/bin/yabai-fzy-window" ;;
-	cmd) floating_window "cmd" "~/.local/bin/cmd" ;;
-	colorscheme) floating_window "colorscheme" "~/.local/bin/colorscheme" ;;
+	exe) floating_window "exe" "$2" ;;
+	cmd) floating_window "cmd" "~/.local/bin/cmd" 100 80 ;;
 	pass) floating_window "pass" "~/.local/bin/pass-copy" ;;
-	bweb) floating_window "bweb" "tmux a -t bweb || tmux new -s bweb" ;;
-	www) floating_window "www" "~/.local/bin/www" ;;
-	dictionary) floating_window "dictionary" "~/.local/bin/dictionary" ;;
-	bookmarks) floating_window "bookmarks" "~/.local/bin/bookmarks" ;;
+	bweb) floating_window "bweb" "tmux a -t bweb || tmux new -s bweb" 100 80 ;;
+	www) floating_window "www" "~/.local/bin/www" 80 5 ;;
+	dictionary) floating_window "dictionary" "~/.local/bin/dictionary" 80 60 ;;
+	bookmarks) floating_window "bookmarks" "~/.local/bin/bookmarks" 150 80 ;;
 	snippets) floating_window "snippets" "~/.local/bin/snippet-copy" ;;
 	radio) floating_window "radio" "~/.local/bin/radio" ;;
-	webcam) floating_window "webcam" "~/.local/bin/webcam" ;;
+	webcam) floating_window "webcam" "~/.local/bin/webcam" 42 8 ;;
 	*) exit 0 ;;
 esac	
