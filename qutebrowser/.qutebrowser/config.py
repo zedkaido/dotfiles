@@ -76,23 +76,23 @@ c.content.blocking.method = 'both'
 
 # Text color of the completion widget. May be a single color to use for
 # all columns or a list of three colors, one for each column.
-c.colors.completion.fg = ['#ffffff', '#eeeeee', '#eeeeee']
+c.colors.completion.fg = ['#eeeeee', '#eeeeee', '#eeeeee']
 
 c.colors.completion.odd.bg = '#000000'
 c.colors.completion.even.bg = '#000000'
-c.colors.completion.category.fg = '#ffffff'
+c.colors.completion.category.fg = '#eeeeee'
 c.colors.completion.category.bg = '#151515'
 c.colors.completion.category.border.top = '#000000'
 c.colors.completion.category.border.bottom = '#000000'
-c.colors.completion.item.selected.fg = '#ffffff'
+c.colors.completion.item.selected.fg = '#eeeeee'
 c.colors.completion.item.selected.bg = '#000087'
 c.colors.completion.item.selected.border.top = '#000087'
 c.colors.completion.item.selected.border.bottom = '#000087'
 c.colors.completion.item.selected.match.fg = '#ffd700'
 c.colors.completion.match.fg = '#ffd700'
-c.colors.completion.scrollbar.fg = '#ffffff'
+c.colors.completion.scrollbar.fg = '#eeeeee'
 
-c.colors.hints.fg = '#ffffff'
+c.colors.hints.fg = '#eeeeee'
 c.colors.hints.bg = '#000000'
 c.colors.hints.match.fg = '#999999'
 
@@ -100,26 +100,26 @@ c.colors.messages.info.bg = '#000000'
 c.colors.prompts.bg = '#000000'
 
 c.colors.statusbar.normal.bg = '#000000'
-c.colors.statusbar.insert.fg = '#ffffff'
+c.colors.statusbar.insert.fg = '#eeeeee'
 c.colors.statusbar.insert.bg = '#000000'
 c.colors.statusbar.passthrough.bg = '#000000'
 c.colors.statusbar.command.bg = '#000000'
 c.colors.statusbar.url.warn.fg = '#ffd700'
-c.colors.statusbar.url.success.http.fg = '#ffffff'
-c.colors.statusbar.url.success.https.fg = '#ffffff'
+c.colors.statusbar.url.success.http.fg = '#eeeeee'
+c.colors.statusbar.url.success.https.fg = '#eeeeee'
 
 c.colors.tabs.bar.bg = '#000000'
 c.colors.tabs.odd.bg = '#000000'
 c.colors.tabs.even.bg = '#000000'
 c.colors.tabs.selected.odd.bg = '#000087'
-c.colors.tabs.selected.odd.fg = '#ffffff'
+c.colors.tabs.selected.odd.fg = '#eeeeee'
 c.colors.tabs.selected.even.bg = '#000087'
-c.colors.tabs.selected.even.fg = '#ffffff'
+c.colors.tabs.selected.even.fg = '#eeeeee'
 c.colors.tabs.pinned.odd.bg = '#202020'
 c.colors.tabs.pinned.even.bg = '#000000'
 c.colors.tabs.pinned.selected.odd.bg = '#242424'
 c.colors.tabs.indicator.start = '#0000ff'
-c.colors.tabs.indicator.stop = '#ffffff' 
+c.colors.tabs.indicator.stop = '#eeeeee' 
 c.colors.tabs.indicator.error = '#ff0000'
 
 c.colors.downloads.bar.bg = '#000000'
@@ -127,7 +127,7 @@ c.colors.downloads.error.bg = '#ff0000'
 c.colors.downloads.start.bg = '#000000'
 c.colors.downloads.start.fg = '#87ff00'
 c.colors.downloads.stop.bg = '#000000'
-c.colors.downloads.stop.fg = '#ffffff'
+c.colors.downloads.stop.fg = '#eeeeee'
 
 
 ## Position of the tab bar.
