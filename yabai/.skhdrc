@@ -77,11 +77,6 @@ alt - v : yabai -m window --toggle expose
 # BSP LAYOUT
 alt - b : yabai -m space --layout bsp && sketchybar --trigger yabai_layout_changed
 
-# alt - a [
-#    * : yabai -m space --balance
-#   "Bitwig Studio" ~
-# ]
-
 alt - z : yabai -m space --balance
 alt - e : yabai -m window --toggle split
 
@@ -96,11 +91,11 @@ alt - f : yabai -m space --layout float && sketchybar --trigger yabai_layout_cha
 # STACK LAYOUT
 alt - s : yabai -m space --layout stack && sketchybar --trigger yabai_layout_changed
 
-alt + shift - j : yabai -m window --lower
-alt + shift - k : yabai -m window --raise 
+ctrl + alt - m : yabai -m window --lower
+ctrl + alt - u : yabai -m window --raise 
 
-alt + shift - u : yabai -m window --focus stack.prev
-alt + shift - m : yabai -m window --focus stack.next 
+cmd + alt - j : yabai -m window --focus stack.prev
+cmd + alt - k : yabai -m window --focus stack.next 
 
 cmd + alt - n : yabai -m space --create
 cmd + alt - q : yabai -m space --destroy
@@ -137,10 +132,10 @@ alt - j : yabai -m window --focus south || $(yabai -m window --focus south; yaba
 alt - k : yabai -m window --focus north || $(yabai -m window --focus north; yabai -m display --focus north)
 alt - l : yabai -m window --focus east || $(yabai -m window --focus east; yabai -m display --focus east)
 
-cmd + alt - h : yabai -m window --swap west  || $(yabai -m window --display west --focus)
-cmd + alt - j : yabai -m window --swap south || $(yabai -m window --display south --focus)
-cmd + alt - k : yabai -m window --swap north || $(yabai -m window --display north --focus)
-cmd + alt - l : yabai -m window --swap east  || $(yabai -m window --display east --focus)
+ctrl + alt - h : yabai -m window --swap west  || $(yabai -m window --display west --focus)
+ctrl + alt - j : yabai -m window --swap south || $(yabai -m window --display south --focus)
+ctrl + alt - k : yabai -m window --swap north || $(yabai -m window --display north --focus)
+ctrl + alt - l : yabai -m window --swap east  || $(yabai -m window --display east --focus)
 
 cmd + alt + ctrl - z : yabai -m window --toggle zoom-fullscreen
 cmd + alt + shift - z : yabai -m window --toggle zoom-parent
@@ -179,8 +174,12 @@ ctrl + alt + cmd - down : yabai -m window --move rel:0:40
 # ---------
 # BLACKLIST
 # ---------
-# .blacklist [
-   # "Bitwig Studio"
+.blacklist [
+	"Bitwig Studio"
+]
+# alt - a [
+#	* : yabai -m space --balance
+# 	"Bitwig Studio" ~
 # ]
 
 # ----------------------
