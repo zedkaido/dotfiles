@@ -317,6 +317,10 @@ filetype *.gz gunzip %f
 filetype *.rar unar %f %s
 fileviewer *.rar tar -vxf %c
 
+" Extract 7z files
+filetype *.7z 7z x %f
+fileviewer *.7z 7z l %c
+
 " Mount .dmg archives
 filetype *.dmg open
 
