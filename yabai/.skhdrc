@@ -1,81 +1,131 @@
+#vim:filetype=bash
+
 :: default : sketchybar -m --set modal label="[N]" label.color=0xFF888888
 :: yabai @ : sketchybar -m --set modal label="[YABAI]" label.color=0xFF14DFC4
-:: window @ : sketchybar -m --set modal label="[WINDOW]" label.color=0xFF14DFC4
 :: app @ : sketchybar -m --set modal label="[APP]" label.color=0xFFFFD700
+:: window @ : sketchybar -m --set modal label="[WINDOW]" label.color=0xFFFFFFFF
+:: position @ : sketchybar -m --set modal label="[POSITION]" label.color=0xFFFFFFFF
+:: clipboard @ : sketchybar -m --set modal label="[CLIPBOARD]" label.color=0xFFFFFFFF
+:: system @ : sketchybar -m --set modal label="[SYSTEM]" label.color=0xFFFF0000
+
+#-------------
+# MODE: SYSTEM
+#-------------
+alt - s ; system
+system < escape ; default
+system < s : skhd -k "escape" ; pmset sleepnow 
 
 #------------
-# MODE: yabai
+# MODE: YABAI
 #------------
 alt - y ; yabai
 yabai < escape ; default
+yabai < alt - y ; default
+
+yabai < b : yabai -m space --layout bsp && sketchybar --trigger yabai_layout_changed ; skhd -k "escape"
+yabai < s : yabai -m space --layout stack && sketchybar --trigger yabai_layout_changed ; skhd -k "escape"
+yabai < shift - s : yabai -m window --stack ; skhd -k "escape"
+yabai < f : yabai -m space --layout float && sketchybar --trigger yabai_layout_changed ; skhd -k "escape"
 
 yabai < r : yabai --restart-service ; skhd -k "escape"
+yabai < n : yabai -m space --create ; skhd -k "escape"
+yabai < d : yabai -m space --destroy ; skhd -k "escape"
+yabai < shift - n : yabai -m space --create && \
+                    index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
+                    yabai -m window --space "${index}" && \
+                    yabai -m space --focus "${index}" ; skhd -k "escape"
+
+yabai < p : yabai -m window --toggle sticky --toggle pip # `i` for inny ; skhd -k "escape"
+yabai < s : yabai -m window --toggle sticky ; skhd -k "escape" # a for ALL SPACES
+yabai < u : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2 ; skhd -k "escape"
+alt - f : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2 ; skhd -k "escape"
 
 #-------------
-# MODE: window
+# MODE: WINDOW
 #-------------
 alt - w ; window
 window < escape ; default
+window < alt - w ; default
 
 window < s : open /System/Applications/Utilities/Screenshot.app ; skhd -k "escape"
+window < c : skhd -k "escape" ; xq ; colorscheme ; yabai-focus-recent 
 
-#-----------------
-# MODE: open (app)
-#-----------------
+window < d : skhd -k "escape" ; term-window dictionary
+window < w : skhd -k "escape" ; term-window webcam
+window < p : skhd -k "escape" ; term-window pass
+window < b : skhd -k "escape" ; term-window bookmarks
+window < t : skhd -k "escape" ; term-window snippets
+window < r : skhd -k "escape" ; term-window radio
+
+# --------------
+# MODE: POSITION 
+# --------------
+alt - z ; position
+position < escape ; default
+position < alt - z ; default
+
+position < f : yabai -m window --grid 1:1:1:0:1:1 ; skhd -k "escape"
+position < shift - f : yabai -m window --toggle windowed-fullscreen ; skhd -k "escape"
+position < c : yabai -m window --grid 1:2:1:1:1:2 ; skhd -k "escape"
+position < g : yabai -m window --grid 4:4:1:1:2:2 ; skhd -k "escape"
+
+position < h : yabai -m window --grid 1:2:0:0:1:1 ; skhd -k "escape"
+position < j : yabai -m window --grid 2:1:0:2:1:1 ; skhd -k "escape"
+position < k : yabai -m window --grid 2:1:0:0:1:1 ; skhd -k "escape"
+position < l : yabai -m window --grid 1:2:1:0:1:1 ; skhd -k "escape"
+
+# ---------
+# CLIPBOARD
+# ---------
+alt - c ; clipboard
+clipboard < escape ; default
+
+clipboard < c : skhd -k "escape" ; term-window ch 
+clipboard < alt - c : skhd -k "escape" ; term-window ch copy
+clipboard < a : ch append ; skhd -k "escape"
+
+ctrl + alt + cmd - a : ch append # append current clipboard content to ch
+
+#----------
+# MODE: APP 
+#----------
 alt - o ; app
 app < escape ; default
 
 app < o : skhd -k "escape" ; xq ; app-open ; yabai -m window --focus recent
 app < alt - o : skhd -k "escape"; xq ; app-open ; yabai -m window --focus recent
 
-app < w : skhd -k "escape" ; open -n ~/.
-app < s : open -n ~/ScreenCapture/ 
+app < f : skhd -k "escape" ; open -a Finder ; skhd -k "escape"
+app < shift - h : skhd -k "escape" ; open -a Finder ~/ ; skhd -k "escape"
+app < shift - a : skhd -k "escape" ; open -a Finder /Applications ; skhd -k "escape"
+app < shift - s : open -a Finder ~/ScreenCapture/ ; skhd -k "escape"
+app < shift - p : open -a Finder /Library/Audio/Plug-Ins/ ; skhd -k "escape"
+
+app < c : open -n /Applications/Chromium.app ; skhd -k "escape"
 app < q : open -n /Applications/qutebrowser.app ; skhd -k "escape"
-app < g : open -n /Applications/Ghostty.app ; skhd -k "escape"
-app < y : open -n /Applications/Alacritty.app ; skhd -k "escape"
-app < e : open -n /Applications/Emacs.app ; skhd -k "escape"
-app < t : open -n /Applications/Thorium.app ;  skhd -k "escape"
 app < l : open -n /Applications/LibreWolf.app ; skhd -k "escape"
+
+app < g : open -n /Applications/Ghostty.app ; skhd -k "escape"
+app < a : open -n /Applications/Alacritty.app ; skhd -k "escape"
+app < e : open -n /Applications/Emacs.app ; skhd -k "escape"
+
 app < b : open -n /Applications/Bitwig\ Studio.app ; skhd -k "escape"
+
+# FZY OPEN APP WINDOWS
+alt - g : xq ; yabai-fzy-window dmenu || yabai -m window --focus recent # AKA. goto app
+alt + shift - g: term-window yabai-fzy-window 
 
 # default < meh - m [
 #   "firefox" : skhd -k 'ctrl + shift - m'
 # ]
 
-# ----
-# APPS 
-# ----
-alt - g : xq ; yabai-fzy-window dmenu || yabai -m window --focus recent # AKA. goto app
-alt + shift - g: term-window yabai-fzy-window 
-
-alt + cmd + ctrl - space : ~/.local/bin/term-window cmd
-         
-alt + cmd + ctrl - o : term-window www
-alt + cmd + ctrl - e : term-window bweb
-
-alt + cmd + ctrl - c : term-window ch 
-alt + cmd + ctrl - a : ch append # append current clipboard content to ch
-
-alt + cmd + ctrl - d : toggle-dark-theme
-alt + cmd + ctrl - q : xq ; colorscheme ; yabai-focus-recent 
-
-alt + cmd + ctrl - p : term-window pass
-alt + cmd + ctrl - m : term-window dictionary # m for meaning
-alt + cmd + ctrl - b : term-window bookmarks 
-alt + cmd + ctrl - s : term-window snippets
-alt + cmd + ctrl - w : term-window webcam
-alt + cmd + ctrl - r : term-window radio
-
-alt + cmd + ctrl - t : screencapture -ip
-# (mapped externally) :: cmd + alt + ctrl - i :: opens soundsource panel
-
 # -----------------
 # YABAI KEYBINDINGS
 # -----------------
 alt - v : yabai -m window --toggle expose
+cmd - m : yabai -m window --minimize
+cmd + shift - m : yabai -m window --diminimize
 
-# BSP LAYOUT
-alt - b : yabai -m space --layout bsp && sketchybar --trigger yabai_layout_changed
 
 alt - z : yabai -m space --balance
 alt - e : yabai -m window --toggle split
@@ -85,25 +135,28 @@ alt - p : yabai -m window --focus prev
 alt + shift - n : yabai -m space --focus next
 alt + shift - p : yabai -m space --focus prev
 
-# FLOAT LAYOUT
-alt - f : yabai -m space --layout float && sketchybar --trigger yabai_layout_changed
-
-# STACK LAYOUT
-alt - s : yabai -m space --layout stack && sketchybar --trigger yabai_layout_changed
-
-ctrl + alt - m : yabai -m window --lower
-ctrl + alt - u : yabai -m window --raise 
-
 cmd + alt - j : yabai -m window --focus stack.prev
 cmd + alt - k : yabai -m window --focus stack.next 
 
-cmd + alt - n : yabai -m space --create
-cmd + alt - q : yabai -m space --destroy
-cmd + alt + ctrl - n : yabai -m space --create && \
-                       index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
-                       yabai -m window --space "${index}" && \
-                       yabai -m space --focus "${index}"
+cmd + alt - m : yabai -m window --swap stack.prev --focus
+cmd + alt - u : yabai -m window --swap stack.next --focus
 
+cmd + alt - h : skhd -k cmd - \`
+cmd + alt - l : yabai -m window --focus largest
+
+cmd + alt - y : yabai -m window --raise
+cmd + alt - n : yabai -m window --lower 
+
+ctrl + alt - 1 : yabai -m window --focus stack.1
+ctrl + alt - 2 : yabai -m window --focus stack.2
+ctrl + alt - 3 : yabai -m window --focus stack.3
+ctrl + alt - 4 : yabai -m window --focus stack.4
+ctrl + alt - 5 : yabai -m window --focus stack.5
+ctrl + alt - 6 : yabai -m window --focus stack.6
+ctrl + alt - 7 : yabai -m window --focus stack.7
+ctrl + alt - 8 : yabai -m window --focus stack.8
+ctrl + alt - 9 : yabai -m window --focus stack.9
+ 
 alt - 1 : yabai -m space --focus 1
 alt - 2 : yabai -m space --focus 2
 alt - 3 : yabai -m space --focus 3
@@ -144,39 +197,23 @@ cmd + alt - m : yabai -m space --mirror y-axis
 cmd + alt + shift - m : yabai -m space --mirror x-axis
 cmd + alt - r : yabai -m space --rotate 90
 
-# STICKY / picture-IN-picture
-alt - i : yabai -m window --toggle sticky --toggle pip # `i` for inny
-alt - t : yabai -m window --toggle sticky
+shift + ctrl + alt - left : yabai -m window --resize right:-50:0 || yabai -m window --resize left:-50:0 || yabai -m window --resize left:50:0 || yabai -m window --resize right:50:0
+shift + ctrl + alt - right : yabai -m window --resize right:50:0 || yabai -m window --resize left:50:0 || yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0
+shift + ctrl + alt - up : yabai -m window --resize top:0:-50 || yabai -m window --resize bottom:0:-50 || yabai -m window --resize top:0:50 || yabai -m window --resize bottom:0:50
+shift + ctrl + alt - down : yabai -m window --resize top:0:50 || yabai -m window --resize bottom:0:50 || yabai -m window --resize top:0:-50 || yabai -m window --resize bottom:0:-50
 
-# Float / Un-float window and center on screen
-alt - u : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2
-
-# Make floating window fill screen
-ctrl + alt + cmd - f : yabai -m window --grid 1:1:1:0:1:1
-ctrl + alt + cmd - g : yabai -m window --grid 4:4:1:1:2:2
-
-# Make floating window fill some space
-ctrl + alt + cmd - h : yabai -m window --grid 1:2:0:0:1:1
-ctrl + alt + cmd - l : yabai -m window --grid 1:2:1:0:1:1
-ctrl + alt + cmd - k : yabai -m window --grid 2:1:0:0:1:1
-ctrl + alt + cmd - j : yabai -m window --grid 2:1:0:2:1:1
-
-cmd + alt - left : yabai -m window --resize left:-100:0 || yabai -m window --resize right:-100:0 || yabai -m window --resize left:100:0 || yabai -m window --resize right:100:0
-cmd + alt - right : yabai -m window --resize left:100:0 || yabai -m window --resize right:100:0 || yabai -m window --resize left:-100:0 || yabai -m window --resize right:-100:0
-cmd + alt - up : yabai -m window --resize top:0:-100 || yabai -m window --resize bottom:0:-100 || yabai -m window --resize top:0:100 || yabai -m window --resize bottom:0:100
-cmd + alt - down : yabai -m window --resize top:0:100 || yabai -m window --resize bottom:0:100 || yabai -m window --resize top:0:-100 || yabai -m window --resize bottom:0:-100
-
-ctrl + alt + cmd - left : yabai -m window --move rel:-40:0
-ctrl + alt + cmd - right : yabai -m window --move rel:40:0
-ctrl + alt + cmd - up : yabai -m window --move rel:0:-40
-ctrl + alt + cmd - down : yabai -m window --move rel:0:40
+ctrl + alt - left : yabai -m window --move rel:-40:0
+ctrl + alt - right : yabai -m window --move rel:40:0
+ctrl + alt - up : yabai -m window --move rel:0:-40
+ctrl + alt - down : yabai -m window --move rel:0:40
 
 # ---------
 # BLACKLIST
 # ---------
-.blacklist [
-	"Bitwig Studio"
-]
+# .blacklist [
+# 	"Bitwig Studio"
+# ]
+
 # alt - a [
 #	* : yabai -m space --balance
 # 	"Bitwig Studio" ~
@@ -185,10 +222,23 @@ ctrl + alt + cmd - down : yabai -m window --move rel:0:40
 # ----------------------
 # Nullifying keybindings
 # ----------------------
-# cmd - m : ""
+cmd + alt + shift - q : ""
+
+# -----------------
+# OTHER KEYBINDINGS 
+# -----------------
+cmd + alt + ctrl - space : term-window cmd
+            
+ctrl + alt + cmd - o : term-window www
+ctrl + alt + cmd - e : term-window bweb
+                 
+ctrl + alt + cmd - d : toggle-dark-theme
+                
+ctrl + alt + cmd - t : screencapture -ip
 
 # ----------------
 # USED KEYBINDINGS
 # ----------------
-# [UESD] alt - d (DASH)
-# [USED] alt - x (emacs)
+# [UESD] alt - d :: (DASH)
+# [USED] alt - x :: (emacs)
+# [USED] cmd + alt + ctrl - i :: opens soundsource panel
