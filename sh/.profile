@@ -32,3 +32,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # MacPorts
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+
+# CDPR8
+# export PATH=/Users/x/cdpr8/_cdp/_cdprogs:$PATH
