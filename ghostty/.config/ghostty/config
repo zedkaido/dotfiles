@@ -14,7 +14,7 @@ font-style-italic = "Italic"
 font-style-bold-italic = "Bold Italic"
 
 cursor-style = "block"
-cursor-style-blink = true
+cursor-style-blink = false
 cursor-invert-fg-bg = true
 
 shell-integration = none
