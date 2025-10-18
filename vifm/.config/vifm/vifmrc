@@ -105,13 +105,21 @@ colorscheme suckless
 
 " :mark mark /full/directory/path [filename]
 
-mark b ~/bin/
+
+mark r /
+mark v /Volumes/
+mark p /Library/Audio/Plug-Ins/
+
 mark h ~/
+mark m ~/mp/
 mark d ~/d/
-mark D ~/Downloads
-mark w ~/wit
-mark p ~/pro
-mark v /Volumes
+mark D ~/Downloads/
+mark w ~/wit/
+mark p ~/pro/
+mark b ~/bin/
+
+mark t ~/.Trash
+mark T ~/.VTrash
 
 " ------------------------------------------------------------------------------
 " Commands
@@ -179,12 +187,10 @@ command! reload :write | restart full
 
 " pdf
 filetype {*.pdf},<application/pdf>
-         \ {Open in Emacs.app}
-         \ open -a /Applications/Emacs.app,
-         \ {Open in Okular.app}
-         \ okular,
          \ {Open in Default (Preview.app)}
          \ open,
+         \ {Open in Emacs.app}
+         \ open -a /Applications/Emacs.app,
 fileviewer {*.pdf},<application/pdf> pdftotext -nopgbrk %c -
 
 " epub
@@ -222,8 +228,12 @@ filetype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
          \*.as[fx],*.unknown_video},<video/*>
 			\ {mpv}
 			\ mpv %f &,
+                        \ {vlc}
+                        \ open -a Vlc.app,  
 			\ {ffplay}
 	 		\ ffplay %f,
+         \ {vlc}
+         \ open -a Vlc.app,
          \ {QuickTime}
          \ open -a QuickTime\ Player.app,
 fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
@@ -371,6 +381,7 @@ filetype * vim
 
 " Customize view columns a bit (enable ellipsis for truncated file names)
 " set viewcolumns=-{name}..,6{}.
+set viewcolumns=-{name}..
 
 " Show vertical border
 " set fillchars=vborder:│
