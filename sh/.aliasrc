@@ -3,6 +3,8 @@
 # alias cht='cht.sh'
 
 alias svim='sudo vim'
+alias svifm='sudo vifm'
+
 alias km='vim +KM'
 alias journal='vim +JR'
 alias note='vim +KMNote'
@@ -64,7 +66,9 @@ alias most='du -hsx * | sort -rh | head -10'
 alias archive='tar --create --gzip --verbose --file'
 
 # mpv video/audio limit for ytdl
-alias mpvhd='mpv --ytdl-format="bestvideo[height<=1080][vcodec!=vp9]+bestaudio/best"'
+alias mpv-yt-best='mpv --ytdl-format="bestvideo+bestaudio/best"'
+alias mpv-yt-4k='mpv --ytdl-format="bestvideo[height<=2160][vcodec*=hvc1]/bestvideo[height<=2160][vcodec*=avc1]+bestaudio/best"'
+alias mpv-yt-hd='mpv --ytdl-format="bestvideo[height<=1080][vcodec*=hvc1]/bestvideo[height<=1080][vcodec*=avc1]+bestaudio/best"'
 
 # ---------------
 # OSX (ONLY) CMDS
