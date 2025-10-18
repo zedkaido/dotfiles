@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
 
-# window_title=$(yabai -m query --windows --window | jq -r '.title')
-sketchybar --set $NAME label="::   $INFO" 
+window=$(yabai -m query --windows --window)
+readarray -t arr <<< $(echo "$window" | jq -r '.app, .title, ."stack-index"')
+app=${arr[0]}
+window_title=${arr[1]}
+stackindex=${arr[2]}
+
+sketchybar --set $NAME label="${stackindex:+"::  [$stackindex]"} ${app:+"$app -"} ${window_title:0:55}"

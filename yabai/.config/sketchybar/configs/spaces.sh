@@ -12,7 +12,7 @@ do
            icon.color=0xffb2b2b2 \
            background.color=0xff343434 \
            background.corner_radius=0 \
-           background.height=20 \
+           background.height=18 \
            background.drawing=off \
            label.drawing=off \
            script="~/.config/sketchybar/scripts/space.sh" \

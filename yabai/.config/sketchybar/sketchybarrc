@@ -5,8 +5,8 @@
 # LEFT
 ./configs/layout-type.sh
 ./configs/spaces.sh
-./configs/focus.sh
 ./configs/modal.sh
+./configs/focus.sh
 
 # RIGHT
 ./configs/time.sh

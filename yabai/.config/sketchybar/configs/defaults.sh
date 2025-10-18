@@ -2,13 +2,14 @@
 
 sketchybar --bar \
    position=top \
-   height=28 \
+   height=32 \
    blur_radius=0 \
    sticky=on \
-   color=0x15000000 \
-   padding_left=8 \
+   color=0xff000000 \
+   padding_left=0 \
    padding_right=20 \
    display=all \
+   ignore_association=on \
 \
    --default \
    icon.font="TX-02:Bold:14" \
