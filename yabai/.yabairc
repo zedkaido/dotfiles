@@ -12,10 +12,10 @@ sudo yabai --load-sa
 # PARAMS
 # ------
 yabai -m config \
-         layout bsp \
+         layout stack \
          mouse_follows_focus on \
          focus_follows_mouse off \
-         window_origin_display default \
+         window_origin_display cursor \
          window_placement second_child \
          window_zoom_persist off \
          window_insertion_point focused \
@@ -24,7 +24,7 @@ yabai -m config \
          insert_feedback_color 0xffd75f5f \
          split_ratio 0.50 \
          split_type auto \
-         auto_balance on \
+         auto_balance off \
          window_gap 2 \
          top_padding 0 \
          left_padding 0 \
@@ -46,11 +46,15 @@ yabai -m config --display 1 external_bar all:33:0
 yabai -m rule --add app="Picture in Picture" sticky=on
 
 yabai -m rule --add title="^f:.+" manage=off
-yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app='^XQuartz$' manage=on
+
 yabai -m rule --add app="^Stickies$" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app='^Calculator$' manage=off
+
 yabai -m rule --add app="^App Eraser$" manage=off
 yabai -m rule --add app="^Affinity.+" manage=off
+yabai -m rule --add app="^Transmission.+" manage=off
 yabai -m rule --add app="^LuLu$" manage=off
 yabai -m rule --add app="^darktable$" manage=off
 
@@ -64,7 +68,8 @@ yabai -m rule --apply
 # -------
 # SIGNALS
 # -------
-yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
-yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+yabai -m signal --add event=window_focused action="sketchybar --trigger yabai_window_focused"
+yabai -m signal --add event=window_destroyed action="yabai -m window --focus mouse"
+yabai -m signal --add event=application_terminated action="yabai -m window --focus mouse"
 
 echo "yabai configuration loaded."
