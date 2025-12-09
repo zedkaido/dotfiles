@@ -12,8 +12,8 @@ floating_window()
 	posx=0
 	posy=0
 
-       	window_rows="${4:-40}" # $4 arg
-	window_cols="${3:-80}" # $3 arg
+	window_cols="${3:-100}" # $3 arg
+       	window_rows="${4:-42}" # $4 arg
 
 	alacritty --title="$title" \
 		-o window.position.x=$posx \
@@ -60,11 +60,11 @@ case "$chosen_window" in
 	launcher) floating_window "launcher" "~/.local/bin/app-open $2" ;;
 	yabai-fzy-window) floating_window "yabai-fzy-window" "~/.local/bin/yabai-fzy-window $2" ;;
 	exe) floating_window "exe" "$2" ;;
-	cmd) floating_window "cmd" "~/.local/bin/cmd $2" 100 42 ;;
-	pass) floating_window "pass" "~/.local/bin/pass-copy $2" 60 30 ;;
-	bweb) floating_window "bweb" "tmux a -t bweb || tmux new -s bweb" 100 40 ;;
+	cmd) floating_window "cmd" "~/.local/bin/cmd $2" ;;
+	pass) floating_window "pass" "~/.local/bin/pass-copy $2" ;;
+	bweb) floating_window "bweb" "tmux a -t bweb || tmux new -s bweb" ;;
 	www) floating_window "www" "~/.local/bin/www $2" 80 5 ;;
-	dictionary) floating_window "dictionary" "~/.local/bin/dictionary $2" 80 40 ;;
+	dictionary) floating_window "dictionary" "~/.local/bin/dictionary $2" ;;
 	bookmarks) floating_window "bookmarks" "~/.local/bin/bookmarks $2" 150 40 ;;
 	snippets) floating_window "snippets" "~/.local/bin/snippet-copy $2" ;;
 	radio) floating_window "radio" "~/.local/bin/radio $2" ;;
