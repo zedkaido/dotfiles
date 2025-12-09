@@ -24,7 +24,12 @@ alias htop='htop --no-color'
 
 alias q='exit'
 alias cs='clear;ls'
-alias hs='history | grep $1'
+
+alias r='fc -s'
+alias hr='history -r ~/.bash_history' # (h)istory -(r)ead
+alias hs='history | grep $1' # (h)istory -(s)earch
+alias ha='fc -ln -1 >> ~/.bash_history' # (h)istory (a)rchive
+alias he='vim ~/.bash_history' # (h)istory (e)dit
 
 alias la='ls -AF' # List all files
 alias ldir='ls -d */' # List only directories
