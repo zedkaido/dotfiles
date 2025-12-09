@@ -23,7 +23,7 @@ config.set("fileselect.multiple_files.command", [term_open_cmd, '-e', 'vifm', '-
 
 c.url.searchengines = {
 	'DEFAULT': 'https://xes.zedkaido.com/?q={}',
-	'xes': 'https://xes.zedkaido.com/?q={}',
+	'xes': 'http://127.0.0.1:1111?q={}',
 	'www': 'https://wiby.me/?q={}',
 	'cows': 'https://swisscows.com/web/query?={}',
 	'b': 'https://search.brave.com/search?q={}',
