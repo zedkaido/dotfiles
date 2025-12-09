@@ -1,5 +1,6 @@
 # https://qutebrowser.org/doc/help/settings.html
 config.load_autoconfig()
+c.changelog_after_upgrade = 'never'
 
 import os
 os.environ['PATH'] = '/opt/homebrew/bin:/Users/x/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
@@ -24,22 +25,6 @@ config.set("fileselect.multiple_files.command", [term_open_cmd, '-e', 'vifm', '-
 c.url.searchengines = {
 	'DEFAULT': 'https://xes.zedkaido.com/?q={}',
 	'xes': 'http://127.0.0.1:1111?q={}',
-	'www': 'https://wiby.me/?q={}',
-	'cows': 'https://swisscows.com/web/query?={}',
-	'b': 'https://search.brave.com/search?q={}',
-	's': 'https://startpage.com/sp/search?q={}',
-	'd': 'https://duckduckgo.com/?q={}',
-	'g': 'https://google.com/search?q={}',
-	'gl': 'https://gitlab.com/search?search={}',
-	'gh': 'https://github.com/search?q={}',
-	'h': 'https://hoogle.haskell.org/?hoogle={}',
-	'hp': 'https://hackage.haskell.org/packages/search?terms={}',
-	'syn': 'https://powerthesaurus.com/{}/synonyms',
-	'y': 'https://invidious.snopyta.org/search?q={}',
-	'yt': 'https://www.youtube.com/results?search_query={}',
-	'q': 'https://www.qwant.com/?q=%s{}=web',
-	'per': 'https://www.perplexity.ai/search?focus=internet&q={}',
-	'gpt': 'https://www.chatgpt.com/?q={}',
 }
 
 c.downloads.location.directory = '~/Downloads'
@@ -56,22 +41,25 @@ c.downloads.location.directory = '~/Downloads'
 #   - switching: Show the tab bar when switching tabs.
 c.tabs.show = 'never'
 
-c.content.blocking.adblock.lists = [ 
-	"https://easylist.to/easylist/easylist.txt", 
-	"https://easylist.to/easylist/easyprivacy.txt", 
-	"https://secure.fanboy.co.nz/fanboy-cookiemonster.txt", 
-	"https://easylist.to/easylist/fanboy-annoyance.txt", 
-	"https://secure.fanboy.co.nz/fanboy-annoyance.txt", 
-	"https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt", 
-	"https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt", 
-	"https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt", 
-	"https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt", 
-	"https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt",
-	"https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt"
-]
+# c.content.blocking.adblock.lists = [ 
+# 	"https://easylist.to/easylist/easylist.txt", 
+# 	"https://easylist.to/easylist/easyprivacy.txt", 
+# 	"https://secure.fanboy.co.nz/fanboy-cookiemonster.txt", 
+# 	"https://easylist.to/easylist/fanboy-annoyance.txt", 
+# 	"https://secure.fanboy.co.nz/fanboy-annoyance.txt", 
+# 	"https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt", 
+# 	"https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt", 
+# 	"https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt", 
+# 	"https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt", 
+# 	"https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt",
+# 	"https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt"
+# ]
+
+# c.content.blocking.hosts.lists = [
+#	"https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+# ]
 
 c.content.blocking.enabled = True
-c.content.blocking.hosts.lists = ['https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts']
 c.content.blocking.method = 'both'
 
 # Text color of the completion widget. May be a single color to use for
@@ -107,6 +95,9 @@ c.colors.statusbar.command.bg = '#000000'
 c.colors.statusbar.url.warn.fg = '#ffd700'
 c.colors.statusbar.url.success.http.fg = '#eeeeee'
 c.colors.statusbar.url.success.https.fg = '#eeeeee'
+
+c.colors.statusbar.private.bg = '#301934'
+c.colors.statusbar.command.private.bg = '#301934'
 
 c.colors.tabs.bar.bg = '#000000'
 c.colors.tabs.odd.bg = '#000000'
@@ -149,7 +140,7 @@ c.fonts.web.family.standard = "Helvetica"
 c.fonts.web.size.default = 16
 
 c.fonts.web.family.fixed = "TX-02"
-c.fonts.web.size.default_fixed = 14
+c.fonts.web.size.default_fixed = 16
 
 # ---
 
@@ -182,6 +173,7 @@ nunmap("'")
 
 # real quickmarks
 nmap(";51", ':open --tab localhost:5173')
+nmap(";80", ':open --tab localhost:8080')
 nmap(";l", ':open file:///Users/x/.local/share/blank.html') 
 
 c.aliases = {'q': 'quit', 'w': 'session-save', 'wq': 'quit --save'}
@@ -224,4 +216,3 @@ c.content.javascript.log_message.excludes = {
 	"userscript:_qute_stylesheet": ["*Refused to apply inline style because it violates the following Content Security Policy directive: *"],
 	"userscript:_qute_js": ["*TrustedHTML*"],
 }
-
