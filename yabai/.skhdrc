@@ -94,6 +94,9 @@ app < escape ; default
 
 app < o : skhd -k "escape" ; xq ; app-open ; yabai -m window --focus recent
 app < alt - o : skhd -k "escape"; xq ; app-open ; yabai -m window --focus recent
+app < 0 : skhd -k "escape"; xq ; app-open 0 ; yabai -m window --focus recent
+app < 1 : skhd -k "escape"; xq ; app-open 1 ; yabai -m window --focus recent
+app < 2 : skhd -k "escape"; xq ; app-open 2 ; yabai -m window --focus recent
 
 app < f : skhd -k "escape" ; open -a Finder ; skhd -k "escape"
 app < shift - h : skhd -k "escape" ; open -a Finder ~/ ; skhd -k "escape"
@@ -135,17 +138,17 @@ alt - p : yabai -m window --focus prev
 alt + shift - n : yabai -m space --focus next
 alt + shift - p : yabai -m space --focus prev
 
-cmd + alt - j : yabai -m window --focus stack.prev
-cmd + alt - k : yabai -m window --focus stack.next 
+alt + cmd - j : yabai -m window --focus stack.next 
+alt + cmd - k : yabai -m window --focus stack.prev
 
-cmd + alt - m : yabai -m window --swap stack.prev --focus
-cmd + alt - u : yabai -m window --swap stack.next --focus
+cmd + alt - u : yabai -m window --swap stack.prev --focus
+cmd + alt - m : yabai -m window --swap stack.next --focus
 
 cmd + alt - h : skhd -k cmd - \`
 cmd + alt - l : yabai -m window --focus largest
 
 cmd + alt - y : yabai -m window --raise
-cmd + alt - n : yabai -m window --lower 
+cmd + alt - n : yabai -m window --lower
 
 ctrl + alt - 1 : yabai -m window --focus stack.1
 ctrl + alt - 2 : yabai -m window --focus stack.2
@@ -199,8 +202,8 @@ cmd + alt - r : yabai -m space --rotate 90
 
 shift + ctrl + alt - left : yabai -m window --resize right:-50:0 || yabai -m window --resize left:-50:0 || yabai -m window --resize left:50:0 || yabai -m window --resize right:50:0
 shift + ctrl + alt - right : yabai -m window --resize right:50:0 || yabai -m window --resize left:50:0 || yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0
-shift + ctrl + alt - up : yabai -m window --resize top:0:-50 || yabai -m window --resize bottom:0:-50 || yabai -m window --resize top:0:50 || yabai -m window --resize bottom:0:50
-shift + ctrl + alt - down : yabai -m window --resize top:0:50 || yabai -m window --resize bottom:0:50 || yabai -m window --resize top:0:-50 || yabai -m window --resize bottom:0:-50
+shift + ctrl + alt - up :  yabai -m window --resize bottom:0:-50 || yabai -m window --resize top:0:-50 ||  yabai -m window --resize top:0:50 || yabai -m window --resize bottom:0:50
+shift + ctrl + alt - down : yabai -m window --resize bottom:0:50 || yabai -m window --resize top:0:50 || yabai -m window --resize top:0:-50 || yabai -m window --resize bottom:0:-50
 
 ctrl + alt - left : yabai -m window --move rel:-40:0
 ctrl + alt - right : yabai -m window --move rel:40:0
