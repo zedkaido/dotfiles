@@ -9,27 +9,29 @@ floating_window()
 		exit 1
 	fi
 
-	screen_info=$(yabai -m query --displays --display | jq ".frame")
-	display_width=$(echo "$screen_info" | jq '.w | round')
-	display_height=$(echo "$screen_info" | jq '.h | round')
+	posx=0
+	posy=0
 
-	window_cols="${3:-80}" # $3 arg
        	window_rows="${4:-40}" # $4 arg
+	window_cols="${3:-80}" # $3 arg
 
-	char_width=11
-	char_height=24
-	window_width=$(( $window_cols * char_width )) # ~
-	window_height=$(( $window_rows * char_height )) # ~
-	posx=$(( (display_width - window_width) / 2 ))
-	posy=$(( (display_height - window_height) / 2 ))
-
-	open -n /Applications/Ghostty-Nightly.app/ \
-		--args --title="$title" \
-		--window-width=$window_cols \
-	       	--window-height=$window_rows \
-		--window-position-x=$posx \
-		--window-position-y=$posy \
+	alacritty --title="$title" \
+		-o window.position.x=$posx \
+	 	   window.position.y=$posy \
+		   window.dimensions.columns=$window_cols \
+		   window.dimensions.lines=$window_rows \
 		-e bash -c "$cmd"
+
+	# xq ; st -t="$title" \
+	#    -e bash -c "$cmd" && yabai -m window --focus recent 
+
+	# open -n /Applications/Ghostty.app/ \
+	# 	--args --title="$title" \
+	# 	       --window-width=$window_cols \
+	#                --window-height=$window_rows \
+	# 	       --window-position-x=$posx \
+	# 	       --window-position-y=$posy \
+	# 	-e bash -c "$cmd"
 }
 
 window_types=(
@@ -54,18 +56,18 @@ if [ -z $chosen_window ]; then
 fi
 
 case "$chosen_window" in
-	ch) floating_window "ch" "~/.local/bin/ch" 150 80 ;;
-	launcher) floating_window "launcher" "~/.local/bin/app-open" ;;
-	yabai-fzy-window) floating_window "yabai-fzy-window" "~/.local/bin/yabai-fzy-window" ;;
+	ch) floating_window "ch" "~/.local/bin/ch $2" 120 40 ;;
+	launcher) floating_window "launcher" "~/.local/bin/app-open $2" ;;
+	yabai-fzy-window) floating_window "yabai-fzy-window" "~/.local/bin/yabai-fzy-window $2" ;;
 	exe) floating_window "exe" "$2" ;;
-	cmd) floating_window "cmd" "~/.local/bin/cmd" 100 80 ;;
-	pass) floating_window "pass" "~/.local/bin/pass-copy" ;;
-	bweb) floating_window "bweb" "tmux a -t bweb || tmux new -s bweb" 100 80 ;;
-	www) floating_window "www" "~/.local/bin/www" 80 5 ;;
-	dictionary) floating_window "dictionary" "~/.local/bin/dictionary" 80 60 ;;
-	bookmarks) floating_window "bookmarks" "~/.local/bin/bookmarks" 150 80 ;;
-	snippets) floating_window "snippets" "~/.local/bin/snippet-copy" ;;
-	radio) floating_window "radio" "~/.local/bin/radio" ;;
-	webcam) floating_window "webcam" "~/.local/bin/webcam" 42 8 ;;
+	cmd) floating_window "cmd" "~/.local/bin/cmd $2" 100 42 ;;
+	pass) floating_window "pass" "~/.local/bin/pass-copy $2" 60 30 ;;
+	bweb) floating_window "bweb" "tmux a -t bweb || tmux new -s bweb" 100 40 ;;
+	www) floating_window "www" "~/.local/bin/www $2" 80 5 ;;
+	dictionary) floating_window "dictionary" "~/.local/bin/dictionary $2" 80 40 ;;
+	bookmarks) floating_window "bookmarks" "~/.local/bin/bookmarks $2" 150 40 ;;
+	snippets) floating_window "snippets" "~/.local/bin/snippet-copy $2" ;;
+	radio) floating_window "radio" "~/.local/bin/radio $2" ;;
+	webcam) floating_window "webcam" "~/.local/bin/webcam $2" 60 30 ;;
 	*) exit 0 ;;
 esac	
