@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 yabai_query=$(yabai -m query --windows | jq -r '.[] | "\(.id):\(.app):\(.title)"')
 
 truncate_string() {
@@ -17,8 +17,8 @@ index=0
 
 while IFS=':' read -r id app title; do
    truncated_title=$(truncate_string "$title" 100)
-   option="$app: $truncated_title"
-   
+   option="[$id] $app: $truncated_title"
+
    ids="$ids$index:$id\n"
    app_options="$app_options$option\n"
    index=$((index + 1))
@@ -26,35 +26,26 @@ done <<EOF
 $yabai_query
 EOF
 
+echo "$app_options" | sed '$ s/\\n$//'
 app_options=$(echo  "$app_options" | sed '$ s/\\n$//')
 
 if [ "$1" = "dmenu" ]; then
-   selected_app=$(echo "$app_options" | dmenu -i -p "FOCUS APP" -l 8)
+   selected_app=$(echo -e "$app_options" | dmenu -i -p "FOCUS APP" -l 12)
 else
-   selected_app=$(echo "$app_options" | fzy)
+   selected_app=$(echo -e "$app_options" | fzy)
 fi
 
-if [ -n "$selected_app" ]; then
-   line_num=0
-   while IFS= read -r line; do
-      if [ "$line" = "$selected_app" ]; then
-         break
-      fi
-      line_num=$((line_num + 1))
-   done <<EOF
-   $(echo "$app_options")
-EOF
-   
-   app_id=$(echo "$ids" | grep "^$line_num:" | cut -d ':' -f 2 | tr -d ' ')
-   
-   if [ -n "$app_id" ]; then
-      echo "$app_id"
-      yabai -m window --focus "$app_id"
-      exit 0
-   else
-      echo "No matching window found" >&2
-      exit 1
-   fi
+app_id="${selected_app#\[}"
+app_id="${app_id%%]*}"
+
+if [ -n "$app_id" ]; then
+   echo "$app_id"
+   yabai -m window --focus "$app_id"
+   exit 0
+else
+   echo "No matching window found" >&2
+   exit 1
+fi
 else
    echo "No selection made" >&2
    exit 1
