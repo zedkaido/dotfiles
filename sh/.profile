@@ -23,6 +23,7 @@ export PASSWORD_STORE_ENABLE_EXTENSIONS="true"
 # ---
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/pipx/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.local/go/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
@@ -35,3 +36,6 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 # CDPR8
 # export PATH=/Users/x/cdpr8/_cdp/_cdprogs:$PATH
+
+# PIX
+export PIPX_BIN_DIR=/Users/x/.local/pipx/bin/
