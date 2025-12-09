@@ -8,12 +8,12 @@ webcam_open() {
 			# TODO: Confirm if this works
 			ffmpeg -f v4l2 -video_size 640x480 -framerate 30 -i /dev/video0 \
 				-vcodec libx264 -preset ultrafast -tune zerolatency \
-				-f mpegts - | mpv --no-cache -profile=low-latency -untimed - 
+				-f mpegts - | mpv --no-cache --vf="format=gray" -profile=low-latency -untimed - 
 			;;
 		Darwin)
 			ffmpeg -f avfoundation -video_size 640x480 -framerate 30 -pix_fmt yuyv422 -i "0" \
 				-vcodec libx264 -preset ultrafast -tune zerolatency \
-				-f mpegts - | mpv --no-cache -profile=low-latency -untimed - 
+				-f mpegts - | mpv --no-cache --vf="format=gray" -profile=low-latency -untimed -
 			;;
 		*) echo "Unsupported OS. Are you running on a potato?" ;;
 	esac
