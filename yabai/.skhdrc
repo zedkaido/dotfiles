@@ -82,9 +82,11 @@ clipboard < escape ; default
 
 clipboard < c : skhd -k "escape" ; term-window ch 
 clipboard < alt - c : skhd -k "escape" ; term-window ch copy
-clipboard < a : ch append ; skhd -k "escape"
-
-ctrl + alt + cmd - a : ch append # append current clipboard content to ch
+clipboard < a : skhd -k "escape" ; ch append 
+clipboard < d : skhd -k "escape" ; term-window ch delete
+clipboard < e : skhd -k "escape" ; term-window ch edit
+clipboard < e : skhd -k "escape" ; term-window ch edit
+clipboard < r : skhd -k "escape" ; term-window ch clear
 
 #----------
 # MODE: APP 
