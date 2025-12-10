@@ -5,13 +5,14 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export LANG="en_GB.UTF-8"
 export LC_ALL="en_GB.UTF-8"
 export TZ="Europe/London"
-export LESSCHARSET="utf-8"
+export LESSCHARSET="UTF-8"
 
 export TERM="xterm"
 
 export EDITOR="vim"
 export VISUAL="vim"
-export PAGER="less"
+export PAGER="vim -M +MANPAGER -"
+export MANPAGER="vim -M +MANPAGER -"
 
 export BROWSER="qutebrowser"
 export TERMINAL="Ghostty"
