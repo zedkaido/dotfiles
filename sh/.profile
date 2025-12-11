@@ -5,20 +5,18 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export LANG="en_GB.UTF-8"
 export LC_ALL="en_GB.UTF-8"
 export TZ="Europe/London"
-export LESSCHARSET="UTF-8"
 
 export TERM="xterm"
-
 export EDITOR="vim"
 export VISUAL="vim"
-export PAGER="vim -M +MANPAGER -"
-export MANPAGER="vim -M +MANPAGER -"
+export PAGER="less"
+export MANPAGER="less"
+export LESSCHARSET="UTF-8"
 
-export BROWSER="qutebrowser"
-export TERMINAL="Ghostty"
+export BROWSER="/usr/bin/env qutebrowser"
+export TERMINAL="Alacritty"
 
 export GPG_TTY=$(tty)
-
 export PASSWORD_STORE_ENABLE_EXTENSIONS="true"
 
 # ---

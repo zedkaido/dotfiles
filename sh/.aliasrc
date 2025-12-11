@@ -4,6 +4,7 @@
 
 alias svim='sudo vim'
 alias svifm='sudo vifm'
+alias manv="MANPAGER='vim -M +MANPAGER -' man"
 
 alias km='vim +KM'
 alias journal='vim +JR'
@@ -80,7 +81,8 @@ alias mpv-yt-hd='mpv --ytdl-format="bestvideo[height<=1080][vcodec*=hvc1]/bestvi
 # TODO: add linux support (replace with binaries) 
 # -----------------------------------------------
 alias empty-trash="osascript -e 'tell application \"Finder\" to empty trash'"
+alias preview="qlmanage -p"
 
-alias os-sleep='"Are you sure (sleep)?" "pmset sleepnow"' 
-alias os-display-sleep='pmset displaysleepnow'
+alias os-sleep='prompt "Are you sure (sleep)?" "pmset sleepnow"' 
+alias os-display-sleep='prompt "Are you sure (sleep displays)" "pmset displaysleepnow"'
 alias os-shut-down='prompt "Are you sure (shutdown)?" "sudo shutdown -h now"'
