@@ -111,6 +111,7 @@ mark v /Volumes/
 mark p /Library/Audio/Plug-Ins/
 
 mark h ~/
+mark z ~/zk/
 mark m ~/mp/
 mark d ~/d/
 mark D ~/Downloads/
