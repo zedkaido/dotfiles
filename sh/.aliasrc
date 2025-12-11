@@ -8,6 +8,7 @@ alias manv="MANPAGER='vim -M +MANPAGER -' man"
 
 alias km='vim +KM'
 alias journal='vim +JR'
+alias tsks='vim +TSKS'
 alias note='vim +KMNote'
 alias osx='vim +OSX'
 alias webm='vim +WEBM'
