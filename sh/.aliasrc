@@ -10,7 +10,7 @@ alias km='vim +KM'
 alias journal='vim +JR'
 alias tsks='vim +TSKS'
 alias note='vim +KMNote'
-alias macos='vim +MACOS'
+alias osx='vim +OSX'
 alias webm='vim +WEBM'
 
 alias e='emacs'
