@@ -28,7 +28,7 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.local/pipx/bin:$PATH"
 
 # HomeBrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/usr/bin/env brew shellenv)"
 
 # MacPorts
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
