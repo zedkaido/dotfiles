@@ -38,3 +38,7 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 # PIPX
 export PIPX_BIN_DIR=/Users/x/.local/pipx/bin/
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+function nvml() { [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; }
