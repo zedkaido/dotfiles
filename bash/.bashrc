@@ -23,8 +23,3 @@ IGNOREEOF=2 # <C-d> (x3) to exit session
 source ~/.aliasrc
 source ~/.funcrc
 source ~/.profile
-
-# <https://github.com/scop/bash-completion>
-if [[ -s /opt/homebrew/etc/profile.d/bash_completion.sh ]]; then
-	. "/opt/homebrew/etc/profile.d/bash_completion.sh"
-fi
