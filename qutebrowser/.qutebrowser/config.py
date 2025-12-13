@@ -3,14 +3,16 @@ config.load_autoconfig()
 c.changelog_after_upgrade = 'never'
 
 import os
-os.environ['PATH'] = '/opt/homebrew/bin:/Users/x/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+
+HOME = os.environ.get('HOME')
+os.environ['PATH'] = f"/opt/homebrew/bin:{HOME}/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 c.window.title_format = '{perc}{current_title}' 
 c.window.hide_decoration = True
 c.statusbar.show = 'always'
 
-c.url.default_page = 'file:///Users/x/.local/share/blank.html'
-c.url.start_pages = 'file:///Users/x/.local/share/blank.html'
+c.url.default_page = f'file:///{HOME}/.local/share/blank.html'
+c.url.start_pages = f'file:///{HOME}/.local/share/blank.html'
 
 c.auto_save.session = True
 c.session.lazy_restore = True
@@ -174,7 +176,7 @@ nunmap("'")
 # real quickmarks
 nmap(";51", ':open --tab localhost:5173')
 nmap(";80", ':open --tab localhost:8080')
-nmap(";l", ':open file:///Users/x/.local/share/blank.html') 
+nmap(";l", f':open file:///{HOME}/.local/share/blank.html') 
 
 c.aliases = {'q': 'quit', 'w': 'session-save', 'wq': 'quit --save'}
 c.aliases['archive'] = 'open --tab https://web.archive.org/save/{url}'
