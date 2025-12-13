@@ -86,4 +86,5 @@ alias preview="qlmanage -p"
 
 alias os-sleep='prompt "Are you sure (sleep)?" "pmset sleepnow"' 
 alias os-display-sleep='prompt "Are you sure (sleep displays)" "pmset displaysleepnow"'
-alias os-shut-down='prompt "Are you sure (shutdown)?" "sudo shutdown -h now"'
+alias os-shut-down='prompt "Are you sure you want to SHUTDOWN?" "sudo shutdown -h now"'
+alias os-restart='prompt "Are you sure want to RESTART)?" "sudo shutdown -r now"'
