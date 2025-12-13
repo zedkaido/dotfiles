@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
-
 yabai --stop-service || sudo yabai --load-sa
 sudo yabai --load-sa
 yabai --start-service
