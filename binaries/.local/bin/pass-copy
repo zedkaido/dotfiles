@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash 
 
 if ! command -v fzy >/dev/null 2>&1; then
 	echo "fzy required"
@@ -47,7 +47,7 @@ case "$PASS_TYPE" in
 			echo "No pass selected."
 			exit 0
 		fi
-		pass show -c $PASS_FILE
+		pass show -c "$PASS_FILE"
 		;;
 	username)
 		PASS_USERNAME_FILE=$(select_username_file)
@@ -55,7 +55,7 @@ case "$PASS_TYPE" in
 			echo "No username selected."
 			exit 0
 		fi
-		pass show -c $PASS_USERNAME_FILE
+		pass show -c "$PASS_USERNAME_FILE"
 		;;
 	otp)
 		PASS_OTP_FILE=$(select_otp_file)
