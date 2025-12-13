@@ -86,7 +86,8 @@ clipboard < a : skhd -k "escape" ; ch append
 clipboard < d : skhd -k "escape" ; term-window ch delete
 clipboard < e : skhd -k "escape" ; term-window ch edit
 clipboard < e : skhd -k "escape" ; term-window ch edit
-clipboard < r : skhd -k "escape" ; term-window ch clear
+clipboard < l : skhd -k "escape" ; term-window ch clear
+clipboard < 0 : skhd -k "escape" ; ch clear clipboard
 
 #----------
 # MODE: APP 
