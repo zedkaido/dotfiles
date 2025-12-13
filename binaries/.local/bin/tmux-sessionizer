@@ -12,7 +12,6 @@ else
 		~/pro
 		~/zk
 		~/zk/sr
-		~/dotfiles
 		~/dotfiles/vim/.vim
 		~/dotfiles/tmux/.config/tmux
 		~/dotfiles/alacritty/.config/alacritty
@@ -35,7 +34,7 @@ else
 		ignore_conditions+=(-not -path "*$dir*")
 	done
 
-	selected=$(find "${search_dirs[@]}" -mindepth 0 -maxdepth 1 -type d "${ignore_conditions[@]}" | fzy)
+	selected=$(find  "${search_dirs[@]}" -mindepth 0 -maxdepth 1 -type d "${ignore_conditions[@]}" 2>/dev/null | fzy)
 fi
 
 if [ -z "$selected" ]; then
