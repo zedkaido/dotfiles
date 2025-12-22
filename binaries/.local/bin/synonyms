@@ -1,0 +1,155 @@
+#!/usr/bin/env bash
+
+set -e
+
+self=${0##*/}
+version="$self v1.0.0"
+
+showhelp() {
+	cat <<EOF
+Usage: $self [OPTION] {word}
+
+Find synonyms for a {word}.
+Run $self -i for setup information.
+
+Options:
+  -l LANG     Specify the lang for synonyms:
+              Supported languages: en, pt, es, ru, ro, it, de
+  -h          Show help message and exit.
+  -i          Show detailed setup information and exit.
+  -v          Show program version and exit.
+
+EOF
+}
+
+showinfo() {
+	cat <<EOF
+$self is a utility tool to find synonyms directly from the terminal.
+
+Setup Instructions:
+===================
+1. Obtain an API key from https://thesaurus.altervista.org/mykey
+2. Install jq (dependecy): https://jqlang.org/download/
+3. Create a .synonymrc config file in:
+   - \$XDG_CONFIG_HOME/.synonymrc
+   - ~/.config/.synonymrc
+   - ~/.synonymrc
+
+Example .synonymrc
+==================
+KEY=<TOKEN_KEY>
+SLANG=en
+
+EOF
+}
+
+loadconfig() {
+	local files=(
+		"$XDG_CONFIG_HOME/.synonymrc"
+		"$HOME/.config/.synonymrc"
+		"$HOME/.synonymrc"
+	)
+
+	for f in "${files[@]}"; do
+		if [[ -f $f ]]; then
+			source "$f"
+			return
+		fi
+	done
+
+	cat <<EOF >&2
+ERROR: .synonymrc not found.
+You need to declare a KEY in "$XDG_CONFIG_HOME/.synonymrc"
+Run $self -i for setup information."
+EOF
+	exit 1
+}
+
+validatedeps() {
+	command -v jq >/dev/null 2>&1 || {
+		echo "ERROR: jq is required, but not installed. Visit https://stedolan.github.io/jq/download/" >&2
+		exit 1
+	}	
+}
+
+extractsynonyms() {
+	local resp="$1"
+
+	local err
+	err=$(echo "$resp" | jq -r '.error // empty')
+	if [[ -n $err ]]; then
+		echo "ERROR: $err" >&2
+		exit 1
+	fi
+
+	echo "$resp" |
+		jq -r '.response[].list.synonyms' |
+		tr '"' '|' |
+		tr '|' '\n' |
+		sed 's/([^)]*)//g' |
+		sort -u |
+		column -c "$(tput cols)"
+}
+
+syslang() {
+	local lang=${LANG:-$LANGUAGE}
+	lang=${lang%%.*} # remove encoding
+
+	case $lang in
+		en_EN|pt_PT|es_ES|ru_RU|ro_RO|it_IT|de_DE)
+			echo $lang
+			;;
+		*)
+			echo "en_US"
+			;;
+	esac
+}
+
+maplang() {
+	case "$1" in
+		en|en_US) echo "en_US" ;;
+		pt|pt_PT) echo "pt_PT" ;;
+		es|es_ES) echo "es_ES" ;;
+		ru|ru_RU) echo "ru_RU" ;;
+		ro|ro_RO) echo "ro_RO" ;;
+		it|it_IT) echo "it_IT" ;;
+		de|de_DE) echo "de_DE" ;;
+		*) 
+			echo "ERROR: Unsopported lang: $1" >&2
+			exit 1
+			;;
+	esac
+}
+
+main() {
+	local word=""
+
+	while getopts "l:hiv" option; do
+		case "$option" in
+			l) lang=$(maplang "$OPTARG") ;;
+			h) showhelp ;;
+			i) showinfo ;;
+			v) echo "$version" ; exit 0 ;;
+			*) showhelp ; exit 1 ;;
+		esac
+	done
+	shift $((OPTIND - 1))
+
+	word="$1"
+
+	validatedeps
+	loadconfig
+
+	lang=${lang:-$(maplang "${SLANG:-$(syslang)}")}
+	if [[ -z "$KEY" ]]; then
+		echo "ERROR: KEY needs to be declared in $XDG_CONFIG_HOME/.synonymrc" >&2
+		exit 1
+	fi
+
+	local requrl="https://thesaurus.altervista.org/thesaurus/v1?word=$word&language=$lang&key=$KEY&output=json"
+	local resp=$(curl -s $requrl)
+
+	extractsynonyms "$resp"
+}
+
+main "$@"

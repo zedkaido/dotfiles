@@ -50,7 +50,7 @@ window < alt - w ; default
 window < s : open /System/Applications/Utilities/Screenshot.app ; skhd -k "escape"
 window < c : skhd -k "escape" ; xq ; colorscheme ; yabai-focus-recent 
 
-window < d : skhd -k "escape" ; term-window dictionary
+window < d : skhd -k "escape" ; xq ; dictionary dmenu
 window < w : skhd -k "escape" ; term-window webcam
 window < p : skhd -k "escape" ; term-window pass
 window < b : skhd -k "escape" ; term-window bookmarks

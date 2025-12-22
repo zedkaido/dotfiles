@@ -1,66 +1,80 @@
 #!/usr/bin/env bash
 
 open_sdcv() {
-	sdcv 
+	sdcv
 }
 
-lookup_offline_word_definition() {
-	word=$1
+lookup_offline_def() {
+	word="$1"
 	if [ -z "$word" ]; then
-		printf "Definition for: "
+		printf "(sdcv) Definition for: "
 		read -r word
 	fi
 	sdcv -n "$word" | vim - -R
 }
 
-lookup_word_synonyms() {
-	word=$1
-	if [ -z "$word" ]; then 
-		printf "Synonyms for: "
-		read -r word
-	fi
-	www "$word !synonyms"
-}
-
-lookup_online_word_definition() {
-	word=$1
+lookup_online_def() {
+	word="$1"
 	if [ -z "$word" ]; then
-		printf "(Online) Definition for: "
+		printf "(ONLINE) Definition for: "
 		read -r word
 	fi
 	dict "$word" | vim - -R
 }
 
+lookup_synonym() {
+	word="$1"
+	if [ -z "$word" ]; then
+		printf "Synonyms for: "
+		read -r word
+	fi
+
+	command -v synonyms >/dev/null 2>&1 || {
+		echo "ERROR: synonyms is required, but is not in PATH. Make sure you have synonyms bin." >&2
+		exit 1
+	}
+	synonyms $word ; read
+
+	# WEB SEARCH ALTERNATIVE:
+	# www "$word !synonyms" &
+}
+
 prompt() {
 	opts=(
-		"definition :: Lookup Definition - Offline: sdcv"
+		"definition :: Lookup Definition |OFFLINE :: sdcv|"
 		"synonym :: Lookup Synonym (Open in Browser)"
-		"sdcv :: Open SDCV APP (Offline)"
-		"dict :: Lookup Definition (Online: dict)"
+		"sdcv :: Open SDCV APP (OFFLINE)"
+		"dict :: Lookup Definition |ONLINE: dict|"
 	)
 	selected=$(printf "%s\n" "${opts[@]}" | fzy)
 	action=${selected%% ::*}
 	case $action in
-		definition) lookup_offline_word_definition ;;
+		definition) lookup_offline_def ;;
 		sdcv) open_sdcv ;;
-		synonym) lookup_word_synonyms ;;
-		dict) lookup_online_word_definition ;;
-		*) exit 0 
+		synonym) lookup_synonym ;;
+		dict) lookup_online_def ;;
+		*) exit 0
 	esac
 }
 
-case "$1" in 
+dmenuopts() {
+	opts=( "definition" "synonyms" "sdcv" "dict")
+	selected=$(printf "%s\n" "${opts[@]}" | dmenu)
+	term-window dictionary "$selected"
+}
+
+case "$1" in
 	sdcv) open_sdcv ;;
 	offline) open_sdcv ;;
 
-	def) lookup_offline_word_definition "$2" ;;
-	definition) lookup_offline_word_definition "$2" ;;
+	def*) lookup_offline_def "$2" ;;
 
-	syn) lookup_word_synonyms "$2" ;;
-	synonym) lookup_word_synonyms "$2" ;;
+	syn*) lookup_synonym "$2" ;;
 
-	dict) lookup_online_word_definition "$2" ;;
-	online) lookup_online_word_definition "$2" ;;
+	dict*) lookup_online_def "$2" ;;
+	online) lookup_online_def "$2" ;;
+
+	dmenu) dmenuopts "$@" ;;
 
 	*) prompt ;;
 esac
