@@ -9,7 +9,7 @@ fi
 
 ICON="B"
 if [[ $CHARGING != "" ]]; then
-   ICON="C ::"
+   ICON="BAT ::"
 fi
 
 sketchybar --set $NAME icon="$ICON" label="${PERCENTAGE}%"

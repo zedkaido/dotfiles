@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SPACE_ICONS=("I" "II" "III" "IV" "V" "VI" "VII" "VIII" "IX" "X" "XI")
+SPACE_ICONS=( "0x00" "I" "II" "III" "IV" "V" "VI" "VII" "VIII" "IX" "X")
 
 for i in "${!SPACE_ICONS[@]}"
 do
