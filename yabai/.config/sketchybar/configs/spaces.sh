@@ -10,9 +10,9 @@ do
      --set space.$sid associated_space=$sid \
            icon=${SPACE_ICONS[i]} \
            icon.color=0xffb2b2b2 \
-           background.color=0xff343434 \
+           background.color=0xff000087 \
            background.corner_radius=0 \
-           background.height=18 \
+           background.height=28 \
            background.drawing=off \
            label.drawing=off \
            script="~/.config/sketchybar/scripts/space.sh" \
