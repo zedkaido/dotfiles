@@ -1,0 +1,4 @@
+#!/usr/bin/env dash
+
+# fr (AKA. (f)ocus (r)ecent)
+[ $(uname -s) = "Darwin" ] && yabai-focus-recent
