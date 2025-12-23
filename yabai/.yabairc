@@ -13,14 +13,13 @@ sudo yabai --load-sa
 # ------
 yabai -m config \
          layout stack \
-         mouse_follows_focus on \
+         mouse_follows_focus off \
          focus_follows_mouse off \
          window_origin_display cursor \
          window_placement second_child \
-	 window_topmost on \
          window_zoom_persist off \
-         window_insertion_point focused \
-         window_shadow on \
+         window_insertion_point last \
+         window_shadow off \
          window_opacity off \
          insert_feedback_color 0xffd75f5f \
          split_ratio 0.50 \
@@ -47,20 +46,12 @@ yabai -m config --display 1 external_bar all:33:0
 yabai -m rule --add app="Picture in Picture" sticky=on
 
 yabai -m rule --add title="^f:.+" manage=off
-yabai -m rule --add app='^XQuartz$' manage=off
-
-yabai -m rule --add app="^Stickies$" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app='^Calculator$' manage=off
-
 yabai -m rule --add app="^App Eraser$" manage=off
-yabai -m rule --add app="^Affinity.+" manage=off
-yabai -m rule --add app="^Transmission.+" manage=off
 yabai -m rule --add app="^LuLu$" manage=off
-yabai -m rule --add app="^darktable$" manage=off
 
 yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on
-
 yabai -m rule --add app="^qutebrowser$" title!="^$" role="AXWindow" subrole="AXDialog" manage=on
 
 yabai -m rule --apply
