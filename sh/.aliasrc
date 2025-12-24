@@ -14,7 +14,6 @@ alias osx='vim +OSX'
 alias webm='vim +WEBM'
 
 alias e='emacs'
-alias ed='emacs --daemon'
 alias ec='emacsclient -t'
 alias ek="emacsclient -e '(kill-emacs)'"
 
