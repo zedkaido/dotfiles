@@ -12,9 +12,11 @@ else
 		~/pro
 		~/zk
 		~/zk/sr
+		~/dotfiles
 		~/dotfiles/vim/.vim
 		~/dotfiles/tmux/.config/tmux
 		~/dotfiles/alacritty/.config/alacritty
+		~/.local/src
 	)
 	ignore_dirs=(
 		.git

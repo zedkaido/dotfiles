@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-yabai --stop-service || sudo yabai --load-sa
+yabai --stop-service
 sudo yabai --load-sa
 yabai --start-service

@@ -1,9 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env dash
 
-query=$1
-if [ -z "$query" ]; then
-	echo -n "www :: "
-	read query
-fi
-query="$query"
-qutebrowser --target=tab "$query"
+[ -z "$1" ] && query=$(echo "" | dmenu -p "www")
+[ -n "$query" ] && qutebrowser --target=tab "$query"

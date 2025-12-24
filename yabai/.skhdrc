@@ -48,14 +48,14 @@ window < escape ; default
 window < alt - w ; default
 
 window < s : open /System/Applications/Utilities/Screenshot.app ; skhd -k "escape"
-window < c : skhd -k "escape" ; xq ; colorscheme ; yabai-focus-recent 
+window < c : skhd -k "escape" ; xq ; colorscheme ; yabai -m window --focus recent
 
-window < d : skhd -k "escape" ; xq ; dictionary dmenu
-window < w : skhd -k "escape" ; term-window webcam
-window < p : skhd -k "escape" ; term-window pass
-window < b : skhd -k "escape" ; term-window bookmarks
-window < t : skhd -k "escape" ; term-window snippets
-window < r : skhd -k "escape" ; term-window radio
+window < d : skhd -k "escape" ; dictionary
+window < w : skhd -k "escape" ; webcam
+window < p : skhd -k "escape" ; pass-copy
+window < b : skhd -k "escape" ; bookmarks
+window < t : skhd -k "escape" ; snippets
+window < r : skhd -k "escape" ; radio
 
 # --------------
 # MODE: POSITION 
@@ -64,10 +64,19 @@ alt - z ; position
 position < escape ; default
 position < alt - z ; default
 
+# <r>:<c>:<x>:<y>:<w>:<h>
 position < f : yabai -m window --grid 1:1:1:0:1:1 ; skhd -k "escape"
 position < shift - f : yabai -m window --toggle windowed-fullscreen ; skhd -k "escape"
-position < c : yabai -m window --grid 1:2:1:1:1:2 ; skhd -k "escape"
-position < g : yabai -m window --grid 4:4:1:1:2:2 ; skhd -k "escape"
+position < m : yabai -m window --grid 20:20:5:0:10:20 ; skhd -k "escape"
+position < c : yabai -m window --grid 4:4:1:1:2:2 ; skhd -k "escape"
+position < t : yabai -m window --grid 8:1:0:0:1:2 ; skhd -k "escape"
+position < b : yabai -m window --grid 8:1:0:6:1:2 ; skhd -k "escape"
+
+position < p : yabai -m window --grid 20:20:14:0:6:6 ; skhd -k "escape"
+position < shift - left : yabai -m window --grid 20:20:0:0:5:5 ; skhd -k "escape"
+position < shift - right : yabai -m window --grid 20:20:15:0:5:5 ; skhd -k "escape"
+position < left : yabai -m window --grid 20:20:0:15:5:5 ; skhd -k "escape"
+position < right : yabai -m window --grid 20:20:15:15:5:5 ; skhd -k "escape"
 
 position < h : yabai -m window --grid 1:2:0:0:1:1 ; skhd -k "escape"
 position < j : yabai -m window --grid 2:1:0:2:1:1 ; skhd -k "escape"
@@ -80,26 +89,30 @@ position < l : yabai -m window --grid 1:2:1:0:1:1 ; skhd -k "escape"
 alt - c ; clipboard
 clipboard < escape ; default
 
-clipboard < c : skhd -k "escape" ; term-window ch 
+clipboard < c : skhd -k "escape" ; term-window ch
 clipboard < alt - c : skhd -k "escape" ; term-window ch copy
-clipboard < a : skhd -k "escape" ; ch append 
+
+clipboard < s : skhd -k "escape" ; ch save
+clipboard < alt - s : skhd -k "escape" ; ch save
 clipboard < d : skhd -k "escape" ; term-window ch delete
 clipboard < e : skhd -k "escape" ; term-window ch edit
-clipboard < e : skhd -k "escape" ; term-window ch edit
 clipboard < l : skhd -k "escape" ; term-window ch clear
+clipboard < alt - c : skhd -k "escape" ; term-window ch clear
 clipboard < 0 : skhd -k "escape" ; ch clear clipboard
 
 #----------
-# MODE: APP 
+# MODE: APP
 #----------
 alt - o ; app
 app < escape ; default
 
-app < o : skhd -k "escape" ; xq ; app-open ; yabai -m window --focus recent
+app < o : skhd -k "escape" ; xq ; app-open || yabai -m window --focus recent
 app < alt - o : skhd -k "escape"; xq ; app-open ; yabai -m window --focus recent
 app < 0 : skhd -k "escape"; xq ; app-open 0 ; yabai -m window --focus recent
 app < 1 : skhd -k "escape"; xq ; app-open 1 ; yabai -m window --focus recent
 app < 2 : skhd -k "escape"; xq ; app-open 2 ; yabai -m window --focus recent
+
+app < s : skhd -k "escape" ; st ; yabai -m window --focus recent
 
 app < f : skhd -k "escape" ; open -a Finder ; skhd -k "escape"
 app < shift - h : skhd -k "escape" ; open -a Finder ~/ ; skhd -k "escape"
@@ -153,6 +166,7 @@ cmd + alt - l : yabai -m window --focus largest
 cmd + alt - y : yabai -m window --raise
 cmd + alt - n : yabai -m window --lower
 
+ctrl + alt - 0 : yabai -m window --focus stack.0
 ctrl + alt - 1 : yabai -m window --focus stack.1
 ctrl + alt - 2 : yabai -m window --focus stack.2
 ctrl + alt - 3 : yabai -m window --focus stack.3
@@ -163,25 +177,25 @@ ctrl + alt - 7 : yabai -m window --focus stack.7
 ctrl + alt - 8 : yabai -m window --focus stack.8
 ctrl + alt - 9 : yabai -m window --focus stack.9
  
-alt - 1 : yabai -m space --focus 1
-alt - 2 : yabai -m space --focus 2
-alt - 3 : yabai -m space --focus 3
-alt - 4 : yabai -m space --focus 4
-alt - 5 : yabai -m space --focus 5
-alt - 6 : yabai -m space --focus 6
-alt - 7 : yabai -m space --focus 7
-alt - 8 : yabai -m space --focus 8
-alt - 9 : yabai -m space --focus 9
+alt - 0 : yabai -m space --focus 1
+alt - 1 : yabai -m space --focus 2
+alt - 2 : yabai -m space --focus 3
+alt - 3 : yabai -m space --focus 4
+alt - 4 : yabai -m space --focus 5
+alt - 5 : yabai -m space --focus 6
+alt - 6 : yabai -m space --focus 7
+alt - 7 : yabai -m space --focus 8
+alt - 8 : yabai -m space --focus 9
 
-alt + cmd - 1 : yabai -m window --space 1 --focus
-alt + cmd - 2 : yabai -m window --space 2 --focus
-alt + cmd - 3 : yabai -m window --space 3 --focus 
-alt + cmd - 4 : yabai -m window --space 4 --focus
-alt + cmd - 5 : yabai -m window --space 5 --focus
-alt + cmd - 6 : yabai -m window --space 6 --focus
-alt + cmd - 7 : yabai -m window --space 7 --focus
-alt + cmd - 8 : yabai -m window --space 8 --focus
-alt + cmd - 9 : yabai -m window --space 9 --focus
+alt + cmd - 0 : yabai -m window --space 1 --focus
+alt + cmd - 1 : yabai -m window --space 2 --focus
+alt + cmd - 2 : yabai -m window --space 3 --focus 
+alt + cmd - 3 : yabai -m window --space 4 --focus
+alt + cmd - 4 : yabai -m window --space 5 --focus
+alt + cmd - 5 : yabai -m window --space 6 --focus
+alt + cmd - 6 : yabai -m window --space 7 --focus
+alt + cmd - 7 : yabai -m window --space 8 --focus
+alt + cmd - 8 : yabai -m window --space 9 --focus
                                                                     
 alt - r : yabai -m window --focus recent
 alt + shift - r : yabai -m space --focus recent
@@ -203,10 +217,10 @@ cmd + alt - m : yabai -m space --mirror y-axis
 cmd + alt + shift - m : yabai -m space --mirror x-axis
 cmd + alt - r : yabai -m space --rotate 90
 
-shift + ctrl + alt - left : yabai -m window --resize right:-50:0 || yabai -m window --resize left:-50:0 || yabai -m window --resize left:50:0 || yabai -m window --resize right:50:0
-shift + ctrl + alt - right : yabai -m window --resize right:50:0 || yabai -m window --resize left:50:0 || yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0
-shift + ctrl + alt - up :  yabai -m window --resize bottom:0:-50 || yabai -m window --resize top:0:-50 ||  yabai -m window --resize top:0:50 || yabai -m window --resize bottom:0:50
-shift + ctrl + alt - down : yabai -m window --resize bottom:0:50 || yabai -m window --resize top:0:50 || yabai -m window --resize top:0:-50 || yabai -m window --resize bottom:0:-50
+shift + ctrl + alt - left : yabai -m window --resize right:-50:0 
+shift + ctrl + alt - right : yabai -m window --resize right:50:0
+shift + ctrl + alt - up :  yabai -m window --resize bottom:0:-50
+shift + ctrl + alt - down : yabai -m window --resize bottom:0:50
 
 ctrl + alt - left : yabai -m window --move rel:-40:0
 ctrl + alt - right : yabai -m window --move rel:40:0
@@ -235,7 +249,7 @@ cmd + alt + shift - q : ""
 # -----------------
 cmd + alt + ctrl - space : term-window cmd
             
-ctrl + alt + cmd - o : term-window www
+ctrl + alt + cmd - o : www
 ctrl + alt + cmd - e : term-window bweb
                  
 ctrl + alt + cmd - d : toggle-dark-theme

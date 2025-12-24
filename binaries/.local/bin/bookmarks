@@ -1,20 +1,20 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 OS=$(uname -s)
 BOOKMARKS_FILE="$HOME/.qutebrowser/bookmarks/urls"
 
 bookmark_open() {
-	case "$OS" in 
-		Linux) cat $BOOKMARKS_FILE | fzf --reverse --no-color | cut -d ' ' -f1 | xargs xdg-open ;;
-		Darwin) cat $BOOKMARKS_FILE | fzf --reverse --no-color | cut -d ' ' -f1 | xargs open ;;
+	case "$OS" in
+		Linux) cat $BOOKMARKS_FILE | dmenu -l 20 | cut -d ' ' -f1 | xargs xdg-open ;;
+		Darwin) cat $BOOKMARKS_FILE | dmenu -l 20 | cut -d ' ' -f1 | xargs open ;;
 		*) echo "Unsupported OS. Are you running on a potato?" ;;
 	esac
 }
 
 bookmark_copy() {
-	case "$OS" in 
-		Linux) cat $BOOKMARKS_FILE | fzf --reverse --no-color | cut -d ' ' -f1 | xclip -selection clipboard ;;
-		Darwin) cat $BOOKMARKS_FILE | fzf --reverse --no-color | cut -d ' ' -f1 | pbcopy ;;
+	case "$OS" in
+		Linux) cat $BOOKMARKS_FILE | dmenu -l 10 | cut -d ' ' -f1 | xclip -selection clipboard ;;
+		Darwin) cat $BOOKMARKS_FILE | dmenu -l 10 | cut -d ' ' -f1 | pbcopy ;;
 		*) echo "Unsupported OS. Are you running on a potato?" ;;
 	esac
 }
@@ -24,7 +24,7 @@ bookmark_add() {
 		print $1 >> $BOOKMARKS_FILE
 	else
 		read link
-		print $link >> $BOOKMARKS_FILE 
+		print $link >> $BOOKMARKS_FILE
 	fi
 }
 
@@ -32,21 +32,19 @@ bookmarks_edit() {
 	$EDITOR $BOOKMARKS_FILE
 }
 
-bookmark_choose() {
-	choice=$(printf "open\\ncopy\\nadd\\nedit" | fzy)
-	case $choice in
+opts() {
+	case "$1" in
 		open) bookmark_open ;;
 		copy) bookmark_copy ;;
-		add) bookmark_add ;;
-		edit) bookmarks_edit ;;
-		*) echo "BRO?"
+		add) bookmark_add $2 ;;
+		edit) term-window exe "$EDITOR $BOOKMARK_FILE" ;;
+		*) exit 1 ;;
 	esac
 }
 
-case "$1" in
-	open) bookmark_open ;;
-	copy) bookmark_copy ;;
-	add) bookmark_add $2 ;;
-	edit) bookmarks_edit ;;
-	*) bookmark_choose ;;
-esac
+if [[ -n "$1" ]]; then
+	opts "$@"
+else
+	choice=$(printf "open\\ncopy\\nadd\\nedit" | dmenu)
+	opts "$choice"
+fi

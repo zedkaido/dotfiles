@@ -1,4 +1,3 @@
-#!/usr/bin/env sh
+#!/usr/bin/env dash
 
-# essentially serves as focus
-open /Applications/Utilities/XQuartz.app/
+[ $(uname -s) = "Darwin" ] && open /Applications/Utilities/XQuartz.app/

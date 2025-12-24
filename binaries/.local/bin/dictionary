@@ -1,80 +1,59 @@
 #!/usr/bin/env bash
 
-open_sdcv() {
-	sdcv
-}
+command -v dmenu >/dev/null 2>&1 || { echo "ERROR: dmenu bin is required." >&2 ; exit 1 ; }
+command -v term-window >/dev/null 2>&1 || { echo "ERROR: term-window bin is required." >&2 ; }
+
+open_sdcv() { sdcv ; }
 
 lookup_offline_def() {
 	word="$1"
 	if [ -z "$word" ]; then
-		printf "(sdcv) Definition for: "
-		read -r word
+		word=$(echo "" | dmenu -p "[sdcv] Definition for: ")
 	fi
-	sdcv -n "$word" | vim - -R
+	if [[ -n "$word" ]]; then
+	   	term-window exe "sdcv -n $word | vim - -R"
+	else
+		term-window exe "sdcv"
+	fi
 }
 
 lookup_online_def() {
 	word="$1"
 	if [ -z "$word" ]; then
-		printf "(ONLINE) Definition for: "
-		read -r word
+		word=$(echo "" | dmenu -p "[dict] Definition for: ")
 	fi
-	dict "$word" | vim - -R
+	[[ -n "$word" ]] && term-window exe "dict $word | vim - -R" || exit 1
 }
 
 lookup_synonym() {
 	word="$1"
 	if [ -z "$word" ]; then
-		printf "Synonyms for: "
-		read -r word
+		word=$(echo "" | dmenu -p "[synonyms] Synonyms for: ")
 	fi
 
 	command -v synonyms >/dev/null 2>&1 || {
-		echo "ERROR: synonyms is required, but is not in PATH. Make sure you have synonyms bin." >&2
+		echo "ERROR: synonyms bin is required." >&2
 		exit 1
 	}
-	synonyms $word ; read
+	[[ -n "$word" ]] && term-window exe "synonyms $word ; read" || exit 1
 
 	# WEB SEARCH ALTERNATIVE:
 	# www "$word !synonyms" &
 }
 
-prompt() {
-	opts=(
-		"definition :: Lookup Definition |OFFLINE :: sdcv|"
-		"synonym :: Lookup Synonym (Open in Browser)"
-		"sdcv :: Open SDCV APP (OFFLINE)"
-		"dict :: Lookup Definition |ONLINE: dict|"
-	)
-	selected=$(printf "%s\n" "${opts[@]}" | fzy)
-	action=${selected%% ::*}
-	case $action in
-		definition) lookup_offline_def ;;
-		sdcv) open_sdcv ;;
-		synonym) lookup_synonym ;;
-		dict) lookup_online_def ;;
-		*) exit 0
+opts() {
+	case "$1" in
+		def*|sdcv|offline) open_sdcv "$2" ;;
+		dict*|online) lookup_online_def "$2" ;;
+		syn*) lookup_synonym "$2" ;;
 	esac
 }
 
-dmenuopts() {
-	opts=( "definition" "synonyms" "sdcv" "dict")
-	selected=$(printf "%s\n" "${opts[@]}" | dmenu)
-	term-window dictionary "$selected"
-}
+if [[ -n "$1" ]]; then
+	opts "$@"
+else
+	opts=("definition" "synonyms" "sdcv" "dict")
+	sel=$(printf "%s\n" "${opts[@]}" | dmenu)
+	opts "$sel"
+fi
 
-case "$1" in
-	sdcv) open_sdcv ;;
-	offline) open_sdcv ;;
-
-	def*) lookup_offline_def "$2" ;;
-
-	syn*) lookup_synonym "$2" ;;
-
-	dict*) lookup_online_def "$2" ;;
-	online) lookup_online_def "$2" ;;
-
-	dmenu) dmenuopts "$@" ;;
-
-	*) prompt ;;
-esac

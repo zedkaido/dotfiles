@@ -1,4 +1,4 @@
-#!/usr/bin/env bash 
+#!/usr/bin/env bash
 
 app="$1"
 path="$2"
@@ -19,7 +19,7 @@ if yabai -m window --focus "$app_id"; then
 else
    if [ -n "$path" ]; then
       open -n "$path"
-   else 
+   else
       echo "ERROR: (\$2):path :: App Path not provided"
    fi
 fi

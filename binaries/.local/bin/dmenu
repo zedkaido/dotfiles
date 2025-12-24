@@ -1,3 +1,3 @@
-#!/usr/bin/env sh
+#!/usr/bin/env dash
 
-/usr/local/bin/dmenu -fn 'TX\-02-13' -b -f -nb '#000000' -nf '#eeeeee' -sb '#000087' "$@" 
+xq ; /usr/local/bin/dmenu "$@" || fr

@@ -13,25 +13,24 @@ floating_window()
 	rows=0
 
 	# <r>:<c>:<x>:<y>:<w>:<h>
-	grid="${3:-4:4:1:1:2:2}" 
-	echo $grid
+	grid="${3:-4:4:1:1:2:2}"
 
 	alacritty --title="$title" \
 		-o window.dimensions.columns=$cols \
 		   window.dimensions.lines=$rows \
 		-e bash -c "$cmd" &
 
-	while :; do
+	pid=$!
+	while kill -0 "$pid" 2>/dev/null; do
+		sleep 0.01
 		winID=$(yabai -m query --windows --space \
 			| jq -r --arg t "$title" '.[] | select(.title == $t) | .id')
 		[ -n "$winID" ] && break
-		sleep 0.1
 	done
-	
-	yabai -m window "$winID" --grid $grid
+	yabai -m window "$winID" --grid "$grid"
 	
 	# xq ; st -t="$title" \
-	#    -e bash -c "$cmd" && yabai -m window --focus recent 
+	#    -e bash -c "$cmd" && yabai -m window --focus recent
 
 	# open -n /Applications/Ghostty.app/ \
 	# 	--args --title="$title" \
@@ -57,23 +56,24 @@ window_types=(
 )
 
 chosen_window=$1
-if [ -z $chosen_window ]; then
-	chosen_window=$(printf "%s\n" "${window_types[@]}" | fzy)
+if [ -z "$chosen_window" ]; then
+	chosen_window=$(printf "%s\n" "${window_types[@]}" | dmenu)
 fi
 
+# <r>:<c>:<x>:<y>:<w>:<h>
 case "$chosen_window" in
-	ch) floating_window "ch" "~/.local/bin/ch $2" 120 40 ;;
-	launcher) floating_window "launcher" "~/.local/bin/app-open $2" ;;
-	yabai-fzy-window) floating_window "yabai-fzy-window" "~/.local/bin/yabai-fzy-window $2" ;;
+	ch) floating_window "ch" "$HOME/.local/bin/ch $2" 20:20:2:2:16:16 ;;
+	launcher) floating_window "launcher" "$HOME/.local/bin/app-open $2" ;;
+	yabai-fzy-window) floating_window "yabai-fzy-window" "$HOME/.local/bin/yabai-fzy-window $2" ;;
 	exe) floating_window "exe" "$2" ;;
-	cmd) floating_window "cmd" "~/.local/bin/cmd $2" ;;
-	pass) floating_window "pass" "~/.local/bin/pass-copy $2" 10:1:0:9:2:1 ;;
+	cmd) floating_window "cmd" "$HOME/.local/bin/cmd $2" ;;
+	pass) floating_window "pass" "$HOME/.local/bin/pass-copy $2" 10:1:0:9:2:1 ;;
 	bweb) floating_window "bweb" "tmux a -t bweb || tmux new -s bweb" ;;
-	www) floating_window "www" "~/.local/bin/www $2" 80 5 ;;
-	dictionary) floating_window "dictionary" "~/.local/bin/dictionary $2" ;;
-	bookmarks) floating_window "bookmarks" "~/.local/bin/bookmarks $2" ;;
-	snippets) floating_window "snippets" "~/.local/bin/snippet-copy $2" ;;
-	radio) floating_window "radio" "~/.local/bin/radio $2" 8:1:0:0:2:1 ;;
-	webcam) floating_window "webcam" "~/.local/bin/webcam $2" 15:42:0:0:2:1 ;;
+	www) floating_window "www" "$HOME/.local/bin/www $2" 80 5 ;;
+	dictionary) floating_window "dictionary" "$HOME/.local/bin/dictionary $2" ;;
+	bookmarks) floating_window "bookmarks" "$HOME/.local/bin/bookmarks $2" ;;
+	snippets) floating_window "snippets" "$HOME/.local/bin/snippet-copy $2" ;;
+	radio) floating_window "radio" "$HOME/.local/bin/radio $2" 8:1:0:0:2:1 ;;
+	webcam) floating_window "webcam" "$HOME/.local/bin/webcam $2" 15:42:0:0:2:1 ;;
 	*) exit 0 ;;
-esac	
+esac

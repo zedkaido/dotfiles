@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 OS=$(uname -s)
 
@@ -8,7 +8,7 @@ webcam_open() {
 			# TODO: Confirm if this works
 			ffmpeg -f v4l2 -video_size 640x480 -framerate 30 -i /dev/video0 \
 				-vcodec libx264 -preset ultrafast -tune zerolatency \
-				-f mpegts - | mpv --no-cache --vf="format=gray" -profile=low-latency -untimed - 
+				-f mpegts - | mpv --no-cache --vf="format=gray" -profile=low-latency -untimed -
 			;;
 		Darwin)
 			ffmpeg -f avfoundation -video_size 640x480 -framerate 30 -pix_fmt yuyv422 -i "0" \
@@ -27,23 +27,28 @@ webcam_record() {
 			;;
 		Darwin)
 			ffmpeg -f avfoundation -video_size 640x480 -framerate 30 -pix_fmt yuyv422 -i "0" \
-				-vcodec libx264 -preset ultrafast output.mkv 
+				-vcodec libx264 -preset ultrafast output.mkv
 			;;
 		*) echo "Unsupported OS. Are you running on a potato?" ;;
 	esac
 }
 
-webcam_choose() {
-	choice=$(printf "open\\nrecord" | fzy)
-	case "$choice" in
+opts() {
+	case "$1" in
 		open) webcam_open ;;
 		record) webcam_record ;;
-		*) echo "Usage: $0 {open|record}" ;;
+		*) exit 1 ;;
 	esac
 }
 
-case $1 in
-	open) webcam_open ;;
-	record) webcam_record ;;
-	*) webcam_choose ;;
-esac
+if [[ -n "$1" ]]; then
+	opts "$@"
+else
+	opts=("open" "record")
+	selected=$(printf "%s\n" "${opts[@]}" | dmenu)
+	case "$selected" in
+		open) webcam_open ;;
+		record) webcam_record ;;
+		*) exit 1 ;;
+	esac
+fi
