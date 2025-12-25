@@ -196,9 +196,13 @@ nmap(';df', 'hint links spawn st -e youtube-dl {hint-url}')
 nmap(';vim', 'edit-text')
 
 nmap('t', 'cmd-set-text -s :open -t')
-nmap('xb', 'config-cycle statusbar.show always never')
-nmap('xt', 'config-cycle tabs.show always never')
-nmap('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
+
+nmap('xtb', 'config-cycle statusbar.show always never')
+nmap('xtt', 'config-cycle tabs.show always never')
+nmap('xtd', 'config-cycle colors.webpage.darkmode.enabled true false')
+nmap('xtc', 'config-cycle colors.webpage.bg #000000 #ffffff')
+nmap('xt0', 'set colors.webpage.bg "#000000"')
+nmap('xtf', 'set colors.webpage.bg "#ffffff"')
 
 # Bindings for insert mode
 imap('<Ctrl-w>','fake-key <Alt-Backspace>')
