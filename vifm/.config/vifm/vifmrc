@@ -188,6 +188,8 @@ command! reload :write | restart full
 
 " pdf
 filetype {*.pdf},<application/pdf>
+         \ {Open in sioyek.app} 
+         \ open -a /Applications/sioyek.app,
          \ {Open in Default (Preview.app)}
          \ open,
          \ {Open in Emacs.app}
@@ -200,6 +202,8 @@ filetype {*.epub},<application/epub>
          \ open -a /Applications/Emacs.app,
          \ {Open in Emacs (tty)}
          \ emacs,
+         \ {Open in sioyek.app} 
+         \ open -a /Applications/sioyek.app,
          \ {Open in bk} 
          \ bk,
 fileviewer {*.epub},<application/epub> bk
