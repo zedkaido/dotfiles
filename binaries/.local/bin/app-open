@@ -2,7 +2,7 @@
 
 monitor="${1:-0}"
 
-find /Applications \
+xq ; find /Applications \
      /System/Applications \
      ~/Applications \
-     -name "*.app" -maxdepth 2 ! -name ".*" | dmenu -i -p "OPEN APP" -m $monitor | xargs -I{} open "{}" && exit
+     -name "*.app" -maxdepth 2 ! -name ".*" | dmenu -i -p "OPEN APP" -m "$monitor" | xargs -I{} open "{}" 

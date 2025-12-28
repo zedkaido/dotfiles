@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 yabai_query=$(yabai -m query --windows | jq -r '.[] | "\(.id):\(.app):\(.title)"')
 
 truncate_string() {

@@ -1,3 +1,10 @@
-#!/usr/bin/env dash
+#!/usr/bin/env bash
 
-xq ; /usr/local/bin/dmenu "$@" || fr
+if [ $(uname -s) = "Darwin" ]; then
+	if yabai -m query --windows --window >/dev/null 2>&1; then
+		xq ; /usr/local/bin/dmenu "$@" ; fr
+		exit 0
+	fi
+fi
+
+exec /usr/local/bin/dmenu "$@"

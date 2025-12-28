@@ -13,7 +13,7 @@ sudo yabai --load-sa
 # ------
 yabai -m config \
          layout stack \
-         mouse_follows_focus off \
+         mouse_follows_focus on \
          focus_follows_mouse off \
          window_origin_display cursor \
          window_placement second_child \
@@ -22,7 +22,7 @@ yabai -m config \
          window_shadow off \
          window_opacity off \
          insert_feedback_color 0xffd75f5f \
-         split_ratio 0.50 \
+         split_ratio 0.55 \
          split_type auto \
          auto_balance off \
          window_gap 2 \
@@ -38,12 +38,26 @@ yabai -m config \
 # ----------------- 
 # ADDITIONAL PARAMS
 # ----------------- 
+yabai -m space 1 --layout float
 yabai -m config --display 1 external_bar all:33:0
 
 # -----
 # RULES
 # -----
 yabai -m rule --add app="Picture in Picture" sticky=on
+
+yabai -m rule --add title="XQuartz" manage=on role="AXWindow" subrole="AXDialog" manage=on
+
+yabai -m rule --add app='XQuartz' manage=on role="AXWindow" subrole="AXDialog" manage=on
+
+yabai -m rule --add app='^XQuartz$' manage=on role="AXWindow" subrole="AXDialog" manage=on
+
+yabai -m rule --add app='^X11.bin$' manage=on role="AXWindow" subrole="AXDialog" manage=on
+
+yabai -m rule --add app='X11.bin' manage=on role="AXWindow" subrole="AXDialog" manage=on
+
+yabai -m rule --add app='X11' manage=off role="AXWindow" subrole="AXDialog" manage=on
+
 
 yabai -m rule --add title="^f:.+" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
