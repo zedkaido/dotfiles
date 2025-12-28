@@ -24,8 +24,11 @@ export PASSWORD_STORE_ENABLE_EXTENSIONS="true"
 export PATH="$HOME/.local/bin:$PATH"
 
 # HomeBrew
-export PATH="/opt/homebrew/bin:$PATH"
-eval "$(/usr/bin/env brew shellenv)"
+if [ -x /opt/homebrew/bin/brew ]; then
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+	eval "$(/usr/local/bin/brew shellenv)"
+fi
 
 # MacPorts
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
