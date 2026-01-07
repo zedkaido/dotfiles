@@ -7,9 +7,9 @@ general.live_config_reload = true
 [env]
 
 [window]
-dimensions = { columns = 80, lines = 40 }
+dimensions = { columns = 40, lines = 40 }
 position = "None"
-padding = { x = 4, y = 2 }
+padding = { x = 2, y = 1 }
 dynamic_padding = false
 decorations = "None"  # Options: "Full" | "None" | "Buttonless"
 opacity = 1.0
@@ -52,7 +52,6 @@ save_to_clipboard = false
 
 [cursor]
 style = { shape = "Block", blinking = "Off" }
-vi_mode_style = "None"
 blink_interval = 750
 blink_timeout = 0
 unfocused_hollow = true
