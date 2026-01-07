@@ -13,7 +13,7 @@
 #-------------
 alt - s ; system
 system < escape ; default
-system < s : skhd -k "escape" ; pmset sleepnow
+system < s : skhd -k "escape" ; pmset sleepnow &
 
 #------------
 # MODE: YABAI
