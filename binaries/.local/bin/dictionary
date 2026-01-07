@@ -43,7 +43,8 @@ lookup_synonym() {
 
 opts() {
 	case "$1" in
-		def*|sdcv|offline) open_sdcv "$2" ;;
+		def*|offline) lookup_offline_def "$2" ;;
+		sdcv) lookup_offline_def "$2" ;;
 		dict*|online) lookup_online_def "$2" ;;
 		syn*) lookup_synonym "$2" ;;
 	esac
