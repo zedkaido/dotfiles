@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/local/bin/bash
 
 SPACE_ICONS=( "0x00" "I" "II" "III" "IV" "V" "VI" "VII" "VIII" "IX" "X")
 

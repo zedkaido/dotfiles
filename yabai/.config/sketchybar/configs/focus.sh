@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/local/bin/dash
 
 sketchybar --add event yabai_window_focused
 sketchybar --add item focus left \

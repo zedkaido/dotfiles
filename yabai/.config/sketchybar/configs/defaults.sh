@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/local/bin/dash
 
 sketchybar --bar \
    position=top \
@@ -19,8 +19,8 @@ sketchybar --bar \
 \
    label.font="TX-02:Bold:14" \
    label.color=0xff888888 \
-   label.padding_left=4 \
-   label.padding_right=4 \
+   label.padding_left=2 \
+   label.padding_right=2 \
 \
-   padding_left=4 \
-   padding_right=4
+   padding_left=2 \
+   padding_right=2

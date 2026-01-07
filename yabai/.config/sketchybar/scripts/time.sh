@@ -1,3 +1,3 @@
-#!/usr/bin/env bash
+#!/usr/local/bin/dash
 
-sketchybar --set $NAME label="|笑|  $(date '+%a %y/%m/%d (%j) %H:%M')" 
+sketchybar --set "$NAME" label="$(date '+%a %y/%m/%d (%j) %H:%M')" 

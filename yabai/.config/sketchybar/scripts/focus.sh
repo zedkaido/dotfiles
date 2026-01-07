@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/local/bin/bash
 
 window=$(yabai -m query --windows --window 2>/dev/null);
 readarray -t arr < <(echo "$window" | jq -r '.app, .title, ."stack-index", ."has-parent-zoom", ."has-fullscreen-zoom"')

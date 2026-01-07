@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/local/bin/bash
 
 layout_type=$(yabai -m query --spaces --space | jq -r ".type" | tr '[:lower:]' '[:upper:]')
 formatted_layout_type="[${layout_type}]"
