@@ -1,7 +1,7 @@
 # vim: filetype=bash
 
 rmrf() {
-	read -p "Are you sure? " confirm
+	read -p "Are you sure you want to rm -rf $1" confirm
 	if [[ "$confirm" == [Yy] ]]; then
 		rm -rf "$1"
 	else
@@ -10,32 +10,12 @@ rmrf() {
 }
 
 srmrf() {
-	read -p "Are you sure? " confirm
+	read -p "Are you sure you want to SUDO rm -rf $1" confirm
 	if [[ "$confirm" == [Yy] ]]; then
 		sudo rm -rf "$1"
 	else
 		echo "Aborted."
 	fi
-}
-
-hex() {
-	echo -n $1 | od -A n -t x1 | tr -d '[:space:]'
-}
-
-hextostring() {
-	local hex_string="$1"
-	local ascii_string=""
-	hex_string=$(echo "$hex_string" | tr -d '[:space:]')
-	if [[ ! $hex_string =~ ^[0-9a-fA-F]+$ ]]; then
-		echo "Error: Invalid hexadecimal string."
-		return 1
-	fi
-	# two characters at a time (one bite)
-	for (( i = 0; i < ${#hex_string}; i += 2 )); do
-		byte="${hex_string:$i:2}"
-		ascii_string+=$(printf "\\x$byte")
-	done
-	echo -e "$ascii_string"
 }
 
 testcolors () {
@@ -50,4 +30,14 @@ testcolors () {
 		}
 		printf "\n";
 	}'
+}
+
+os-disable-notifications() {
+	launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
+	killall NotificationCenter
+}
+
+os-enable-notifications() {
+	launchctl load -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
+	open /System/Library/CoreServices/NotificationCenter.app/
 }
