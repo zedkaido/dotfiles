@@ -132,6 +132,8 @@ app < e : open -n /Applications/Emacs.app ; skhd -k "escape"
 
 app < b : open -n /Applications/Bitwig\ Studio.app ; skhd -k "escape"
 
+app < t : term-window exe tmux new-session ; skhd -k "escape"
+
 # FZY OPEN APP WINDOWS
 alt - g : xq ; yabai-fzy-window dmenu
 alt + shift - g: term-window yabai-fzy-window
