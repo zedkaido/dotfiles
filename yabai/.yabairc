@@ -19,7 +19,7 @@ yabai -m config \
          window_placement second_child \
          window_zoom_persist off \
          window_insertion_point last \
-         window_shadow on \
+         window_shadow off \
          window_opacity off \
          insert_feedback_color 0xffd75f5f \
          split_ratio 0.55 \
@@ -45,19 +45,6 @@ yabai -m config --display 1 external_bar all:33:0
 # RULES
 # -----
 yabai -m rule --add app="Picture in Picture" sticky=on
-
-yabai -m rule --add title="XQuartz" manage=on role="AXWindow" subrole="AXDialog" manage=on
-
-yabai -m rule --add app='XQuartz' manage=on role="AXWindow" subrole="AXDialog" manage=on
-
-yabai -m rule --add app='^XQuartz$' manage=on role="AXWindow" subrole="AXDialog" manage=on
-
-yabai -m rule --add app='^X11.bin$' manage=on role="AXWindow" subrole="AXDialog" manage=on
-
-yabai -m rule --add app='X11.bin' manage=on role="AXWindow" subrole="AXDialog" manage=on
-
-yabai -m rule --add app='X11' manage=off role="AXWindow" subrole="AXDialog" manage=on
-
 
 yabai -m rule --add title="^f:.+" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
