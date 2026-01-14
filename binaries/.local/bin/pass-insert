@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+name="$1"
+while true; do
+	pass insert "$name" && exit 0
+	echo "FAILED. Try Again"
+done
