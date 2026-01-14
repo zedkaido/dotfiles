@@ -42,7 +42,7 @@ opts() {
  			;;
 		generate)
 			newpass=$(passfiles | dmenu -p "GENERATE NEW PASS" -l 5)
-			[[ -n "$newpass" ]] && pass generate "$newpass"
+			[[ -n "$newpass" ]] && pass generate -c "$newpass"
 			;;
 		\|) exit 0 ;;
 		*) opts ;;
