@@ -7,15 +7,14 @@ if [ $# -eq 1 ]; then
 else
 	project_dirs=(
 		~/d
-		~/sr
 		~/wit
 		~/pro
+		~/tnt
+		~/sr
 		~/zk
-		~/zk/sr
+		~/zk/git
 		~/dotfiles
 		~/dotfiles/vim/.vim
-		~/dotfiles/tmux/.config/tmux
-		~/dotfiles/alacritty/.config/alacritty
 		~/.local/src
 	)
 	ignore_dirs=(
