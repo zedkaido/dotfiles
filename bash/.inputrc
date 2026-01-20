@@ -1,3 +1,8 @@
+set keyseq-timeout 0
+set show-mode-in-prompt on
+set vi-ins-mode-string "[I]"
+set vi-cmd-mode-string "[N]"
+
 set show-all-if-ambiguous on
 set visible-stats on
 set page-completions off

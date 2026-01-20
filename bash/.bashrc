@@ -6,7 +6,6 @@ parse_git_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 PS1="\$PWD\$(parse_git_branch)\n$ "
-
 PROMPT_COMMAND="${PROMPT_COMMAND:-:}"
 
 HISTFILE=/dev/null
